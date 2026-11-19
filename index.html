@@ -92,6 +92,8 @@
       .lg\:grid-cols-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
       .lg\:grid-cols-12 { grid-template-columns: repeat(12, minmax(0, 1fr)); }
       .lg\:col-span-4 { grid-column: span 4 / span 4; }
+      .lg\:col-span-5 { grid-column: span 5 / span 5; }
+      .lg\:col-span-7 { grid-column: span 7 / span 7; }
       .lg\:col-span-8 { grid-column: span 8 / span 8; }
     }
     @media (min-width: 1280px) {
@@ -116,95 +118,6 @@
     .rounded-lg { border-radius: 0.5rem; }
     .rounded { border-radius: 0.25rem; }
     .hidden { display: none !important; }
-
-    /* Większe boczne chorągwie rodów z prawdziwymi herbami SVG */
-    .side-rail {
-      display: none;
-    }
-
-    @media (min-width: 1660px) {
-      .side-rail {
-        position: fixed;
-        top: 5.15rem;
-        width: 6.85rem;
-        display: flex;
-        flex-direction: column;
-        gap: 1.05rem;
-        z-index: 25;
-      }
-      .side-rail-left {
-        left: 1rem;
-      }
-      .side-rail-right {
-        right: 1rem;
-      }
-    }
-
-    .house-banner {
-      position: relative;
-      width: 100%;
-      min-height: 8.65rem;
-      padding: 0.75rem 0.55rem 1.45rem;
-      border: 1px solid rgba(212, 166, 86, 0.42);
-      border-top: 4px solid rgba(218, 174, 92, 0.85);
-      clip-path: polygon(0% 0%, 100% 0%, 100% 80%, 50% 100%, 0% 80%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-      gap: 0.35rem;
-      cursor: pointer;
-      box-shadow:
-        inset 0 0 18px rgba(0, 0, 0, 0.52),
-        0 12px 24px rgba(0, 0, 0, 0.65);
-      transition: transform 0.2s ease, filter 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .house-banner:hover {
-      transform: translateY(-4px) scale(1.03);
-      filter: brightness(1.13);
-      border-color: rgba(245, 208, 130, 0.95);
-      box-shadow:
-        inset 0 0 18px rgba(255, 225, 160, 0.14),
-        0 16px 28px rgba(0, 0, 0, 0.78);
-    }
-
-    .house-banner.active-banner {
-      border-color: #f6dfad;
-      box-shadow:
-        0 0 0 1px rgba(246, 223, 173, 0.55),
-        0 16px 30px rgba(212, 166, 86, 0.24);
-    }
-
-    .banner-targaryen {
-      background: linear-gradient(180deg, #3c0c10 0%, #160507 100%);
-      color: #fca5a5;
-    }
-
-    .banner-stark {
-      background: linear-gradient(180deg, #27272a 0%, #101113 100%);
-      color: #e4e4e7;
-    }
-
-    .banner-baratheon {
-      background: linear-gradient(180deg, #5e4108 0%, #221602 100%);
-      color: #fde047;
-    }
-
-    .banner-greyjoy {
-      background: linear-gradient(180deg, #1d1916 0%, #0b0908 100%);
-      color: #fbbf24;
-    }
-
-    .banner-arryn {
-      background: linear-gradient(180deg, #1e40af 0%, #0d1f52 100%);
-      color: #eff6ff;
-    }
-
-    .banner-lannister {
-      background: linear-gradient(180deg, #7f1d1d 0%, #370707 100%);
-      color: #fcd34d;
-    }
 
     .parchment-card {
       background:
@@ -304,6 +217,26 @@
       display: block;
     }
 
+    /* Style obszarów interaktywnej mapy Westeros */
+    .map-region {
+      cursor: pointer;
+      transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease, filter 0.2s ease;
+      stroke: rgba(58, 39, 18, 0.75);
+      stroke-width: 1.6;
+    }
+
+    .map-region:hover {
+      filter: brightness(1.16);
+      stroke: #7c1d1d;
+      stroke-width: 2.6;
+    }
+
+    .map-region.selected {
+      filter: brightness(1.22);
+      stroke: #7c1d1d;
+      stroke-width: 3.2;
+    }
+
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -333,111 +266,6 @@
   </style>
 </head>
 <body class="antialiased selection:bg-amber-700/40 selection:text-amber-100">
-  <!-- Lewa kolumna chorągwi rodów (prawdziwe herby SVG) -->
-  <aside aria-label="Chorągwie rodów po lewej" class="side-rail side-rail-left">
-    <button
-      type="button"
-      data-banner-house="Targaryen"
-      title="Ród Targaryen — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Targaryen')"
-      class="house-banner banner-targaryen"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <path d="M32 7 L41 19 L54 15 L47 28 L57 36 L43 39 L45 55 L32 45 L19 55 L21 39 L7 36 L17 28 L10 15 L23 19 Z" fill="#dc2626" stroke="#fca5a5" stroke-width="1.6"/>
-        <circle cx="32" cy="30" r="5" fill="#160507" stroke="#fca5a5" stroke-width="1.4"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">TARGARYEN</span>
-      <span class="font-serif text-[10px] italic leading-tight text-red-200/90">Ogień i Krew</span>
-    </button>
-
-    <button
-      type="button"
-      data-banner-house="Stark"
-      title="Ród Stark — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Stark')"
-      class="house-banner banner-stark"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <path d="M16 14 L25 22 L32 18 L39 22 L48 14 L46 31 L52 40 L39 46 L32 56 L25 46 L12 40 L18 31 Z" fill="#9ca3af" stroke="#f4f4f5" stroke-width="1.6"/>
-        <circle cx="25" cy="33" r="2.2" fill="#111214"/>
-        <circle cx="39" cy="33" r="2.2" fill="#111214"/>
-        <path d="M27 42 L32 46 L37 42" stroke="#111214" stroke-width="2" stroke-linecap="round"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">STARK</span>
-      <span class="font-serif text-[10px] italic leading-tight text-zinc-300">Nadchodzi Zima</span>
-    </button>
-
-    <button
-      type="button"
-      data-banner-house="Baratheon"
-      title="Ród Baratheon — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Baratheon')"
-      class="house-banner banner-baratheon"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <path d="M26 17 L21 9 M23 13 L16 12 M38 17 L43 9 M41 13 L48 12" stroke="#fde047" stroke-width="2" stroke-linecap="round"/>
-        <path d="M22 17 L42 17 L39 23 L25 23 Z" fill="#facc15" stroke="#fef08a" stroke-width="1.2"/>
-        <path d="M22 25 L42 25 L40 52 L32 57 L24 52 Z" fill="#1c1407" stroke="#fde047" stroke-width="1.8"/>
-        <path d="M28 45 L32 33 L36 45 M32 37 L27 32 M32 37 L37 32" stroke="#fde047" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">BARATHEON</span>
-      <span class="font-serif text-[10px] italic leading-tight text-amber-200/90">Nasza Jest Furia</span>
-    </button>
-  </aside>
-
-  <!-- Prawa kolumna chorągwi rodów (prawdziwe herby SVG) -->
-  <aside aria-label="Chorągwie rodów po prawej" class="side-rail side-rail-right">
-    <button
-      type="button"
-      data-banner-house="Greyjoy"
-      title="Ród Greyjoy — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Greyjoy')"
-      class="house-banner banner-greyjoy"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <ellipse cx="32" cy="23" rx="13" ry="11" fill="#eab308" stroke="#fef08a" stroke-width="1.5"/>
-        <circle cx="27" cy="22" r="2" fill="#0b0908"/>
-        <circle cx="37" cy="22" r="2" fill="#0b0908"/>
-        <path d="M21 32 C14 38, 12 48, 17 55 M26 33 C22 41, 22 50, 25 56 M32 34 L32 57 M38 33 C42 41, 42 50, 39 56 M43 32 C50 38, 52 48, 47 55" stroke="#facc15" stroke-width="2.1" stroke-linecap="round"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">GREYJOY</span>
-      <span class="font-serif text-[10px] italic leading-tight text-amber-200/90">My Nie Siejemy</span>
-    </button>
-
-    <button
-      type="button"
-      data-banner-house="Arryn"
-      title="Ród Arryn — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Arryn')"
-      class="house-banner banner-arryn"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <path d="M44 14 A19 19 0 1 0 44 50 A15 15 0 1 1 44 14 Z" fill="#f8fafc" stroke="#dbeafe" stroke-width="1.2"/>
-        <path d="M24 27 L34 23 L42 29 L35 34 L38 43 L30 37 L21 40 L25 32 Z" fill="#60a5fa" stroke="#ffffff" stroke-width="1.5"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">ARRYN</span>
-      <span class="font-serif text-[10px] italic leading-tight text-blue-100">Wysoko Jak Honor</span>
-    </button>
-
-    <button
-      type="button"
-      data-banner-house="Lannister"
-      title="Ród Lannister — kliknij, aby otworzyć historię rodu"
-      onclick="openHouseHistory('Lannister')"
-      class="house-banner banner-lannister"
-    >
-      <svg viewBox="0 0 64 64" class="h-12 w-12" fill="none" aria-hidden="true">
-        <circle cx="32" cy="31" r="17" fill="#f59e0b" stroke="#fef08a" stroke-width="1.6"/>
-        <circle cx="32" cy="32" r="11" fill="#fbbf24" stroke="#7f1d1d" stroke-width="1.4"/>
-        <circle cx="28.5" cy="30" r="1.7" fill="#370707"/>
-        <circle cx="35.5" cy="30" r="1.7" fill="#370707"/>
-        <path d="M28 36 Q32 39.5 36 36" stroke="#370707" stroke-width="1.8" stroke-linecap="round"/>
-      </svg>
-      <span class="font-display text-[10px] font-bold tracking-widest text-amber-100">LANNISTER</span>
-      <span class="font-serif text-[10px] italic leading-tight text-amber-200/90">Słysz Ryk!</span>
-    </button>
-  </aside>
-
   <header class="sticky top-0 z-40 border-b border-amber-500/25 bg-stone-950/90 backdrop-blur-md">
     <div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
       <button
@@ -501,6 +329,14 @@
         </button>
         <button
           type="button"
+          data-tab="map"
+          onclick="switchTab('map')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Mapa
+        </button>
+        <button
+          type="button"
           data-tab="rules"
           onclick="switchTab('rules')"
           class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
@@ -529,7 +365,7 @@
               „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
             </p>
             <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
-              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów oraz księgę zasad wraz z wieżą kości.
+              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów, mapę ziem oraz księgę zasad wraz z wieżą kości.
             </p>
             <div class="flex flex-wrap gap-3 pt-2">
               <button
@@ -538,6 +374,13 @@
                 class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-amber-100 shadow-md transition hover:from-red-800 hover:to-red-950"
               >
                 ZANIM STWORZYSZ POSTAĆ
+              </button>
+              <button
+                type="button"
+                onclick="switchTab('map')"
+                class="rounded border border-amber-900/45 bg-amber-950/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-red-950 transition hover:bg-amber-950/20"
+              >
+                OTWÓRZ MAPĘ WESTEROS
               </button>
               <button
                 type="button"
@@ -695,13 +538,40 @@
 
           <button
             type="button"
-            onclick="switchTab('rules')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none md:col-span-2 xl:col-span-2"
+            onclick="switchTab('map')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
           >
             <div class="pointer-events-none space-y-3">
               <div class="flex items-center justify-between">
                 <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA V • MECHANIKA I KOŚCI
+                  KSIĘGA V • KARTOGRAFIA
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  🗺
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Mapa Westeros
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Interaktywna mapa krain Siedmiu Królestw z podświetlaniem obszarów po najechaniu i informacją, który ród włada danymi ziemiami.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>OTWÓRZ MAPĘ</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('rules')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA VI • MECHANIKA I KOŚCI
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
                   🎲
@@ -863,6 +733,13 @@
                 </button>
                 <button
                   type="button"
+                  onclick="switchTab('map')"
+                  class="rounded border border-amber-500/40 bg-stone-900 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-200 transition hover:border-amber-400"
+                >
+                  MAPA
+                </button>
+                <button
+                  type="button"
                   onclick="switchTab('history')"
                   class="rounded border border-amber-500/30 bg-stone-900 px-4 py-2 font-display text-xs font-bold tracking-wider text-stone-200 transition hover:border-amber-500/60 hover:text-amber-200"
                 >
@@ -966,18 +843,220 @@
           </h1>
         </div>
         <p class="font-serif text-base italic text-stone-400">
-          Kliknij baner boczny lub kartę rodu, aby otworzyć pełną historię domu poniżej.
+          Kliknij kartę rodu, aby otworzyć jego kronikę i dzieje poniżej.
         </p>
       </div>
 
-      <!-- Panel historii wybranego rodu -->
       <div id="house-history-spotlight"></div>
 
-      <!-- Siatka rodów -->
       <div id="houses-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <!-- 6. ZASADY GRY -->
+    <!-- 6. MAPA WESTEROS -->
+    <section id="tab-map" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+            KARTOGRAFIA SIEDMIU KRÓLESTW
+          </div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
+            MAPA WESTEROS
+          </h1>
+        </div>
+        <p class="font-serif text-base italic text-stone-400">
+          Najedź kursorem na wybrany obszar mapy lub kliknij go, aby sprawdzić aktualnego władcę ziem.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <!-- Interaktywna mapa SVG -->
+        <div class="parchment-card relative rounded-lg p-5 sm:p-7 lg:col-span-7">
+          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+          <div class="relative z-10 space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-amber-900/20 pb-2">
+              <span class="font-display text-xs font-bold tracking-[0.18em] text-red-900">
+                ARKUSZ KARTOGRAFICZNY • WESTEROS
+              </span>
+              <span id="map-hover-badge" class="font-serif text-sm italic text-stone-700">
+                Najedź na obszar lub wybierz krainę
+              </span>
+            </div>
+
+            <div class="mx-auto max-w-[540px]">
+              <svg
+                viewBox="0 0 600 840"
+                class="h-auto w-full drop-shadow-md"
+                role="img"
+                aria-label="Interaktywna mapa regionów Westeros"
+              >
+                <!-- Morze i subtelna siatka kartograficzna -->
+                <rect x="0" y="0" width="600" height="840" rx="10" fill="#d8c5a1" fill-opacity="0.45" />
+                <g stroke="#8c6838" stroke-opacity="0.16" stroke-width="1">
+                  <line x1="120" y1="0" x2="120" y2="840" />
+                  <line x1="240" y1="0" x2="240" y2="840" />
+                  <line x1="360" y1="0" x2="360" y2="840" />
+                  <line x1="480" y1="0" x2="480" y2="840" />
+                  <line x1="0" y1="168" x2="600" y2="168" />
+                  <line x1="0" y1="336" x2="600" y2="336" />
+                  <line x1="0" y1="504" x2="600" y2="504" />
+                  <line x1="0" y1="672" x2="600" y2="672" />
+                </g>
+
+                <!-- Mur / Daleka Północ -->
+                <line x1="175" y1="145" x2="395" y2="145" stroke="#3f4e5c" stroke-width="5" stroke-dasharray="6,3" />
+                <text x="285" y="135" text-anchor="middle" font-family="Cinzel, serif" font-size="11" font-weight="700" fill="#3f4e5c">
+                  MUR
+                </text>
+
+                <!-- PÓŁNOC (Ród Stark) -->
+                <path
+                  id="region-north"
+                  data-region="north"
+                  d="M175 150 L395 150 L410 250 L375 345 L270 365 L175 335 L155 245 Z"
+                  fill="#94a3b8"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('north')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('north')"
+                />
+
+                <!-- ŻELAZNE WYSPY (Ród Greyjoy) -->
+                <g
+                  id="region-iron-islands"
+                  data-region="iron-islands"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('iron-islands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('iron-islands')"
+                >
+                  <polygon points="95,380 135,368 148,395 108,408" fill="#57534e" />
+                  <polygon points="82,420 128,412 136,442 90,450" fill="#57534e" />
+                  <polygon points="118,452 152,446 158,472 124,478" fill="#57534e" />
+                </g>
+
+                <!-- DOLINA ARRYNÓW (Ród Arryn) -->
+                <path
+                  id="region-vale"
+                  data-region="vale"
+                  d="M325 365 L425 350 L465 405 L430 468 L345 452 L320 405 Z"
+                  fill="#60a5fa"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('vale')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('vale')"
+                />
+
+                <!-- DORZECZE (Ród Tully) -->
+                <path
+                  id="region-riverlands"
+                  data-region="riverlands"
+                  d="M185 350 L315 365 L335 445 L295 495 L195 485 L172 420 Z"
+                  fill="#4d7c0f"
+                  fill-opacity="0.72"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('riverlands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('riverlands')"
+                />
+
+                <!-- ZACHÓD (Ród Lannister) -->
+                <path
+                  id="region-westerlands"
+                  data-region="westerlands"
+                  d="M135 485 L220 490 L235 585 L145 595 L118 535 Z"
+                  fill="#dc2626"
+                  fill-opacity="0.72"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('westerlands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('westerlands')"
+                />
+
+                <!-- KORONA I SMOCZA SKAŁA (Ród Targaryen / Tron) -->
+                <path
+                  id="region-crownlands"
+                  data-region="crownlands"
+                  d="M298 492 L385 468 L418 525 L375 568 L305 552 Z"
+                  fill="#991b1b"
+                  fill-opacity="0.82"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('crownlands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('crownlands')"
+                />
+                <polygon
+                  data-region="crownlands"
+                  points="442,500 468,494 475,518 448,524"
+                  fill="#991b1b"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('crownlands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('crownlands')"
+                />
+
+                <!-- KRAINY BURZY (Ród Baratheon) -->
+                <path
+                  id="region-stormlands"
+                  data-region="stormlands"
+                  d="M312 560 L385 572 L420 635 L355 685 L295 645 Z"
+                  fill="#eab308"
+                  fill-opacity="0.75"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('stormlands')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('stormlands')"
+                />
+
+                <!-- REACH (Ród Tyrell) -->
+                <path
+                  id="region-reach"
+                  data-region="reach"
+                  d="M145 602 L240 592 L292 652 L265 725 L155 715 L125 655 Z"
+                  fill="#16a34a"
+                  fill-opacity="0.72"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('reach')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('reach')"
+                />
+
+                <!-- DORNE (Ród Martell) -->
+                <path
+                  id="region-dorne"
+                  data-region="dorne"
+                  d="M168 722 L272 732 L345 692 L365 765 L255 815 L182 785 Z"
+                  fill="#ea580c"
+                  fill-opacity="0.75"
+                  class="map-region"
+                  onmouseenter="handleRegionHover('dorne')"
+                  onmouseleave="handleRegionLeave()"
+                  onclick="handleRegionClick('dorne')"
+                />
+
+                <!-- Etykiety obszarów -->
+                <g pointer-events="none" font-family="Cinzel, serif" font-weight="700" fill="#1c140d" text-anchor="middle">
+                  <text x="285" y="250" font-size="16">PÓŁNOC</text>
+                  <text x="118" y="498" font-size="10">ŻELAZNE</text>
+                  <text x="118" y="510" font-size="10">WYSPY</text>
+                  <text x="252" y="425" font-size="12">DORZECZE</text>
+                  <text x="392" y="412" font-size="12">DOLINA</text>
+                  <text x="178" y="545" font-size="12">ZACHÓD</text>
+                  <text x="352" y="522" font-size="11">KORONA</text>
+                  <text x="205" y="665" font-size="13">REACH</text>
+                  <text x="348" y="628" font-size="11">KRAINY BURZY</text>
+                  <text x="255" y="768" font-size="13">DORNE</text>
+                </g>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel informacji o zaznaczonym obszarze i rodzie -->
+        <aside class="lg:col-span-5" id="map-info-panel"></aside>
+      </div>
+    </section>
+
+    <!-- 7. ZASADY GRY -->
     <section id="tab-rules" class="tab-panel space-y-6">
       <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
         <div>
@@ -1417,6 +1496,99 @@
       }
     ];
 
+    const MAP_REGIONS = [
+      {
+        id: 'north',
+        areaName: 'Północ',
+        rulingHouse: 'Stark',
+        seat: 'Winterfell',
+        summary:
+          'Rozległe, surowe ziemie na południe od Muru — pełne pradawnych borów, bagien Przesmyku, zimnych mórz i wiernych chorążych.',
+        controlNote:
+          'Ród Starków sprawuje straż nad Północą jako jej Wielcy Lordowie (a dawniej Królowie Północy), opierając władzę na szacunku do tradycji i lojalności rodów północnych.'
+      },
+      {
+        id: 'iron-islands',
+        areaName: 'Żelazne Wyspy',
+        rulingHouse: 'Greyjoy',
+        seat: 'Pyke',
+        summary:
+          'Smagany sztormami archipelag skalistych wysp na zachodnim morzu, znany z twardych żeglarzy, długich łodzi i dumnej odrębności.',
+        controlNote:
+          'Ród Greyjoyów włada archipelagiem z kamiennej twierdzy Pyke, utrzymując zwierzchnictwo nad żelaznymi rodami i morskimi szlakami.'
+      },
+      {
+        id: 'vale',
+        areaName: 'Dolina Arrynów',
+        rulingHouse: 'Arryn',
+        seat: 'Orle Gniazdo',
+        summary:
+          'Żyzna, osłonięta wysokimi górami Księżycowymi dolina, do której prowadzi zaledwie kilka strzeżonych przełęczy.',
+        controlNote:
+          'Ród Arrynów rządzi Doliną z niezdobytego Orlego Gniazda, ciesząc się naturalną obronnością gór i wielowiekowym rodowodem.'
+      },
+      {
+        id: 'riverlands',
+        areaName: 'Dorzecze',
+        rulingHouse: 'Tully',
+        seat: 'Riverrun',
+        summary:
+          'Kraina wielkich rzek, brodów i żyznych równin w sercu kontynentu — skrzyżowanie szlaków, które bywa areną wielkich konfliktów.',
+        controlNote:
+          'Ród Tullych sprawuje zwierzchnictwo nad Dorzeczem z twierdzy Riverrun, koordynując lokalne rody nad wodami Tridentu.'
+      },
+      {
+        id: 'westerlands',
+        areaName: 'Zachód',
+        rulingHouse: 'Lannister',
+        seat: 'Casterly Rock',
+        summary:
+          'Bogate wzgórza, port Lannisport oraz kopalnie złota i srebra zapewniające jednemu z najzamożniejszych regionów Westeros ogromne wpływy.',
+        controlNote:
+          'Ród Lannisterów włada Zachodem z potężnego Casterly Rock, łącząc potęgę finansową, wojskową i dworską.'
+      },
+      {
+        id: 'crownlands',
+        areaName: 'Korona i Smocza Skała',
+        rulingHouse: 'Targaryen',
+        seat: 'Smocza Skała / Królewska Przystań',
+        summary:
+          'Ziemie wokół Zatoki Czarnego Nurtu, stolica oraz wulkaniczna wyspa Smocza Skała — miejsce związane z dawnym tronem i królewską tradycją.',
+        controlNote:
+          'W kronikach tej krainy Ród Targaryenów jest bezpośrednio kojarzony ze Smoczą Skałą i dynastią, która ukształtowała Siedem Królestw.'
+      },
+      {
+        id: 'stormlands',
+        areaName: 'Krainy Burzy',
+        rulingHouse: 'Baratheon',
+        seat: 'Koniec Burzy',
+        summary:
+          'Smagane wichrami wybrzeża, gęste lasy i skaliste przylądki nad Morzem Dornijskim i Wąskim Morzem.',
+        controlNote:
+          'Ród Baratheonów włada Krainami Burzy z twierdzy Koniec Burzy, słynąc z waleczności i twardego charakteru mieszkańców.'
+      },
+      {
+        id: 'reach',
+        areaName: 'Reach',
+        rulingHouse: 'Tyrell',
+        seat: 'Highgarden',
+        summary:
+          'Najżyźniejszy region Westeros — rozległe pola zboża, winnice, sadownie i rycerskie dwory, będące spichlerzem całego kontynentu.',
+        controlNote:
+          'Ród Tyrellów rządzi Reach z zamku Highgarden, opierając pozycję na bogactwie plonów, dyplomacji i rozległych sojuszach.'
+      },
+      {
+        id: 'dorne',
+        areaName: 'Dorne',
+        rulingHouse: 'Martell',
+        seat: 'Słoneczna Włócznia',
+        summary:
+          'Najbardziej wysunięty na południe region Westeros — suche pustynie, oazy, kaniony i górzyste przełęcze o własnych obyczajach.',
+        controlNote:
+          'Ród Martellów włada Dorne ze Słonecznej Włóczni, zachowując wyrazistą tożsamość i niezależny duch południowych ziem.'
+      }
+    ];
+
     const CHARACTERS = [
       {
         id: 'jon-snow',
@@ -1498,6 +1670,8 @@
 
     let selectedEraId = ERAS[0].id;
     let selectedHouseName = 'Arryn';
+    let selectedMapRegionId = 'north';
+    let hoveredMapRegionId = null;
     let selectedDiceSides = 20;
     let diceHistory = [];
 
@@ -1518,27 +1692,121 @@
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
 
-    function updateBannerHighlight() {
-      document.querySelectorAll('[data-banner-house]').forEach((btn) => {
-        btn.classList.toggle('active-banner', btn.dataset.bannerHouse === selectedHouseName);
+    function updateMapSelectionStyles() {
+      const activeId = hoveredMapRegionId || selectedMapRegionId;
+      document.querySelectorAll('.map-region').forEach((el) => {
+        el.classList.toggle('selected', el.dataset.region === activeId);
       });
     }
 
-    function openHouseHistory(houseName) {
+    function handleRegionHover(regionId) {
+      hoveredMapRegionId = regionId;
+      updateMapSelectionStyles();
+      const regionObj = MAP_REGIONS.find((r) => r.id === regionId);
+      const badge = document.getElementById('map-hover-badge');
+      if (badge && regionObj) {
+        badge.textContent = `${regionObj.areaName} — Ród ${regionObj.rulingHouse}`;
+      }
+      renderMapInfoPanel(regionId);
+    }
+
+    function handleRegionLeave() {
+      hoveredMapRegionId = null;
+      updateMapSelectionStyles();
+      const regionObj = MAP_REGIONS.find((r) => r.id === selectedMapRegionId);
+      const badge = document.getElementById('map-hover-badge');
+      if (badge && regionObj) {
+        badge.textContent = `Wybrano: ${regionObj.areaName} (Ród ${regionObj.rulingHouse})`;
+      }
+      renderMapInfoPanel(selectedMapRegionId);
+    }
+
+    function handleRegionClick(regionId) {
+      selectedMapRegionId = regionId;
+      hoveredMapRegionId = null;
+      updateMapSelectionStyles();
+      const regionObj = MAP_REGIONS.find((r) => r.id === regionId);
+      const badge = document.getElementById('map-hover-badge');
+      if (badge && regionObj) {
+        badge.textContent = `Wybrano: ${regionObj.areaName} (Ród ${regionObj.rulingHouse})`;
+      }
+      renderMapInfoPanel(regionId);
+    }
+
+    function renderMapInfoPanel(regionId = selectedMapRegionId) {
+      const panel = document.getElementById('map-info-panel');
+      if (!panel) return;
+
+      const region = MAP_REGIONS.find((r) => r.id === regionId) || MAP_REGIONS[0];
+      const house = HOUSES.find((h) => h.name === region.rulingHouse) || HOUSES[0];
+
+      panel.innerHTML = `
+        <div class="parchment-card relative rounded-lg p-6 sm:p-8">
+          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+          <div class="relative z-10 space-y-5">
+            <div class="border-b border-amber-900/25 pb-4">
+              <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                OBSZAR WESTEROS
+              </div>
+              <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                ${region.areaName}
+              </h2>
+              <p class="mt-1 font-serif text-base italic text-stone-700">
+                Główna siedziba: ${region.seat}
+              </p>
+            </div>
+
+            <div class="rounded border border-amber-900/30 bg-stone-950/90 p-4 text-amber-100">
+              <div class="font-display text-[11px] font-bold tracking-[0.2em] text-amber-400">
+                RÓD ODPOWIEDZIALNY ZA TE ZIEMIE
+              </div>
+              <div class="mt-1 font-display text-xl font-bold text-amber-200">
+                Ród ${house.name}
+              </div>
+              <div class="mt-0.5 font-serif text-sm italic text-amber-300/90">
+                „${house.words}”
+              </div>
+            </div>
+
+            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
+              ${region.summary}
+            </p>
+
+            <p class="text-base leading-relaxed text-stone-800">
+              ${region.controlNote}
+            </p>
+
+            <div class="pt-1">
+              <button
+                type="button"
+                onclick="openHouseFromMap('${house.name}')"
+                class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-4 py-2.5 font-display text-xs font-bold tracking-wider text-amber-100 shadow transition hover:from-red-800"
+              >
+                ZOBACZ KRONIKĘ RODU ${house.name.toUpperCase()} →
+              </button>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function openHouseFromMap(houseName) {
+      selectHouseForSpotlight(houseName);
+      switchTab('houses');
+    }
+
+    function selectHouseForSpotlight(houseName) {
       const exists = HOUSES.some((h) => h.name === houseName);
       if (exists) {
         selectedHouseName = houseName;
       }
-      updateBannerHighlight();
       renderHouseSpotlight();
-      switchTab('houses');
+      renderHouses();
 
-      setTimeout(() => {
-        const spotlight = document.getElementById('house-history-spotlight');
-        if (spotlight) {
-          spotlight.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-      }, 60);
+      const spotlight = document.getElementById('house-history-spotlight');
+      if (spotlight) {
+        spotlight.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     }
 
     function renderHouseSpotlight() {
@@ -1849,7 +2117,7 @@
         const isSelected = h.name === selectedHouseName;
         return `
           <article
-            onclick="openHouseHistory('${h.name}')"
+            onclick="selectHouseForSpotlight('${h.name}')"
             class="parchment-card relative flex cursor-pointer flex-col justify-between rounded-lg p-6 transition hover:-translate-y-1 ${
               isSelected ? 'ring-2 ring-red-900/65' : ''
             }"
@@ -1969,7 +2237,8 @@
       renderCharacters();
       renderHouseSpotlight();
       renderHouses();
-      updateBannerHighlight();
+      renderMapInfoPanel(selectedMapRegionId);
+      updateMapSelectionStyles();
       selectDice(20);
     }
 
