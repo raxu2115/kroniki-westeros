@@ -1371,24 +1371,40 @@
       }
     ];
 
+    const VALID_TABS = ['home', 'intro', 'history', 'characters', 'houses', 'map', 'rules'];
+
     let selectedEraId = ERAS[0].id;
     let selectedHouseName = 'Arryn';
     let selectedDiceSides = 20;
     let diceHistory = [];
 
-    function switchTab(tabId) {
+    function getInitialTab() {
+      const hashTab = window.location.hash.replace(/^#/, '').trim();
+      return VALID_TABS.includes(hashTab) ? hashTab : 'home';
+    }
+
+    function switchTab(tabId, updateHash = true) {
+      const safeTab = VALID_TABS.includes(tabId) ? tabId : 'home';
+
       document.querySelectorAll('.tab-panel').forEach((panel) => {
         panel.classList.remove('active');
       });
 
-      const targetPanel = document.getElementById(`tab-${tabId}`);
+      const targetPanel = document.getElementById(`tab-${safeTab}`);
       if (targetPanel) {
         targetPanel.classList.add('active');
       }
 
       document.querySelectorAll('.nav-btn').forEach((btn) => {
-        btn.classList.toggle('active', btn.dataset.tab === tabId);
+        btn.classList.toggle('active', btn.dataset.tab === safeTab);
       });
+
+      if (updateHash) {
+        const nextHash = `#${safeTab}`;
+        if (window.location.hash !== nextHash) {
+          history.replaceState(null, '', nextHash);
+        }
+      }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
@@ -1824,6 +1840,10 @@
       if (breakdownEl) breakdownEl.textContent = 'Wybierz kość i kliknij „Rzuć kością”.';
     }
 
+    window.addEventListener('hashchange', () => {
+      switchTab(getInitialTab(), false);
+    });
+
     function initPortal() {
       const charCountEl = document.getElementById('home-char-count');
       const houseCountEl = document.getElementById('home-house-count');
@@ -1836,6 +1856,7 @@
       renderHouseSpotlight();
       renderHouses();
       selectDice(20);
+      switchTab(getInitialTab(), false);
     }
 
     if (document.readyState === 'loading') {
