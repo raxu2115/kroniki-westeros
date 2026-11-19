@@ -79,7 +79,7 @@
 
     /* Awaryjne klasy siatki i układu na wypadek braku załadowania Tailwind CDN */
     .mx-auto { margin-left: auto; margin-right: auto; }
-    .max-w-[1440px] { max-width: 1440px; }
+    .max-w-\[1440px\] { max-width: 1440px; }
     .max-w-5xl { max-width: 64rem; }
     .max-w-2xl { max-width: 42rem; }
     .grid { display: grid; gap: 1.5rem; }
@@ -211,4 +211,1399 @@
       animation: fadeIn 0.25s ease;
     }
 
-    .tab
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(6px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0d0b0a;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #3a2d22;
+      border-radius: 5px;
+      border: 2px solid #0d0b0a;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #6a5034;
+    }
+  </style>
+</head>
+<body class="antialiased selection:bg-amber-700/40 selection:text-amber-100">
+  <header class="sticky top-0 z-40 border-b border-amber-500/25 bg-stone-950/90 backdrop-blur-md">
+    <div class="mx-auto flex max-w-[1440px] flex-wrap items-center justify-between gap-3 px-4 py-3 sm:px-6 lg:px-8">
+      <button
+        type="button"
+        onclick="switchTab('home')"
+        class="group flex items-center gap-3 text-left focus:outline-none"
+      >
+        <span class="flex h-10 w-10 items-center justify-center rounded border border-amber-500/45 bg-gradient-to-b from-amber-950/70 to-stone-950 font-display text-lg font-bold text-amber-300 shadow-inner transition group-hover:border-amber-400">
+          ⚔
+        </span>
+        <div>
+          <div class="font-display text-sm font-bold tracking-[0.16em] text-amber-200 sm:text-base">
+            KRONIKI WESTEROS
+          </div>
+          <div class="font-serif text-xs italic tracking-wide text-stone-400">
+            Archiwum Cytadeli • Kompendium RPG
+          </div>
+        </div>
+      </button>
+
+      <nav aria-label="Główna nawigacja" class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+        <button
+          type="button"
+          data-tab="home"
+          onclick="switchTab('home')"
+          class="nav-btn active rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Strona Główna
+        </button>
+        <button
+          type="button"
+          data-tab="intro"
+          onclick="switchTab('intro')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Wstęp do Westeros
+        </button>
+        <button
+          type="button"
+          data-tab="history"
+          onclick="switchTab('history')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Historia Westeros
+        </button>
+        <button
+          type="button"
+          data-tab="characters"
+          onclick="switchTab('characters')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Postacie
+        </button>
+        <button
+          type="button"
+          data-tab="houses"
+          onclick="switchTab('houses')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Rody
+        </button>
+        <button
+          type="button"
+          data-tab="rules"
+          onclick="switchTab('rules')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Zasady Gry
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
+    <!-- 1. STRONA GŁÓWNA -->
+    <section id="tab-home" class="tab-panel active space-y-10">
+      <div class="parchment-card relative overflow-hidden rounded-lg p-6 sm:p-8 lg:p-10">
+        <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+        <div class="relative z-10 grid items-center gap-8 lg:grid-cols-12">
+          <div class="space-y-4 lg:col-span-8">
+            <div class="inline-flex items-center gap-2 rounded border border-amber-900/30 bg-amber-950/5 px-3 py-1 font-display text-xs font-semibold tracking-[0.18em] text-red-900">
+              <span>✦</span>
+              <span>STARE TOWN • CYTADELA MAESTERÓW</span>
+            </div>
+            <h1 class="font-display text-3xl font-bold tracking-wide text-stone-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+              KRONIKI SIEDMIU KRÓLESTW
+            </h1>
+            <p class="font-serif text-lg italic leading-relaxed text-stone-700 sm:text-xl">
+              „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
+            </p>
+            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
+              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów oraz księgę zasad wraz z wieżą kości.
+            </p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <button
+                type="button"
+                onclick="switchTab('intro')"
+                class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-amber-100 shadow-md transition hover:from-red-800 hover:to-red-950"
+              >
+                ZANIM STWORZYSZ POSTAĆ
+              </button>
+              <button
+                type="button"
+                onclick="switchTab('rules')"
+                class="rounded border border-stone-800/45 bg-stone-900/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-stone-900 transition hover:bg-stone-900/20"
+              >
+                ZASADY I KOŚCI
+              </button>
+            </div>
+          </div>
+
+          <div class="lg:col-span-4">
+            <div class="rounded border border-amber-900/30 bg-stone-950/90 p-5 text-amber-100 shadow-inner">
+              <div class="mb-2 font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+                STAN KRONIKI
+              </div>
+              <div class="space-y-2.5 font-body text-base text-stone-300">
+                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
+                  <span class="text-stone-400">Epoki w archiwum:</span>
+                  <span class="font-display font-semibold text-amber-200">6 Er</span>
+                </div>
+                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
+                  <span class="text-stone-400">Zapisane postacie:</span>
+                  <span id="home-char-count" class="font-display font-semibold text-amber-200">4</span>
+                </div>
+                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
+                  <span class="text-stone-400">Wielkie rody:</span>
+                  <span id="home-house-count" class="font-display font-semibold text-amber-200">9</span>
+                </div>
+                <div class="flex items-center justify-between pt-0.5">
+                  <span class="text-stone-400">Pora roku w kronice:</span>
+                  <span class="italic text-amber-300">Długie Lato / Zapach Zimy</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        <div class="ornate-divider">
+          <h2 class="font-display text-lg font-bold tracking-[0.18em] text-amber-200 sm:text-xl">
+            KSIĘGI KOMPENDIUM
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <button
+            type="button"
+            onclick="switchTab('intro')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA I • WPROWADZENIE
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  ❖
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Zanim stworzysz postać / Wstęp do Westeros
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Siedem Królestw przed i po Aegonie Zdobywcy, Era Świtu, Dzieci Lasu, najazd Pierwszych Ludzi oraz Złamane Ramię Dorne.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>OTWÓRZ WSTĘP</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('history')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA II • ROCZNIKI
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  ⏳
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Historia Westeros
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Interaktywna oś czasu i szeroki czytnik kronikarski — od Ery Świtu i Wieku Bohaterów po Podbój Aegona i Rebelię Roberta.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>PRZEGLĄDAJ EPOKI</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('characters')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA III • BOHATEROWIE
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  🗡
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Postacie
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Rejestr postaci graczy, BN-ów i legend z filtrowaniem po rodzie oraz podglądem statystyk, ekwipunku i rzutu testowego k20.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>ZOBACZ POSTACIE</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('houses')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA IV • HERALDYKA
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  ♛
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Rody Westeros
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Targaryen, Stark, Baratheon, Greyjoy, Arryn oraz inne wielkie domy — ich dewizy, siedziby, słowa i miejsce w Siedmiu Królestwach.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>POZNAJ RODY</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('rules')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none md:col-span-2 xl:col-span-2"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA V • MECHANIKA I KOŚCI
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  🎲
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Zasady Gry i Wieża Kości
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Reguły testów umiejętności, stopni trudności, walki, ran, pancerza oraz intryg dworskich wraz z interaktywnym symulatorem rzutów kośćmi.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>OTWÓRZ ZASADY I RZUTNIK</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <div class="space-y-5">
+        <div class="ornate-divider">
+          <h2 class="font-display text-lg font-bold tracking-[0.18em] text-amber-200 sm:text-xl">
+            WIEŚCI Z CYTADELI
+          </h2>
+        </div>
+
+        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
+          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
+            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
+              <span>OGŁOSZENIE MG</span>
+              <span class="text-stone-400">SESJA I</span>
+            </div>
+            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
+              Przygotowania w cieniu Królewskiej Przystani
+            </h3>
+            <p class="font-body text-base leading-relaxed text-stone-300">
+              Przed rozpoczęciem gry zapoznaj się ze wstępem do Westeros oraz wybierz ród, z którym wiążą się losy Twojego bohatera — jego dewiza i pozycja wpłyną na startowe relacje.
+            </p>
+          </article>
+
+          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
+            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
+              <span>ZAPIS KRONIKARZA</span>
+              <span class="text-stone-400">MECHANIKA</span>
+            </div>
+            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
+              Waga honoru i konsekwencji
+            </h3>
+            <p class="font-body text-base leading-relaxed text-stone-300">
+              W Westeros stal bywa zawodna, gdy zawodzi lojalność. Każdy test, obietnica złożona lordowi i rana odniesiona w starciu zostawiają ślad w dalszej opowieści.
+            </p>
+          </article>
+
+          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
+            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
+              <span>WSKAZÓWKA</span>
+              <span class="text-stone-400">KOŚCI</span>
+            </div>
+            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
+              Wieża Kości pod ręką
+            </h3>
+            <p class="font-body text-base leading-relaxed text-stone-300">
+              W zakładce <strong class="text-amber-200">Zasady Gry</strong> możesz testować rzuty kośćmi od k4 do k100, dodawać modyfikator atrybutu i sprawdzać wynik względem wybranego Stopnia Trudności.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. ZANIM STWORZYSZ POSTAĆ / WSTĘP DO WESTEROS -->
+    <section id="tab-intro" class="tab-panel space-y-8">
+      <div class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-12">
+        <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+
+        <div class="relative z-10 mx-auto max-w-5xl space-y-8">
+          <div class="space-y-3 text-center">
+            <div class="font-display text-xs font-bold tracking-[0.22em] text-red-900">
+              ZANIM STWORZYSZ POSTAĆ
+            </div>
+            <h1 class="font-display text-3xl font-bold tracking-wide text-stone-900 sm:text-4xl">
+              WSTĘP DO WESTEROS
+            </h1>
+            <p class="mx-auto max-w-2xl font-serif text-lg italic text-stone-700">
+              Kronika dawnych królestw, prastarych lasów, czardrzew oraz ziem ukształtowanych przez ogień i kamień.
+            </p>
+            <div class="parchment-divider pt-1">
+              <span class="font-display text-sm">❖</span>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 gap-8 lg:grid-cols-3">
+            <article class="flex flex-col justify-between rounded border border-amber-900/25 bg-amber-50/45 p-6 shadow-sm">
+              <div class="space-y-4">
+                <div class="border-b border-amber-900/20 pb-2">
+                  <span class="font-display text-[11px] font-bold tracking-[0.18em] text-red-900">
+                    CZĘŚĆ I
+                  </span>
+                  <h2 class="font-display text-xl font-bold text-stone-900">
+                    Siedem Królestw i Aegon Zdobywca
+                  </h2>
+                </div>
+                <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-[1.05rem]">
+                  Westeros składa się z kilku odrębnych regionów, które nazywa się wspólnie Siedmioma Królestwami, ponieważ każdy z nich był niegdyś niezależnym i potężnym państwem. Określenie to używane jest od czasów Aegona I Targaryena, znanego jako Aegon Zdobywca. Kiedy Targaryenowie przybyli na ten kontynent, napotkali Króla Północy, Króla Góry i Doliny, Króla Rock, Króla Reach, Króla Burzy, Króla Żelaznych Wysp oraz Księcia Dorne; każdy z nich władał własnymi ziemiami.
+                </p>
+              </div>
+            </article>
+
+            <article class="flex flex-col justify-between rounded border border-amber-900/25 bg-amber-50/45 p-6 shadow-sm">
+              <div class="space-y-4">
+                <div class="border-b border-amber-900/20 pb-2">
+                  <span class="font-display text-[11px] font-bold tracking-[0.18em] text-red-900">
+                    CZĘŚĆ II
+                  </span>
+                  <h2 class="font-display text-xl font-bold text-stone-900">
+                    Era Świtu i Dzieci Lasu
+                  </h2>
+                </div>
+                <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-[1.05rem]">
+                  Jeszcze zanim powstało Siedem Królestw, na kontynencie istniały setki królestw i plemion. Najwcześniejszy okres w historii Westeros, na długo przed pojawieniem się Targaryenów czy nawet Pierwszych Ludzi, nazywany jest Erą Świtu. Westeros zamieszkiwały wtedy jedynie Dzieci Lasu; czciły one siły przyrody pod postacią bogów drzew, skał i strumieni.
+                </p>
+              </div>
+            </article>
+
+            <article class="flex flex-col justify-between rounded border border-amber-900/25 bg-amber-50/45 p-6 shadow-sm">
+              <div class="space-y-4">
+                <div class="border-b border-amber-900/20 pb-2">
+                  <span class="font-display text-[11px] font-bold tracking-[0.18em] text-red-900">
+                    CZĘŚĆ III
+                  </span>
+                  <h2 class="font-display text-xl font-bold text-stone-900">
+                    Pierwszy Ludzie i Złamane Ramię Dorne
+                  </h2>
+                </div>
+                <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-[1.05rem]">
+                  Okres ten trwał do przybycia Pierwszych Ludzi, którzy najechali Westeros około dwunastu tysięcy lat temu. Pierwsi Ludzie nadeszli ze wschodu, pomostem lądowym prowadzącym do ziem, które miały być kiedyś znane jako Dorne. Przynieśli ze sobą oręż z brązu i konie, a także własne wierzenia. Walczyli z Dziećmi Lasu, wycinali ich lasy i ścinali czardrzewa o białej korze, w których wyryte były budzące strach twarze bogów. Dzieci Lasu zniszczyły w końcu pomost lądowy, tworząc tym samym regiony zwane dziś Złamanym Ramieniem Dorne i Stopniami, było już jednak za późno, aby powstrzymać napływ Pierwszych Ludzi.
+                </p>
+              </div>
+            </article>
+          </div>
+
+          <div class="rounded border border-amber-900/30 bg-stone-950/90 p-6 text-amber-100">
+            <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+              <div>
+                <h3 class="font-display text-base font-bold tracking-wider text-amber-300">
+                  GOTOWY NA KOLEJNY KROK?
+                </h3>
+                <p class="font-body text-base text-stone-300">
+                  Wybierz ród swojego bohatera, przejrzyj dzieje kontynentu, sprawdź zasady lub zajrzyj do katalogu postaci.
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-2.5">
+                <button
+                  type="button"
+                  onclick="switchTab('houses')"
+                  class="rounded border border-amber-500/50 bg-amber-900/30 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-200 transition hover:bg-amber-800/40"
+                >
+                  RODY →
+                </button>
+                <button
+                  type="button"
+                  onclick="switchTab('history')"
+                  class="rounded border border-amber-500/30 bg-stone-900 px-4 py-2 font-display text-xs font-bold tracking-wider text-stone-200 transition hover:border-amber-500/60 hover:text-amber-200"
+                >
+                  HISTORIA
+                </button>
+                <button
+                  type="button"
+                  onclick="switchTab('rules')"
+                  class="rounded border border-amber-500/30 bg-stone-900 px-4 py-2 font-display text-xs font-bold tracking-wider text-stone-200 transition hover:border-amber-500/60 hover:text-amber-200"
+                >
+                  ZASADY GRY
+                </button>
+                <button
+                  type="button"
+                  onclick="switchTab('characters')"
+                  class="rounded border border-amber-500/50 bg-red-950/70 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-100 transition hover:bg-red-900/70"
+                >
+                  POSTACIE
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. HISTORIA WESTEROS -->
+    <section id="tab-history" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+            ROCZNIKI CYTADELI
+          </div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
+            HISTORIA WESTEROS
+          </h1>
+        </div>
+        <p class="font-serif text-base italic text-stone-400">
+          Wybierz epokę z listy po lewej, aby otworzyć zapis w księdze kronikarza.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+        <div class="space-y-2.5 lg:col-span-4" id="history-era-list"></div>
+        <div class="lg:col-span-8" id="history-reader"></div>
+      </div>
+    </section>
+
+    <!-- 4. POSTACIE -->
+    <section id="tab-characters" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-4 border-b border-amber-500/25 pb-4 lg:flex-row lg:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+            REJESTR BOHATERÓW I BN-ÓW
+          </div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
+            POSTACIE WESTEROS
+          </h1>
+        </div>
+
+        <div class="flex flex-wrap gap-3">
+          <input
+            id="char-search"
+            type="text"
+            oninput="renderCharacters()"
+            placeholder="Szukaj po imieniu, przydomku lub roli..."
+            class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64"
+          />
+          <select
+            id="char-house-filter"
+            onchange="renderCharacters()"
+            class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
+          >
+            <option value="ALL">Wszystkie rody</option>
+          </select>
+          <select
+            id="char-type-filter"
+            onchange="renderCharacters()"
+            class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
+          >
+            <option value="ALL">Wszyscy (Gracze / BN / Legendy)</option>
+            <option value="Gracz">Gracze</option>
+            <option value="BN">Postacie niezależne (BN)</option>
+            <option value="Legenda">Legendy</option>
+          </select>
+        </div>
+      </div>
+
+      <div id="characters-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4"></div>
+    </section>
+
+    <!-- 5. RODY -->
+    <section id="tab-houses" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+            HERALDYKA I SŁOWA RODOWE
+          </div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
+            RODY WESTEROS
+          </h1>
+        </div>
+        <p class="font-serif text-base italic text-stone-400">
+          Targaryen, Stark, Baratheon, Greyjoy, Arryn oraz inne wielkie domy Siedmiu Królestw.
+        </p>
+      </div>
+
+      <div id="houses-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <!-- 6. ZASADY GRY -->
+    <section id="tab-rules" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+            KSIĘGA REGUŁ I RZUTÓW
+          </div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
+            ZASADY GRY
+          </h1>
+        </div>
+        <p class="font-serif text-base italic text-stone-400">
+          Testy umiejętności, stopnie trudności, walka, intrygi oraz interaktywna Wieża Kości.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
+        <div class="space-y-6 lg:col-span-8">
+          <article class="parchment-card rounded-lg p-6 sm:p-8">
+            <div class="mb-3 flex items-center justify-between border-b border-amber-900/20 pb-2">
+              <h2 class="font-display text-xl font-bold text-stone-900">
+                1. Testy Umiejętności i Kości
+              </h2>
+              <span class="rounded border border-amber-900/35 bg-amber-950/10 px-2.5 py-0.5 font-display text-xs font-bold text-red-900">
+                1k20 + ATRYBUT
+              </span>
+            </div>
+            <p class="mb-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+              Gdy wynik działania postaci nie jest przesądzony i wiąże się z ryzykiem lub presją czasu, wykonuje ona test: rzuca kością dwudziestościenną (<strong class="text-stone-950">1k20</strong>) i dodaje modyfikator odpowiedniego atrybutu lub biegłości. Uzyskany wynik porównuje ze <strong class="text-stone-950">Stopniem Trudności (ST)</strong> ustalonym przez Mistrza Gry.
+            </p>
+            <ul class="mb-5 list-disc space-y-1.5 pl-5 text-base text-stone-800">
+              <li><strong class="text-stone-950">Naturalne 20 na kości:</strong> Triumf — test udaje się niezależnie od trudności, a bohater zyskuje dodatkowy atut lub efekt uboczny na swoją korzyść.</li>
+              <li><strong class="text-stone-950">Naturalne 1 na kości:</strong> Porażka — próba kończy się niepowodzeniem, często z komplikacją w fabule lub utratą przewagi.</li>
+              <li><strong class="text-stone-950">Przewaga / Utrudnienie:</strong> Rzucasz dwiema kośćmi k20 i wybierasz wyższy (przewaga) lub niższy (utrudnienie) wynik.</li>
+            </ul>
+
+            <div class="overflow-x-auto rounded border border-amber-900/25 bg-amber-50/50">
+              <table class="w-full text-left font-body text-base text-stone-900">
+                <thead class="border-b border-amber-900/25 bg-amber-950/10 font-display text-xs uppercase tracking-wider text-red-950">
+                  <tr>
+                    <th class="px-4 py-2.5">Stopień Trudności</th>
+                    <th class="px-4 py-2.5">ST</th>
+                    <th class="px-4 py-2.5">Przykład w grze</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-amber-900/15">
+                  <tr>
+                    <td class="px-4 py-2 font-semibold">Łatwy</td>
+                    <td class="px-4 py-2 font-display font-bold">10</td>
+                    <td class="px-4 py-2">Wspinaczka po wilgotnym murze lub rozpoznanie herbu z bliska</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 font-semibold">Średni</td>
+                    <td class="px-4 py-2 font-display font-bold">15</td>
+                    <td class="px-4 py-2">Przekonanie strażnika bramy albo odczytanie zaszyfrowanego listu</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 font-semibold">Trudny</td>
+                    <td class="px-4 py-2 font-display font-bold">20</td>
+                    <td class="px-4 py-2">Pojedynek w deszczu z doświadczonym szermierzem lub kłamstwo przed lordem</td>
+                  </tr>
+                  <tr>
+                    <td class="px-4 py-2 font-semibold">Heroiczny</td>
+                    <td class="px-4 py-2 font-display font-bold">25</td>
+                    <td class="px-4 py-2">Obrona wyłomu w pojedynkę lub wywarcie wpływu na wielką radę</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="parchment-card rounded-lg p-6 sm:p-8">
+            <h2 class="mb-3 border-b border-amber-900/20 pb-2 font-display text-xl font-bold text-stone-900">
+              2. Walka, Rany i Pancerz
+            </h2>
+            <p class="mb-3 text-base leading-relaxed text-stone-800 sm:text-lg">
+              Starcia toczą się w turach. Na początku potyczki uczestnicy ustalają kolejność działania (<strong class="text-stone-950">Inicjatywa</strong>). W swojej turze postać może wykonać ruch oraz akcję (np. atak wręcz, strzał, manewr obronny lub użycie przedmiotu).
+            </p>
+            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
+              Trafienie wymaga osiągnięcia lub przekroczenia <strong class="text-stone-950">Obrony</strong> celu. Pancerz (skórzany, kolczy lub płytowy) pochłania część obrażeń i chroni przed lekkimi cięciami, lecz cięższe ciosy mogą wywołać rany wymagające opatrzenia lub odpoczynku w bezpiecznym miejscu.
+            </p>
+          </article>
+
+          <article class="parchment-card rounded-lg p-6 sm:p-8">
+            <h2 class="mb-3 border-b border-amber-900/20 pb-2 font-display text-xl font-bold text-stone-900">
+              3. Intryga, Status i Wpływy
+            </h2>
+            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
+              W Westeros rozmowa przy stole bywa równie niebezpieczna jak stal na dziedzińcu. Status rodu, znajomość etykiety, sekrety rozmówcy oraz długi wdzięczności mogą obniżać Stopień Trudności testów społecznych lub otwierać drzwi niedostępne dla zwykłych najemników.
+            </p>
+          </article>
+        </div>
+
+        <aside class="lg:col-span-4">
+          <div class="sticky top-20 rounded-lg border border-amber-500/40 bg-gradient-to-b from-stone-900/95 to-stone-950/95 p-6 shadow-2xl">
+            <div class="mb-4 flex items-center justify-between border-b border-amber-500/20 pb-3">
+              <div>
+                <div class="font-display text-[11px] font-bold tracking-[0.2em] text-amber-400">
+                  SYMULATOR RZUTÓW
+                </div>
+                <h2 class="font-display text-xl font-bold text-amber-100">
+                  Wieża Kości
+                </h2>
+              </div>
+              <span class="text-2xl">🎲</span>
+            </div>
+
+            <div class="space-y-4">
+              <div>
+                <label class="mb-1.5 block font-display text-xs font-bold tracking-wider text-stone-300">
+                  RODZAJ KOŚCI
+                </label>
+                <div class="grid grid-cols-3 gap-2" id="dice-type-buttons">
+                  <button type="button" data-sides="4" onclick="selectDice(4)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k4</button>
+                  <button type="button" data-sides="6" onclick="selectDice(6)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k6</button>
+                  <button type="button" data-sides="8" onclick="selectDice(8)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k8</button>
+                  <button type="button" data-sides="10" onclick="selectDice(10)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k10</button>
+                  <button type="button" data-sides="12" onclick="selectDice(12)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k12</button>
+                  <button type="button" data-sides="20" onclick="selectDice(20)" class="dice-opt rounded border border-amber-400 bg-amber-900/40 py-2 font-display text-xs font-bold text-amber-200">k20</button>
+                  <button type="button" data-sides="100" onclick="selectDice(100)" class="dice-opt col-span-3 rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k100 (Procentowa)</button>
+                </div>
+              </div>
+
+              <div class="grid grid-cols-2 gap-3">
+                <div>
+                  <label for="dice-mod" class="mb-1 block font-display text-xs font-bold tracking-wider text-stone-300">
+                    MODYFIKATOR
+                  </label>
+                  <input
+                    id="dice-mod"
+                    type="number"
+                    value="0"
+                    class="w-full rounded border border-amber-500/35 bg-stone-950 px-3 py-2 font-display text-sm font-bold text-amber-100 focus:border-amber-400 focus:outline-none"
+                  />
+                </div>
+                <div>
+                  <label for="dice-dc" class="mb-1 block font-display text-xs font-bold tracking-wider text-stone-300">
+                    ST (OPCJONALNIE)
+                  </label>
+                  <input
+                    id="dice-dc"
+                    type="number"
+                    placeholder="np. 15"
+                    class="w-full rounded border border-amber-500/35 bg-stone-950 px-3 py-2 font-display text-sm font-bold text-amber-100 placeholder-stone-600 focus:border-amber-400 focus:outline-none"
+                  />
+                </div>
+              </div>
+
+              <button
+                type="button"
+                onclick="rollDiceTower()"
+                class="w-full rounded border border-amber-400/70 bg-gradient-to-b from-red-800 to-red-950 py-3 font-display text-sm font-bold tracking-widest text-amber-100 shadow-lg transition hover:from-red-700 hover:to-red-950"
+              >
+                RZUĆ KOŚCIĄ
+              </button>
+
+              <div id="dice-result-box" class="rounded border border-amber-500/25 bg-stone-950/90 p-4 text-center">
+                <div class="font-display text-xs tracking-widest text-stone-400">OSTATNI WYNIK</div>
+                <div id="dice-total" class="my-1 font-display text-4xl font-extrabold text-amber-300">—</div>
+                <div id="dice-breakdown" class="font-body text-sm text-stone-400">
+                  Wybierz kość i kliknij „Rzuć kością”.
+                </div>
+              </div>
+
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <span class="font-display text-xs font-bold tracking-wider text-stone-400">
+                    OSTATNIE RZUTY
+                  </span>
+                  <button
+                    type="button"
+                    onclick="clearDiceHistory()"
+                    class="font-display text-[11px] text-stone-500 hover:text-amber-300"
+                  >
+                    WYCZYŚĆ
+                  </button>
+                </div>
+                <ul id="dice-history" class="space-y-1.5 text-sm text-stone-300">
+                  <li class="rounded bg-stone-900/70 px-3 py-1.5 text-xs italic text-stone-500">
+                    Brak wykonanych rzutów.
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <div
+    id="char-modal"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-black/80 p-4 backdrop-blur-sm"
+    onclick="if (event.target === this) closeCharacterModal()"
+  >
+    <div class="parchment-card relative max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-lg p-6 sm:p-8">
+      <button
+        type="button"
+        onclick="closeCharacterModal()"
+        aria-label="Zamknij kartę postaci"
+        class="absolute right-4 top-4 rounded border border-amber-900/35 bg-amber-950/10 px-2.5 py-1 font-display text-xs font-bold text-stone-900 hover:bg-amber-950/20"
+      >
+        ✕ ZAMKNIJ
+      </button>
+      <div id="char-modal-content" class="space-y-4"></div>
+    </div>
+  </div>
+
+  <footer class="mt-16 border-t border-amber-500/20 bg-stone-950/85 py-6 text-center">
+    <div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <p class="font-serif text-base italic text-stone-400">
+        Kroniki Westeros • Kompendium Kampanii RPG w realiach Siedmiu Królestw
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const ERAS = [
+      {
+        id: 'dawn-age',
+        period: 'Przed ok. 12 000 lat temu',
+        title: 'Era Świtu i Dzieci Lasu',
+        subtitle: 'Czardrzewa, pieśni lasu i pradawni bogowie natury',
+        summary:
+          'Najdawniejszy okres dziejów Westeros, na długo przed przybyciem Pierwszych Ludzi. Kontynent porastały gęste bory i czardrzewa o białej korze z rzeźbionymi twarzami, a Dzieci Lasu czciły bezimiennych bogów drzew, rzek i kamieni.',
+        notes: [
+          'Dzieci Lasu żyły w osadach w koronach drzew, na wyspach jezior i w głębokich jaskiniach.',
+          'Nie posługiwały się metalową bronią — korzystały z obsydianu zwanego szkłem smoka oraz pieśni władających żywiołami.',
+          'Era zakończyła się wraz z nadejściem Pierwszych Ludzi przez wschodni pomost lądowy.'
+        ]
+      },
+      {
+        id: 'first-men',
+        period: 'Ok. 12 000 – 6 000 lat temu',
+        title: 'Najazd Pierwszych Ludzi i Złamane Ramię',
+        subtitle: 'Oręż z brązu, wierzchowce i roztrzaskany pomost lądowy',
+        summary:
+          'Pierwsi Ludzie przeprawili się ze wschodu na tereny dzisiejszego Dorne, przynosząc brąz, konie, runy i własne wierzenia. Po krwawych wojnach i ścięciu wielu czardrzew Dzieci Lasu zniszczyły pomost lądowy, tworząc Złamane Ramię Dorne oraz Stopnie.',
+        notes: [
+          'Zbyt późne zatopienie pomostu nie powstrzymało osadnictwa na całym kontynencie.',
+          'Z czasem zawarto Pakt na Wyspie Twarzy, który przyniósł pokój i powstrzymał wycinanie czardrzew na południu.'
+        ]
+      },
+      {
+        id: 'long-night',
+        period: 'Ok. 8 000 lat temu',
+        title: 'Długa Noc i Budowa Muru',
+        subtitle: 'Zima trwająca pokolenie i narodziny Nocnej Straży',
+        summary:
+          'Nad Westeros zapadła mroczna, lodowata Długa Noc, podczas której z mroźnej północy nadeszło zagrożenie, które zjednoczyło ludzi i Dzieci Lasu. Po odparciu ciemności wzniesiono potężny Mur z lodu, kamienia i magii, a powołano Nocną Straż.',
+        notes: [
+          'W tym okresie narodziły się liczne legendy o bohaterach i strażnikach Północy.',
+          'Mur stał się granicą między królestwami ludzi a nieznaną Północą.'
+        ]
+      },
+      {
+        id: 'andals',
+        period: 'Ok. 6 000 – 4 000 lat temu',
+        title: 'Przybycie Andalów i Wiara Siedmiu',
+        subtitle: 'Żelazo, Siedmiu Bogów i upadek wielu dawnych królestw',
+        summary:
+          'Andalowie przybyli zza Wąskiego Morza, niosąc żelazną broń i zbroje oraz Wiarę w Siedmiu. Podporządkowali sobie większość południowych i środkowych królestw, podczas gdy Północ zdołała utrzymać dawne wierzenia i niezależność.',
+        notes: [
+          'Żelazo okazało się przewagą nad starszym orężem z brązu.',
+          'Wraz z Andalami ukształtowały się rycerskie ideały i wiele rodów szlacheckich.'
+        ]
+      },
+      {
+        id: 'conquest',
+        period: '0 PL (Podboje Aegona)',
+        title: 'Podbój Aegona i Siedem Królestw',
+        subtitle: 'Smoczy ogień, Czarny Nurt i zjednoczenie pod jednym tronem',
+        summary:
+          'Aegon I Targaryen wraz ze swoimi siostrami i smokami wylądował u ujścia Czarnego Nurtu, by podporządkować sobie podzielone królestwa Westeros. Odtąd cały kontynent zwykło się określać mianem Siedmiu Królestw, choć Dorne zachowało odrębność jeszcze przez długi czas.',
+        notes: [
+          'Powstała Królewska Przystań oraz Żelazny Tron wykuty z mieczy pokonanych.',
+          'Każdy dawny władca przyjął rolę wielkiego lorda lub zachował książęcy tytuł w Dorne.'
+        ]
+      },
+      {
+        id: 'robert-rebellion',
+        period: '282 – 283 PL',
+        title: 'Rebelia Roberta i Zmiana Dynastii',
+        subtitle: 'Trójząb, upadek Szalonego Króla i nowy porządek',
+        summary:
+          'Zbrojny bunt wielkich rodów przeciwko rządom Aerysa II Targaryena zakończył wielowiekowe panowanie dynastii smoków na Żelaznym Tronie. Po bitwie nad Trójzębem i zdobyciu stolicy koronę objął Robert Baratheon.',
+        notes: [
+          'Sojusze i zdrady z czasów rebelii wciąż odbijają się echem w polityce dworów.',
+          'Dla wielu rodów była to próba honoru, lojalności i przetrwania.'
+        ]
+      }
+    ];
+
+    const HOUSES = [
+      {
+        name: 'Targaryen',
+        words: 'Ogień i Krew',
+        seat: 'Smocza Skała (dawniej Królewska Przystań)',
+        region: 'Korona / Smocza Skała',
+        sigil: 'Trzygłowy smok ziejący ogniem, czerwony na czarnym polu',
+        description:
+          'Dawna królewska dynastia pochodząca ze Starej Valyrii. Przez stulecia władali Siedmioma Królestwami dzięki smokom, dumie i bezwzględnej ambicji.'
+      },
+      {
+        name: 'Stark',
+        words: 'Nadchodzi Zima',
+        seat: 'Winterfell',
+        region: 'Północ',
+        sigil: 'Szary wilkor biegnący po białym śniegu',
+        description:
+          'Prastary ród wywodzący się od Pierwszych Ludzi i Brandona Budowniczego. Znani z surowego honoru, wierności dawnym bogom i wytrwałości w najcięższe zimy.'
+      },
+      {
+        name: 'Baratheon',
+        words: 'Nasza Jest Furia',
+        seat: 'Koniec Burzy',
+        region: 'Krainy Burzy',
+        sigil: 'Ukoronowany jeleń czarny na złotym polu',
+        description:
+          'Ród zrodzony w burzliwych czasach Podboju, słynący z gwałtownego temperamentu, siły w boju oraz woli walki do samego końca.'
+      },
+      {
+        name: 'Greyjoy',
+        words: 'My Nie Siejemy',
+        seat: 'Pyke',
+        region: 'Żelazne Wyspy',
+        sigil: 'Złoty kraken na czarnym polu',
+        description:
+          'Władcy smaganych sztormami Żelaznych Wysp, wyznawcy Utopionego Boga i nieustraszeni żeglarze, którzy cenią zdobycz i żelazną cenę wyżej niż pług.'
+      },
+      {
+        name: 'Arryn',
+        words: 'Wysoko Jak Honor',
+        seat: 'Orle Gniazdo',
+        region: 'Dolina Arrynów',
+        sigil: 'Błękitny sokół i księżyc na białym tle',
+        description:
+          'Jeden z najstarszych i najczystszych rodów andalskich w Westeros, strzegący niedostępnej Doliny z górskiej twierdzy Orlego Gniazda.'
+      },
+      {
+        name: 'Lannister',
+        words: 'Słysz Ryk! (nieoficjalne: Lannister zawsze spłaca swoje długi)',
+        seat: 'Casterly Rock',
+        region: 'Zachód',
+        sigil: 'Złoty lew wspięty na karmazynowym polu',
+        description:
+          'Niezwykle bogaty i wpływowy ród z Zachodu, którego potęga opiera się na złocie kopalń Casterly Rock, przebiegłości i bezwzględnej grze o wpływy.'
+      },
+      {
+        name: 'Tyrell',
+        words: 'Rosnąc w Siłę',
+        seat: 'Highgarden',
+        region: 'Reach',
+        sigil: 'Złota róża na zielonym polu',
+        description:
+          'Władcy żyznego Reach — spichlerza Westeros. Słynie z dostatku, dyplomacji, turniejów oraz rozbudowanej sieci sojuszy na dworze.'
+      },
+      {
+        name: 'Martell',
+        words: 'Nieugięci, Niezłomni, Niepokonani',
+        seat: 'Słoneczna Włócznia',
+        region: 'Dorne',
+        sigil: 'Czerwone słońce przebite złotą włócznią na pomarańczowym polu',
+        description:
+          'Książęcy ród rządzący upalnym i górzystym Dorne, który nigdy nie ugiął się przed smoczym podbojem i zachował własne obyczaje.'
+      },
+      {
+        name: 'Tully',
+        words: 'Rodzina, Obowiązek, Honor',
+        seat: 'Riverrun',
+        region: 'Dorzecze',
+        sigil: 'Srebrny pstrąg skaczący na falach czerwonych i błękitnych',
+        description:
+          'Panowie żyznego, lecz często zagrożonego najazdami Dorzecza, dla których więzy krwi i obowiązek wobec poddanych stanowią fundament.'
+      }
+    ];
+
+    const CHARACTERS = [
+      {
+        id: 'jon-snow',
+        name: 'Jon Snow',
+        title: 'Bękart z Winterfell • Człowiek Nocnej Straży',
+        house: 'Stark',
+        type: 'Gracz',
+        status: 'Na Murze',
+        stats: {
+          Siła: 14,
+          Zręczność: 15,
+          Wytrzymałość: 14,
+          Intelekt: 13,
+          Spryt: 14,
+          Charyzma: 12
+        },
+        equipment: ['Długi miecz ze stali valyriańskiej', 'Czarny płaszcz Nocnej Straży', 'Skórzany kaftan', 'Sztylet'],
+        bio:
+          'Wychowany w Winterfell u boku prawowitych dzieci rodu Starków, odnalazł swoje miejsce wśród przysięgłych braci strzegących północnej granicy.'
+      },
+      {
+        id: 'jaime-lannister',
+        name: 'Ser Jaime Lannister',
+        title: 'Dowódca Gwardii Królewskiej',
+        house: 'Lannister',
+        type: 'BN',
+        status: 'Królewska Przystań',
+        stats: {
+          Siła: 16,
+          Zręczność: 16,
+          Wytrzymałość: 15,
+          Intelekt: 12,
+          Spryt: 13,
+          Charyzma: 14
+        },
+        equipment: ['Złocona zbroja płytowa', 'Miecz rycerski', 'Biały płaszcz Gwardii', 'Wierzchowiec bojowy'],
+        bio:
+          'Mistrz szermierki o ostrym języku i dumie, której nie sposób ukryć nawet za lśniącą zbroją.'
+      },
+      {
+        id: 'asha-greyjoy',
+        name: 'Asha Greyjoy',
+        title: 'Kapitan „Czarnego Wichru”',
+        house: 'Greyjoy',
+        type: 'Gracz',
+        status: 'Żelazne Wyspy',
+        stats: {
+          Siła: 13,
+          Zręczność: 16,
+          Wytrzymałość: 14,
+          Intelekt: 14,
+          Spryt: 16,
+          Charyzma: 15
+        },
+        equipment: ['Topór abordażowy', 'Ćwiekowana skóra', 'Sztylet z żelaza', 'Mapa cieśnin'],
+        bio:
+          'Doświadczona dowódczyni drakkara, nawykła do lodowatych sztormów, twardych negocjacji i nagłych uderzeń z morza.'
+      },
+      {
+        id: 'aegon-conqueror',
+        name: 'Aegon I Zdobywca',
+        title: 'Król Siedmiu Królestw',
+        house: 'Targaryen',
+        type: 'Legenda',
+        status: 'Kroniki Dawne',
+        stats: {
+          Siła: 15,
+          Zręczność: 14,
+          Wytrzymałość: 16,
+          Intelekt: 16,
+          Spryt: 17,
+          Charyzma: 17
+        },
+        equipment: ['Miecz Czarny Ogień', 'Korona z czarnego żelaza i rubinów', 'Więź ze smokiem Balerionem'],
+        bio:
+          'Postać, od której zaczęła się nowa rachuba czasu w Westeros i zjednoczenie większości królestw pod jednym berłem.'
+      }
+    ];
+
+    let selectedEraId = ERAS[0].id;
+    let selectedDiceSides = 20;
+    let diceHistory = [];
+
+    function switchTab(tabId) {
+      document.querySelectorAll('.tab-panel').forEach((panel) => {
+        panel.classList.remove('active');
+      });
+
+      const targetPanel = document.getElementById(`tab-${tabId}`);
+      if (targetPanel) {
+        targetPanel.classList.add('active');
+      }
+
+      document.querySelectorAll('.nav-btn').forEach((btn) => {
+        btn.classList.toggle('active', btn.dataset.tab === tabId);
+      });
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function renderHistory() {
+      const listEl = document.getElementById('history-era-list');
+      const readerEl = document.getElementById('history-reader');
+      if (!listEl || !readerEl) return;
+
+      listEl.innerHTML = ERAS.map((era) => {
+        const isSelected = era.id === selectedEraId;
+        return `
+          <button
+            type="button"
+            onclick="selectEra('${era.id}')"
+            class="w-full rounded-lg border p-4 text-left transition ${
+              isSelected
+                ? 'border-amber-400 bg-gradient-to-r from-amber-950/80 to-stone-900/90 text-amber-100 shadow-lg'
+                : 'border-amber-500/20 bg-stone-950/65 text-stone-300 hover:border-amber-500/45 hover:text-amber-100'
+            }"
+          >
+            <div class="font-display text-[11px] font-bold tracking-[0.18em] text-amber-400">
+              ${era.period}
+            </div>
+            <div class="mt-1 font-display text-base font-bold">
+              ${era.title}
+            </div>
+            <div class="mt-0.5 font-serif text-sm italic text-stone-400">
+              ${era.subtitle}
+            </div>
+          </button>
+        `;
+      }).join('');
+
+      const activeEra = ERAS.find((e) => e.id === selectedEraId) || ERAS[0];
+      readerEl.innerHTML = `
+        <article class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
+          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+          <div class="relative z-10 space-y-5">
+            <div class="border-b border-amber-900/25 pb-4">
+              <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                ${activeEra.period}
+              </div>
+              <h2 class="mt-1 font-display text-2xl font-bold text-stone-900 sm:text-3xl">
+                ${activeEra.title}
+              </h2>
+              <p class="mt-1 font-serif text-lg italic text-stone-700">
+                ${activeEra.subtitle}
+              </p>
+            </div>
+
+            <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-lg">
+              ${activeEra.summary}
+            </p>
+
+            <div class="rounded border border-amber-900/25 bg-amber-50/50 p-5">
+              <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-red-950">
+                ZAPISANE W KRONIKACH
+              </h3>
+              <ul class="list-disc space-y-2 pl-5 text-base text-stone-800">
+                ${activeEra.notes.map((n) => `<li>${n}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
+    function selectEra(eraId) {
+      selectedEraId = eraId;
+      renderHistory();
+    }
+
+    function populateCharacterHouseFilter() {
+      const select = document.getElementById('char-house-filter');
+      if (!select) return;
+      const houses = HOUSES.map((h) => h.name);
+      select.innerHTML =
+        '<option value="ALL">Wszystkie rody</option>' +
+        houses.map((h) => `<option value="${h}">Ród ${h}</option>`).join('');
+    }
+
+    function renderCharacters() {
+      const grid = document.getElementById('characters-grid');
+      if (!grid) return;
+
+      const query = (document.getElementById('char-search')?.value || '').trim().toLowerCase();
+      const houseFilter = document.getElementById('char-house-filter')?.value || 'ALL';
+      const typeFilter = document.getElementById('char-type-filter')?.value || 'ALL';
+
+      const filtered = CHARACTERS.filter((c) => {
+        const matchesQuery =
+          !query ||
+          c.name.toLowerCase().includes(query) ||
+          c.title.toLowerCase().includes(query) ||
+          c.house.toLowerCase().includes(query);
+        const matchesHouse = houseFilter === 'ALL' || c.house === houseFilter;
+        const matchesType = typeFilter === 'ALL' || c.type === typeFilter;
+        return matchesQuery && matchesHouse && matchesType;
+      });
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-lg border border-amber-500/25 bg-stone-950/75 p-8 text-center">
+            <p class="font-serif text-lg italic text-stone-400">
+              Żadna postać w rejestrze nie spełnia wybranych kryteriów.
+            </p>
+          </div>
+        `;
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map(
+          (c) => `
+          <article
+            onclick="openCharacterModal('${c.id}')"
+            class="parchment-card group flex cursor-pointer flex-col justify-between rounded-lg p-6 transition hover:-translate-y-1"
+          >
+            <div class="space-y-3">
+              <div class="flex items-center justify-between gap-2">
+                <span class="rounded border border-amber-900/30 bg-amber-950/10 px-2.5 py-0.5 font-display text-[11px] font-bold tracking-wider text-red-950">
+                  RÓD ${c.house.toUpperCase()}
+                </span>
+                <span class="font-display text-[11px] font-bold tracking-wider text-stone-700">
+                  ${c.type.toUpperCase()}
+                </span>
+              </div>
+
+              <div>
+                <h2 class="font-display text-xl font-bold text-stone-900 group-hover:text-red-900">
+                  ${c.name}
+                </h2>
+                <p class="font-serif text-sm italic text-stone-700">
+                  ${c.title}
+                </p>
+              </div>
+
+              <p class="line-clamp-3 text-base leading-relaxed text-stone-800">
+                ${c.bio}
+              </p>
+            </div>
+
+            <div class="mt-5 flex items-center justify-between border-t border-amber-900/20 pt-3 font-display text-xs font-bold tracking-wider text-red-950">
+              <span>STATUS: ${c.status}</span>
+              <span>KARTA →</span>
+            </div>
+          </article>
+        `
+        )
+        .join('');
+    }
+
+    function openCharacterModal(id) {
+      const char = CHARACTERS.find((c) => c.id === id);
+      if (!char) return;
+
+      const content = document.getElementById('char-modal-content');
+      const statsHtml = Object.entries(char.stats)
+        .map(([attr, val]) => {
+          const mod = Math.floor((val - 10) / 2);
+          const modStr = mod >= 0 ? `+${mod}` : `${mod}`;
+          return `
+            <div class="rounded border border-amber-900/25 bg-amber-50/60 p-3 text-center">
+              <div class="font-display text-[11px] font-bold tracking-wider text-stone-700">${attr}</div>
+              <div class="font-display text-xl font-bold text-stone-950">${val}</div>
+              <div class="font-display text-xs font-semibold text-red-900">(${modStr})</div>
+            </div>
+          `;
+        })
+        .join('');
+
+      content.innerHTML = `
+        <div class="border-b border-amber-900/25 pb-3 pr-20">
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+            RÓD ${char.house.toUpperCase()} • ${char.type.toUpperCase()}
+          </div>
+          <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+            ${char.name}
+          </h2>
+          <p class="font-serif text-base italic text-stone-700">${char.title}</p>
+        </div>
+
+        <p class="text-base leading-relaxed text-stone-800 sm:text-lg">${char.bio}</p>
+
+        <div>
+          <h3 class="mb-2 font-display text-xs font-bold tracking-[0.18em] text-red-950">ATRYBUTY</h3>
+          <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3">${statsHtml}</div>
+        </div>
+
+        <div>
+          <h3 class="mb-2 font-display text-xs font-bold tracking-[0.18em] text-red-950">EKWIPUNEK</h3>
+          <ul class="list-disc space-y-1 pl-5 text-base text-stone-800">
+            ${char.equipment.map((item) => `<li>${item}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-between gap-3 border-t border-amber-900/20 pt-4">
+          <button
+            type="button"
+            onclick="testCharacterRoll('${char.name}')"
+            class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-100 shadow hover:from-red-800"
+          >
+            TEST RZUTU k20
+          </button>
+          <span id="char-test-roll" class="font-display text-sm font-bold text-red-950"></span>
+        </div>
+      `;
+
+      const modal = document.getElementById('char-modal');
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function testCharacterRoll(name) {
+      const roll = Math.floor(Math.random() * 20) + 1;
+      const el = document.getElementById('char-test-roll');
+      if (el) {
+        el.textContent = `${name} wyrzucił ${roll} na 1k20!`;
+      }
+    }
+
+    function closeCharacterModal() {
+      const modal = document.getElementById('char-modal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    function renderHouses() {
+      const grid = document.getElementById('houses-grid');
+      if (!grid) return;
+
+      grid.innerHTML = HOUSES.map(
+        (h) => `
+          <article class="parchment-card relative flex flex-col justify-between rounded-lg p-6">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between border-b border-amber-900/20 pb-2">
+                <span class="font-display text-xs font-bold tracking-[0.18em] text-red-900">
+                  ${h.region.toUpperCase()}
+                </span>
+                <span class="font-display text-xs font-semibold text-stone-700">
+                  ${h.seat}
+                </span>
+              </div>
+
+              <h2 class="font-display text-2xl font-bold text-stone-950">
+                Ród ${h.name}
+              </h2>
+
+              <p class="font-serif text-base italic font-semibold text-red-950">
+                „${h.words}”
+              </p>
+
+              <p class="text-sm text-stone-700">
+                <strong class="font-display text-xs uppercase tracking-wider text-stone-900">Herb:</strong> ${h.sigil}
+              </p>
+
+              <p class="text-base leading-relaxed text-stone-800">
+                ${h.description}
+              </p>
+            </div>
+          </article>
+        `
+      ).join('');
+    }
+
+    function selectDice(sides) {
+      selectedDiceSides = sides;
+      document.querySelectorAll('.dice-opt').forEach((btn) => {
+        const active = Number(btn.dataset.sides) === sides;
+        btn.classList.toggle('border-amber-400', active);
+        btn.classList.toggle('bg-amber-900/40', active);
+        btn.classList.toggle('text-amber-200', active);
+        btn.classList.toggle('border-amber-500/30', !active);
+        btn.classList.toggle('bg-stone-900', !active);
+        btn.classList.toggle('text-stone-200', !active);
+      });
+    }
+
+    function rollDiceTower() {
+      const raw = Math.floor(Math.random() * selectedDiceSides) + 1;
+      const mod = parseInt(document.getElementById('dice-mod')?.value || '0', 10) || 0;
+      const dcRaw = document.getElementById('dice-dc')?.value;
+      const dc = dcRaw !== '' && dcRaw !== undefined ? parseInt(dcRaw, 10) : null;
+      const total = raw + mod;
+
+      const totalEl = document.getElementById('dice-total');
+      const breakdownEl = document.getElementById('dice-breakdown');
+
+      const modText = mod > 0 ? ` + ${mod}` : mod < 0 ? ` - ${Math.abs(mod)}` : '';
+      let outcomeText = `1k${selectedDiceSides} (${raw})${modText}`;
+
+      if (dc !== null && !Number.isNaN(dc)) {
+        const success = total >= dc;
+        outcomeText += ` vs ST ${dc} — ${success ? 'SUKCES' : 'PORAŻKA'}`;
+      }
+
+      if (totalEl) totalEl.textContent = String(total);
+      if (breakdownEl) breakdownEl.textContent = outcomeText;
+
+      diceHistory.unshift({
+        summary: `${outcomeText} = ${total}`
+      });
+      diceHistory = diceHistory.slice(0, 5);
+      renderDiceHistory();
+    }
+
+    function renderDiceHistory() {
+      const list = document.getElementById('dice-history');
+      if (!list) return;
+
+      if (diceHistory.length === 0) {
+        list.innerHTML =
+          '<li class="rounded bg-stone-900/70 px-3 py-1.5 text-xs italic text-stone-500">Brak wykonanych rzutów.</li>';
+        return;
+      }
+
+      list.innerHTML = diceHistory
+        .map(
+          (entry) =>
+            `<li class="rounded border border-amber-500/15 bg-stone-900/80 px-3 py-1.5 font-body text-sm text-amber-100">${entry.summary}</li>`
+        )
+        .join('');
+    }
+
+    function clearDiceHistory() {
+      diceHistory = [];
+      renderDiceHistory();
+      const totalEl = document.getElementById('dice-total');
+      const breakdownEl = document.getElementById('dice-breakdown');
+      if (totalEl) totalEl.textContent = '—';
+      if (breakdownEl) breakdownEl.textContent = 'Wybierz kość i kliknij „Rzuć kością”.';
+    }
+
+    function initPortal() {
+      const charCountEl = document.getElementById('home-char-count');
+      const houseCountEl = document.getElementById('home-house-count');
+      if (charCountEl) charCountEl.textContent = String(CHARACTERS.length);
+      if (houseCountEl) houseCountEl.textContent = String(HOUSES.length);
+
+      renderHistory();
+      populateCharacterHouseFilter();
+      renderCharacters();
+      renderHouses();
+      selectDice(20);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPortal);
+    } else {
+      initPortal();
+    }
+  </script>
+</body>
+</html>
