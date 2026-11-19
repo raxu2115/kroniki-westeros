@@ -217,24 +217,25 @@
       display: block;
     }
 
-    /* Style obszarów interaktywnej mapy Westeros */
-    .map-region {
+    /* Nakładka interaktywna na obraz mapy Westeros */
+    .map-hit-zone {
       cursor: pointer;
-      transition: fill 0.2s ease, stroke 0.2s ease, stroke-width 0.2s ease, filter 0.2s ease;
-      stroke: rgba(58, 39, 18, 0.75);
-      stroke-width: 1.6;
+      fill: rgba(212, 166, 86, 0.02);
+      stroke: transparent;
+      stroke-width: 2.5;
+      transition: fill 0.18s ease, stroke 0.18s ease, stroke-width 0.18s ease;
     }
 
-    .map-region:hover {
-      filter: brightness(1.16);
+    .map-hit-zone:hover {
+      fill: rgba(212, 166, 86, 0.34);
       stroke: #7c1d1d;
-      stroke-width: 2.6;
+      stroke-width: 3;
     }
 
-    .map-region.selected {
-      filter: brightness(1.22);
+    .map-hit-zone.selected {
+      fill: rgba(138, 35, 35, 0.26);
       stroke: #7c1d1d;
-      stroke-width: 3.2;
+      stroke-width: 3.5;
     }
 
     @keyframes fadeIn {
@@ -869,7 +870,7 @@
       </div>
 
       <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <!-- Interaktywna mapa SVG -->
+        <!-- Interaktywna mapa oparta na przesłanym obrazie -->
         <div class="parchment-card relative rounded-lg p-5 sm:p-7 lg:col-span-7">
           <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
           <div class="relative z-10 space-y-3">
@@ -882,170 +883,123 @@
               </span>
             </div>
 
-            <div class="mx-auto max-w-[540px]">
+            <div class="relative mx-auto max-w-[560px] overflow-hidden rounded border border-amber-900/35 bg-amber-100/60 shadow-inner">
+              <img
+                src="image_f7a1e4.jpg"
+                alt="Mapa Westeros, Siedmiu Królestw i Essos"
+                class="block h-auto w-full select-none"
+              />
               <svg
                 viewBox="0 0 600 840"
-                class="h-auto w-full drop-shadow-md"
-                role="img"
-                aria-label="Interaktywna mapa regionów Westeros"
+                class="absolute inset-0 h-full w-full"
+                aria-label="Interaktywne strefy regionów Westeros"
               >
-                <!-- Morze i subtelna siatka kartograficzna -->
-                <rect x="0" y="0" width="600" height="840" rx="10" fill="#d8c5a1" fill-opacity="0.45" />
-                <g stroke="#8c6838" stroke-opacity="0.16" stroke-width="1">
-                  <line x1="120" y1="0" x2="120" y2="840" />
-                  <line x1="240" y1="0" x2="240" y2="840" />
-                  <line x1="360" y1="0" x2="360" y2="840" />
-                  <line x1="480" y1="0" x2="480" y2="840" />
-                  <line x1="0" y1="168" x2="600" y2="168" />
-                  <line x1="0" y1="336" x2="600" y2="336" />
-                  <line x1="0" y1="504" x2="600" y2="504" />
-                  <line x1="0" y1="672" x2="600" y2="672" />
-                </g>
-
-                <!-- Mur / Daleka Północ -->
-                <line x1="175" y1="145" x2="395" y2="145" stroke="#3f4e5c" stroke-width="5" stroke-dasharray="6,3" />
-                <text x="285" y="135" text-anchor="middle" font-family="Cinzel, serif" font-size="11" font-weight="700" fill="#3f4e5c">
-                  MUR
-                </text>
-
                 <!-- PÓŁNOC (Ród Stark) -->
-                <path
+                <polygon
                   id="region-north"
                   data-region="north"
-                  d="M175 150 L395 150 L410 250 L375 345 L270 365 L175 335 L155 245 Z"
-                  fill="#94a3b8"
-                  class="map-region"
+                  points="135,140 375,140 420,255 375,345 265,365 135,335 110,240"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('north')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('north')"
                 />
 
                 <!-- ŻELAZNE WYSPY (Ród Greyjoy) -->
-                <g
+                <polygon
                   id="region-iron-islands"
                   data-region="iron-islands"
-                  class="map-region"
+                  points="75,365 155,355 168,465 85,475"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('iron-islands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('iron-islands')"
-                >
-                  <polygon points="95,380 135,368 148,395 108,408" fill="#57534e" />
-                  <polygon points="82,420 128,412 136,442 90,450" fill="#57534e" />
-                  <polygon points="118,452 152,446 158,472 124,478" fill="#57534e" />
-                </g>
+                />
 
                 <!-- DOLINA ARRYNÓW (Ród Arryn) -->
-                <path
+                <polygon
                   id="region-vale"
                   data-region="vale"
-                  d="M325 365 L425 350 L465 405 L430 468 L345 452 L320 405 Z"
-                  fill="#60a5fa"
-                  class="map-region"
+                  points="325,360 445,340 480,415 435,475 335,455 315,405"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('vale')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('vale')"
                 />
 
                 <!-- DORZECZE (Ród Tully) -->
-                <path
+                <polygon
                   id="region-riverlands"
                   data-region="riverlands"
-                  d="M185 350 L315 365 L335 445 L295 495 L195 485 L172 420 Z"
-                  fill="#4d7c0f"
-                  fill-opacity="0.72"
-                  class="map-region"
+                  points="175,355 318,365 335,450 295,495 185,485 165,415"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('riverlands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('riverlands')"
                 />
 
                 <!-- ZACHÓD (Ród Lannister) -->
-                <path
+                <polygon
                   id="region-westerlands"
                   data-region="westerlands"
-                  d="M135 485 L220 490 L235 585 L145 595 L118 535 Z"
-                  fill="#dc2626"
-                  fill-opacity="0.72"
-                  class="map-region"
+                  points="95,485 215,490 230,588 120,598 85,535"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('westerlands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('westerlands')"
                 />
 
-                <!-- KORONA I SMOCZA SKAŁA (Ród Targaryen / Tron) -->
-                <path
+                <!-- KORONA I SMOCZA SKAŁA (Ród Targaryen) -->
+                <polygon
                   id="region-crownlands"
                   data-region="crownlands"
-                  d="M298 492 L385 468 L418 525 L375 568 L305 552 Z"
-                  fill="#991b1b"
-                  fill-opacity="0.82"
-                  class="map-region"
+                  points="298,490 405,468 430,525 385,568 302,552"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('crownlands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('crownlands')"
                 />
                 <polygon
                   data-region="crownlands"
-                  points="442,500 468,494 475,518 448,524"
-                  fill="#991b1b"
-                  class="map-region"
+                  points="438,495 472,490 478,518 444,524"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('crownlands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('crownlands')"
                 />
 
                 <!-- KRAINY BURZY (Ród Baratheon) -->
-                <path
+                <polygon
                   id="region-stormlands"
                   data-region="stormlands"
-                  d="M312 560 L385 572 L420 635 L355 685 L295 645 Z"
-                  fill="#eab308"
-                  fill-opacity="0.75"
-                  class="map-region"
+                  points="310,560 405,570 435,638 355,685 292,645"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('stormlands')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('stormlands')"
                 />
 
                 <!-- REACH (Ród Tyrell) -->
-                <path
+                <polygon
                   id="region-reach"
                   data-region="reach"
-                  d="M145 602 L240 592 L292 652 L265 725 L155 715 L125 655 Z"
-                  fill="#16a34a"
-                  fill-opacity="0.72"
-                  class="map-region"
+                  points="65,602 235,592 292,652 265,725 95,715 55,655"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('reach')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('reach')"
                 />
 
                 <!-- DORNE (Ród Martell) -->
-                <path
+                <polygon
                   id="region-dorne"
                   data-region="dorne"
-                  d="M168 722 L272 732 L345 692 L365 765 L255 815 L182 785 Z"
-                  fill="#ea580c"
-                  fill-opacity="0.75"
-                  class="map-region"
+                  points="155,722 272,732 355,692 385,768 255,818 168,785"
+                  class="map-hit-zone"
                   onmouseenter="handleRegionHover('dorne')"
                   onmouseleave="handleRegionLeave()"
                   onclick="handleRegionClick('dorne')"
                 />
-
-                <!-- Etykiety obszarów -->
-                <g pointer-events="none" font-family="Cinzel, serif" font-weight="700" fill="#1c140d" text-anchor="middle">
-                  <text x="285" y="250" font-size="16">PÓŁNOC</text>
-                  <text x="118" y="498" font-size="10">ŻELAZNE</text>
-                  <text x="118" y="510" font-size="10">WYSPY</text>
-                  <text x="252" y="425" font-size="12">DORZECZE</text>
-                  <text x="392" y="412" font-size="12">DOLINA</text>
-                  <text x="178" y="545" font-size="12">ZACHÓD</text>
-                  <text x="352" y="522" font-size="11">KORONA</text>
-                  <text x="205" y="665" font-size="13">REACH</text>
-                  <text x="348" y="628" font-size="11">KRAINY BURZY</text>
-                  <text x="255" y="768" font-size="13">DORNE</text>
-                </g>
               </svg>
             </div>
           </div>
@@ -1694,7 +1648,7 @@
 
     function updateMapSelectionStyles() {
       const activeId = hoveredMapRegionId || selectedMapRegionId;
-      document.querySelectorAll('.map-region').forEach((el) => {
+      document.querySelectorAll('.map-hit-zone').forEach((el) => {
         el.classList.toggle('selected', el.dataset.region === activeId);
       });
     }
