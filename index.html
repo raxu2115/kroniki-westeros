@@ -217,27 +217,6 @@
       display: block;
     }
 
-    /* Nakładka interaktywna na obraz mapy Westeros */
-    .map-hit-zone {
-      cursor: pointer;
-      fill: rgba(212, 166, 86, 0.02);
-      stroke: transparent;
-      stroke-width: 2.5;
-      transition: fill 0.18s ease, stroke 0.18s ease, stroke-width 0.18s ease;
-    }
-
-    .map-hit-zone:hover {
-      fill: rgba(212, 166, 86, 0.34);
-      stroke: #7c1d1d;
-      stroke-width: 3;
-    }
-
-    .map-hit-zone.selected {
-      fill: rgba(138, 35, 35, 0.26);
-      stroke: #7c1d1d;
-      stroke-width: 3.5;
-    }
-
     @keyframes fadeIn {
       from {
         opacity: 0;
@@ -366,7 +345,7 @@
               „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
             </p>
             <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
-              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów, mapę ziem oraz księgę zasad wraz z wieżą kości.
+              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów, zakładkę mapy oraz księgę zasad wraz z wieżą kości.
             </p>
             <div class="flex flex-wrap gap-3 pt-2">
               <button
@@ -381,7 +360,7 @@
                 onclick="switchTab('map')"
                 class="rounded border border-amber-900/45 bg-amber-950/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-red-950 transition hover:bg-amber-950/20"
               >
-                OTWÓRZ MAPĘ WESTEROS
+                ZAKŁADKA MAPA
               </button>
               <button
                 type="button"
@@ -555,11 +534,11 @@
                 Mapa Westeros
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Interaktywna mapa krain Siedmiu Królestw z podświetlaniem obszarów po najechaniu i informacją, który ród włada danymi ziemiami.
+                Work in Progress — sekcja w przygotowaniu przez kartografów Cytadeli.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ MAPĘ</span>
+              <span>OTWÓRZ ZAKŁADKĘ</span>
               <span class="transition-transform group-hover:translate-x-1">→</span>
             </div>
           </button>
@@ -853,160 +832,23 @@
       <div id="houses-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <!-- 6. MAPA WESTEROS -->
-    <section id="tab-map" class="tab-panel space-y-6">
-      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
-        <div>
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-            KARTOGRAFIA SIEDMIU KRÓLESTW
-          </div>
-          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
-            MAPA WESTEROS
-          </h1>
-        </div>
-        <p class="font-serif text-base italic text-stone-400">
-          Najedź kursorem na wybrany obszar mapy lub kliknij go, aby sprawdzić aktualnego władcę ziem.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <!-- Interaktywna mapa oparta na przesłanym obrazie -->
-        <div class="parchment-card relative rounded-lg p-5 sm:p-7 lg:col-span-7">
+    <!-- 6. MAPA WESTEROS (WORK IN PROGRESS) -->
+    <section id="tab-map" class="tab-panel">
+      <div class="flex min-h-[65vh] items-center justify-center py-6">
+        <div class="parchment-card relative w-full max-w-2xl rounded-lg p-8 text-center sm:p-12">
           <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-          <div class="relative z-10 space-y-3">
-            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-amber-900/20 pb-2">
-              <span class="font-display text-xs font-bold tracking-[0.18em] text-red-900">
-                ARKUSZ KARTOGRAFICZNY • WESTEROS
-              </span>
-              <span id="map-hover-badge" class="font-serif text-sm italic text-stone-700">
-                Najedź na obszar lub wybierz krainę
-              </span>
+          <div class="relative z-10 space-y-4">
+            <div class="font-display text-xs font-bold tracking-[0.22em] text-red-900">
+              KARTOGRAFIA WESTEROS
             </div>
-
-            <div class="relative mx-auto max-w-[560px] overflow-hidden rounded border border-amber-900/35 bg-amber-100/60 shadow-inner">
-              <img
-                src="image_f7a1e4.jpg"
-                alt="Mapa Westeros, Siedmiu Królestw i Essos"
-                class="block h-auto w-full select-none"
-              />
-              <svg
-                viewBox="0 0 600 840"
-                class="absolute inset-0 h-full w-full"
-                aria-label="Interaktywne strefy regionów Westeros"
-              >
-                <!-- PÓŁNOC (Ród Stark) -->
-                <polygon
-                  id="region-north"
-                  data-region="north"
-                  points="135,140 375,140 420,255 375,345 265,365 135,335 110,240"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('north')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('north')"
-                />
-
-                <!-- ŻELAZNE WYSPY (Ród Greyjoy) -->
-                <polygon
-                  id="region-iron-islands"
-                  data-region="iron-islands"
-                  points="75,365 155,355 168,465 85,475"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('iron-islands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('iron-islands')"
-                />
-
-                <!-- DOLINA ARRYNÓW (Ród Arryn) -->
-                <polygon
-                  id="region-vale"
-                  data-region="vale"
-                  points="325,360 445,340 480,415 435,475 335,455 315,405"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('vale')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('vale')"
-                />
-
-                <!-- DORZECZE (Ród Tully) -->
-                <polygon
-                  id="region-riverlands"
-                  data-region="riverlands"
-                  points="175,355 318,365 335,450 295,495 185,485 165,415"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('riverlands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('riverlands')"
-                />
-
-                <!-- ZACHÓD (Ród Lannister) -->
-                <polygon
-                  id="region-westerlands"
-                  data-region="westerlands"
-                  points="95,485 215,490 230,588 120,598 85,535"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('westerlands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('westerlands')"
-                />
-
-                <!-- KORONA I SMOCZA SKAŁA (Ród Targaryen) -->
-                <polygon
-                  id="region-crownlands"
-                  data-region="crownlands"
-                  points="298,490 405,468 430,525 385,568 302,552"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('crownlands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('crownlands')"
-                />
-                <polygon
-                  data-region="crownlands"
-                  points="438,495 472,490 478,518 444,524"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('crownlands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('crownlands')"
-                />
-
-                <!-- KRAINY BURZY (Ród Baratheon) -->
-                <polygon
-                  id="region-stormlands"
-                  data-region="stormlands"
-                  points="310,560 405,570 435,638 355,685 292,645"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('stormlands')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('stormlands')"
-                />
-
-                <!-- REACH (Ród Tyrell) -->
-                <polygon
-                  id="region-reach"
-                  data-region="reach"
-                  points="65,602 235,592 292,652 265,725 95,715 55,655"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('reach')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('reach')"
-                />
-
-                <!-- DORNE (Ród Martell) -->
-                <polygon
-                  id="region-dorne"
-                  data-region="dorne"
-                  points="155,722 272,732 355,692 385,768 255,818 168,785"
-                  class="map-hit-zone"
-                  onmouseenter="handleRegionHover('dorne')"
-                  onmouseleave="handleRegionLeave()"
-                  onclick="handleRegionClick('dorne')"
-                />
-              </svg>
-            </div>
+            <h1 class="font-display text-3xl font-bold tracking-wide text-stone-950 sm:text-4xl">
+              Work in Progress
+            </h1>
+            <p class="font-serif text-lg italic text-stone-700">
+              Prace nad tą sekcją trwają.
+            </p>
           </div>
         </div>
-
-        <!-- Panel informacji o zaznaczonym obszarze i rodzie -->
-        <aside class="lg:col-span-5" id="map-info-panel"></aside>
       </div>
     </section>
 
@@ -1450,99 +1292,6 @@
       }
     ];
 
-    const MAP_REGIONS = [
-      {
-        id: 'north',
-        areaName: 'Północ',
-        rulingHouse: 'Stark',
-        seat: 'Winterfell',
-        summary:
-          'Rozległe, surowe ziemie na południe od Muru — pełne pradawnych borów, bagien Przesmyku, zimnych mórz i wiernych chorążych.',
-        controlNote:
-          'Ród Starków sprawuje straż nad Północą jako jej Wielcy Lordowie (a dawniej Królowie Północy), opierając władzę na szacunku do tradycji i lojalności rodów północnych.'
-      },
-      {
-        id: 'iron-islands',
-        areaName: 'Żelazne Wyspy',
-        rulingHouse: 'Greyjoy',
-        seat: 'Pyke',
-        summary:
-          'Smagany sztormami archipelag skalistych wysp na zachodnim morzu, znany z twardych żeglarzy, długich łodzi i dumnej odrębności.',
-        controlNote:
-          'Ród Greyjoyów włada archipelagiem z kamiennej twierdzy Pyke, utrzymując zwierzchnictwo nad żelaznymi rodami i morskimi szlakami.'
-      },
-      {
-        id: 'vale',
-        areaName: 'Dolina Arrynów',
-        rulingHouse: 'Arryn',
-        seat: 'Orle Gniazdo',
-        summary:
-          'Żyzna, osłonięta wysokimi górami Księżycowymi dolina, do której prowadzi zaledwie kilka strzeżonych przełęczy.',
-        controlNote:
-          'Ród Arrynów rządzi Doliną z niezdobytego Orlego Gniazda, ciesząc się naturalną obronnością gór i wielowiekowym rodowodem.'
-      },
-      {
-        id: 'riverlands',
-        areaName: 'Dorzecze',
-        rulingHouse: 'Tully',
-        seat: 'Riverrun',
-        summary:
-          'Kraina wielkich rzek, brodów i żyznych równin w sercu kontynentu — skrzyżowanie szlaków, które bywa areną wielkich konfliktów.',
-        controlNote:
-          'Ród Tullych sprawuje zwierzchnictwo nad Dorzeczem z twierdzy Riverrun, koordynując lokalne rody nad wodami Tridentu.'
-      },
-      {
-        id: 'westerlands',
-        areaName: 'Zachód',
-        rulingHouse: 'Lannister',
-        seat: 'Casterly Rock',
-        summary:
-          'Bogate wzgórza, port Lannisport oraz kopalnie złota i srebra zapewniające jednemu z najzamożniejszych regionów Westeros ogromne wpływy.',
-        controlNote:
-          'Ród Lannisterów włada Zachodem z potężnego Casterly Rock, łącząc potęgę finansową, wojskową i dworską.'
-      },
-      {
-        id: 'crownlands',
-        areaName: 'Korona i Smocza Skała',
-        rulingHouse: 'Targaryen',
-        seat: 'Smocza Skała / Królewska Przystań',
-        summary:
-          'Ziemie wokół Zatoki Czarnego Nurtu, stolica oraz wulkaniczna wyspa Smocza Skała — miejsce związane z dawnym tronem i królewską tradycją.',
-        controlNote:
-          'W kronikach tej krainy Ród Targaryenów jest bezpośrednio kojarzony ze Smoczą Skałą i dynastią, która ukształtowała Siedem Królestw.'
-      },
-      {
-        id: 'stormlands',
-        areaName: 'Krainy Burzy',
-        rulingHouse: 'Baratheon',
-        seat: 'Koniec Burzy',
-        summary:
-          'Smagane wichrami wybrzeża, gęste lasy i skaliste przylądki nad Morzem Dornijskim i Wąskim Morzem.',
-        controlNote:
-          'Ród Baratheonów włada Krainami Burzy z twierdzy Koniec Burzy, słynąc z waleczności i twardego charakteru mieszkańców.'
-      },
-      {
-        id: 'reach',
-        areaName: 'Reach',
-        rulingHouse: 'Tyrell',
-        seat: 'Highgarden',
-        summary:
-          'Najżyźniejszy region Westeros — rozległe pola zboża, winnice, sadownie i rycerskie dwory, będące spichlerzem całego kontynentu.',
-        controlNote:
-          'Ród Tyrellów rządzi Reach z zamku Highgarden, opierając pozycję na bogactwie plonów, dyplomacji i rozległych sojuszach.'
-      },
-      {
-        id: 'dorne',
-        areaName: 'Dorne',
-        rulingHouse: 'Martell',
-        seat: 'Słoneczna Włócznia',
-        summary:
-          'Najbardziej wysunięty na południe region Westeros — suche pustynie, oazy, kaniony i górzyste przełęcze o własnych obyczajach.',
-        controlNote:
-          'Ród Martellów włada Dorne ze Słonecznej Włóczni, zachowując wyrazistą tożsamość i niezależny duch południowych ziem.'
-      }
-    ];
-
     const CHARACTERS = [
       {
         id: 'jon-snow',
@@ -1624,8 +1373,6 @@
 
     let selectedEraId = ERAS[0].id;
     let selectedHouseName = 'Arryn';
-    let selectedMapRegionId = 'north';
-    let hoveredMapRegionId = null;
     let selectedDiceSides = 20;
     let diceHistory = [];
 
@@ -1644,109 +1391,6 @@
       });
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    }
-
-    function updateMapSelectionStyles() {
-      const activeId = hoveredMapRegionId || selectedMapRegionId;
-      document.querySelectorAll('.map-hit-zone').forEach((el) => {
-        el.classList.toggle('selected', el.dataset.region === activeId);
-      });
-    }
-
-    function handleRegionHover(regionId) {
-      hoveredMapRegionId = regionId;
-      updateMapSelectionStyles();
-      const regionObj = MAP_REGIONS.find((r) => r.id === regionId);
-      const badge = document.getElementById('map-hover-badge');
-      if (badge && regionObj) {
-        badge.textContent = `${regionObj.areaName} — Ród ${regionObj.rulingHouse}`;
-      }
-      renderMapInfoPanel(regionId);
-    }
-
-    function handleRegionLeave() {
-      hoveredMapRegionId = null;
-      updateMapSelectionStyles();
-      const regionObj = MAP_REGIONS.find((r) => r.id === selectedMapRegionId);
-      const badge = document.getElementById('map-hover-badge');
-      if (badge && regionObj) {
-        badge.textContent = `Wybrano: ${regionObj.areaName} (Ród ${regionObj.rulingHouse})`;
-      }
-      renderMapInfoPanel(selectedMapRegionId);
-    }
-
-    function handleRegionClick(regionId) {
-      selectedMapRegionId = regionId;
-      hoveredMapRegionId = null;
-      updateMapSelectionStyles();
-      const regionObj = MAP_REGIONS.find((r) => r.id === regionId);
-      const badge = document.getElementById('map-hover-badge');
-      if (badge && regionObj) {
-        badge.textContent = `Wybrano: ${regionObj.areaName} (Ród ${regionObj.rulingHouse})`;
-      }
-      renderMapInfoPanel(regionId);
-    }
-
-    function renderMapInfoPanel(regionId = selectedMapRegionId) {
-      const panel = document.getElementById('map-info-panel');
-      if (!panel) return;
-
-      const region = MAP_REGIONS.find((r) => r.id === regionId) || MAP_REGIONS[0];
-      const house = HOUSES.find((h) => h.name === region.rulingHouse) || HOUSES[0];
-
-      panel.innerHTML = `
-        <div class="parchment-card relative rounded-lg p-6 sm:p-8">
-          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-          <div class="relative z-10 space-y-5">
-            <div class="border-b border-amber-900/25 pb-4">
-              <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
-                OBSZAR WESTEROS
-              </div>
-              <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
-                ${region.areaName}
-              </h2>
-              <p class="mt-1 font-serif text-base italic text-stone-700">
-                Główna siedziba: ${region.seat}
-              </p>
-            </div>
-
-            <div class="rounded border border-amber-900/30 bg-stone-950/90 p-4 text-amber-100">
-              <div class="font-display text-[11px] font-bold tracking-[0.2em] text-amber-400">
-                RÓD ODPOWIEDZIALNY ZA TE ZIEMIE
-              </div>
-              <div class="mt-1 font-display text-xl font-bold text-amber-200">
-                Ród ${house.name}
-              </div>
-              <div class="mt-0.5 font-serif text-sm italic text-amber-300/90">
-                „${house.words}”
-              </div>
-            </div>
-
-            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
-              ${region.summary}
-            </p>
-
-            <p class="text-base leading-relaxed text-stone-800">
-              ${region.controlNote}
-            </p>
-
-            <div class="pt-1">
-              <button
-                type="button"
-                onclick="openHouseFromMap('${house.name}')"
-                class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-4 py-2.5 font-display text-xs font-bold tracking-wider text-amber-100 shadow transition hover:from-red-800"
-              >
-                ZOBACZ KRONIKĘ RODU ${house.name.toUpperCase()} →
-              </button>
-            </div>
-          </div>
-        </div>
-      `;
-    }
-
-    function openHouseFromMap(houseName) {
-      selectHouseForSpotlight(houseName);
-      switchTab('houses');
     }
 
     function selectHouseForSpotlight(houseName) {
@@ -2191,8 +1835,6 @@
       renderCharacters();
       renderHouseSpotlight();
       renderHouses();
-      renderMapInfoPanel(selectedMapRegionId);
-      updateMapSelectionStyles();
       selectDice(20);
     }
 
