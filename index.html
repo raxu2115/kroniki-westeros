@@ -426,7 +426,7 @@
                 Zanim stworzysz postać / Wstęp do Westeros
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Prolog o smokach, Targaryenach i rządach Roberta Baratheona oraz kronika tego, czym jest Westeros, Siedem Królestw i dawne ery.
+                Prolog o smokach i Targaryenach, historia powstania Siedmiu Królestw oraz przewodnik po Stolicy i krainach Westeros.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
@@ -636,15 +636,54 @@
               WSTĘP DO WESTEROS
             </h1>
             <p class="mx-auto max-w-2xl font-serif text-lg italic text-stone-700">
-              Prolog o utraconych smokach i zmianie dynastii oraz kronika ziem ukształtowanych przez dawne ery, bogów i podboje.
+              Prolog o utraconych smokach i zmianie dynastii, kronika dziejów Siedmiu Królestw oraz przewodnik po Stolicy i krainach kontynentu.
             </p>
             <div class="parchment-divider pt-1">
               <span class="font-display text-sm">❖</span>
             </div>
           </div>
 
+          <!-- SZYBKA NAWIGACJA PO WSTĘPIE -->
+          <div class="rounded-lg border border-amber-900/30 bg-stone-950/90 p-5 text-amber-100">
+            <div class="mb-3 font-display text-xs font-bold tracking-[0.2em] text-amber-400">
+              SPIS KSIĄG WSTĘPU
+            </div>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="scrollToIntroSection('intro-prolog')" class="rounded border border-amber-500/40 bg-amber-950/40 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-amber-200 hover:border-amber-400">
+                Prolog
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-westeros')" class="rounded border border-amber-500/40 bg-amber-950/40 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-amber-200 hover:border-amber-400">
+                Czym jest Westeros?
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-kings-landing')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                1. Królewska Przystań
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-north')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                2. Północ
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-iron-islands')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                3. Żelazne Wyspy
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-riverlands')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                4. Dorzecze
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-mountains-moon')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                5. Księżycowe Góry
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-westerlands')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                6. Krainy Zachodu
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-reach')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                7. Reach
+              </button>
+              <button type="button" onclick="scrollToIntroSection('intro-dorne')" class="rounded border border-amber-500/30 bg-stone-900 px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-200 hover:border-amber-400 hover:text-amber-200">
+                8. Dorne
+              </button>
+            </div>
+          </div>
+
           <!-- PROLOG -->
-          <article class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/55 p-6 shadow-sm sm:p-8">
+          <article id="intro-prolog" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/55 p-6 shadow-sm sm:p-8">
             <div class="border-b border-amber-900/20 pb-3">
               <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
                 PROLOG
@@ -677,7 +716,7 @@
           </article>
 
           <!-- 2. CZYM W OGÓLE JEST WESTEROS -->
-          <article class="space-y-5 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+          <article id="intro-westeros" class="space-y-5 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
             <div class="border-b border-amber-900/20 pb-3">
               <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
                 KRONIKA ŚWIATA
@@ -735,6 +774,268 @@
               </p>
             </div>
           </article>
+
+          <!-- 3. STOLICA I KRAINY WESTEROS -->
+          <div class="space-y-6">
+            <div class="parchment-divider">
+              <span class="font-display text-xs font-bold tracking-[0.2em] text-red-950">
+                STOLICA I KRAINY WESTEROS
+              </span>
+            </div>
+
+            <!-- 1. STOLICA — KRÓLEWSKA PRZYSTAŃ -->
+            <article id="intro-kings-landing" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/55 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  1. STOLICA SIEDMIU KRÓLESTW
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Królewska Przystań
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Królewska Przystań to pod wieloma względami serce Westeros. Jest ośrodkiem władzy królewskiej i siłą napędową całych Siedmiu Królestw, mimo że to dość młode miasto, założone dopiero przez Aegona Zdobywcę w pierwszych latach jego panowania.
+                </p>
+                <p>
+                  Kiedy Aegon i jego siostry wylądowali w Westeros, na obszarze dzisiejszej Królewskiej Przystani nie było niczego prócz wioski rybackiej. Targaryenowie zbudowali tu pierwsze fortyfikacje z drewna i ziemi. Dziś miasto jest niczym ogromna mozaika domów szachulcowych, karczm, drewnianych wiat, składów, burdeli, tawern, kramów, pomostów, rynków, posągów i monumentalnych budowli sięgających aż po horyzont.
+                </p>
+                <p>
+                  Siedzibą króla jest Czerwona Twierdza, potężna forteca o siedmiu olbrzymich, przysadzistych wieżach z bladoczerwonego kamienia wznosząca się dumnie na szczycie Wielkiego Wzgórza Aegona. Jej budowę rozpoczęto z rozkazu Aegona I, ukończona została jednak dopiero za rządów jego syna, Maegora Okrutnego. Po wmurowaniu ostatniego kamienia Maegor zgromadził wszystkich rzemieślników i robotników i stracił ich. Sekrety zamku znać mieli wyłącznie Targaryenowie.
+                </p>
+                <p>
+                  Wewnątrz Czerwonej Twierdzy znajduje się Forteca Maegora, osłonięta kwadratowa warownia w obrębie większego zamku, która skrywa królewskie apartamenty. Potężna sala tronowa znajduje się w Wielkiej Sali – dawniej ozdobionej czaszkami smoków – i wchodzi się do niej przez wrota z dębu i spiżu. Na jej końcu wznosi się majestatyczny i przerażający Żelazny Tron, kolczasty twór ustawiony na szczycie górującego nad salą podwyższenia. Aegon wykuł go z pomocą smoczego ognia Baleriona Czarnego Strachu z tysiąca mieczy pokonanych wrogów. Tron stanowi plątaninę nadal ostrych niczym brzytwy ostrzy, sztychów i kolców. Zdobywca mawiał, że „żaden król nie powinien czuć się na tronie zbyt wygodnie”, a dziedzictwo, które po sobie pozostawił, nie pozwoliło żadnemu z jego następców się z nim nie zgodzić.
+                </p>
+                <p>
+                  Królowi Westeros pomaga w rządach Namiestnik Królewski, najpotężniejszy po nim człowiek w Siedmiu Królestwach. Namiestnik przemawia głosem króla i może wysłuchiwać próśb, głosić prawo, dowodzić wojskiem, a nawet sądzić w imieniu króla, gdy jest on nieobecny. Jest też jedyną osobą, która może zasiadać na Żelaznym Tronie pod nieobecność władcy.
+                </p>
+                <p>
+                  Króla i jego Namiestnika wspiera Mała Rada – grupa doradców w założeniu złożona z najmądrzejszych lordów wybranych przez króla, aby pomagać mu w rządach. Obecnie, za króla Roberta Baratheona Namiestnikiem jest lord Jon Arryn, w Małej Radzie zasiadają zaś Wielki Maester Pycelle, Lord Dowódca Gwardii Królewskiej ser Barristan Selmy, Starszy nad Statkami – lord Stannis Baratheon, Starszy nad Prawami – lord Renly Baratheon, Starszy nad Monetą – lord Petyr Baelish oraz Starszy nad Szeptaczami – lord Varys.
+                </p>
+              </div>
+            </article>
+
+            <!-- 2. PÓŁNOC -->
+            <article id="intro-north" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  2. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Północ
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Północ jest zimną krainą, dziką i słabo zaludnioną, a przy tym niesłychanie rozległą. Rozciąga się od Przesmyku niemal po kraniec świata. Mur strzeżony przez Nocną Straż wyznacza prawdziwą granicę cywilizacji; jest wysoki na ponad dwieście metrów, długi na setki kilometrów i niewzruszony, choć Straż jest dziś zaledwie cieniem swej dawnej siły. Szeroki na ponad sto kilometrów pas ziemi na południe od Muru zwany jest Darem Brandona i przekazany został Nocnej Straży w momencie jej powołania. Obecnie do włości Straży należy też równie rozległy Nowy Dar nadany przez Dobrą Królową Alysanne w uznaniu służby Czarnych Braci.
+                </p>
+                <p>
+                  Na wschód od Muru rozciąga się Zatoka Fok i leżąca na niej wyspa Skagos – dziewicza i jałowa skała, której mieszkańcy wyruszają do bitwy na grzbietach jednorożców i pożerają pokonanych wrogów. Do Północy zalicza się również Niedźwiedzią Wyspę, gęsty i ciemny Wilczy Las, Kamienny Brzeg oraz pełną grobowców Pierwszych Ludzi Krainę Kurhanów.
+                </p>
+                <p>
+                  Ziemie Starków przecinają dwie główne rzeki: Biały Nóż, który prowadzi do gwarnego Białego Portu, oraz Ostatnia Rzeka przebiegająca nieopodal Ostatniego Domostwa. Na Północy śnieg spotkać można nawet latem, zimą zaś temperatura spada tak bardzo, że mówi się, że śmiech zamarza ludziom w gardłach, dusząc ich.
+                </p>
+                <p>
+                  Północ zajmuje podobną powierzchnię jak pozostałe sześć królestw razem wziętych. Dużą jej część pokrywa jednak dzicz, choć zarośnięte sosnami wzgórza i wyszczerbione, ośnieżone szczyty górskie zapierają dech w piersi. Jest to surowa kraina surowych ludzi; zarówno pospólstwo, jak i lordowie Północy są zwykle bezpośredni i poważni. Krew Pierwszych Ludzi jest tu silna i spaja ze sobą wszystkie rody szlacheckie, podobnie jak czczeni przez wielu mieszkańców dawni bogowie i ich czardrzewa – wiara Siedmiu nie cieszy się tu dużym posłuchem.
+                </p>
+              </div>
+            </article>
+
+            <!-- 3. ŻELAZNE WYSPY -->
+            <article id="intro-iron-islands" class="space-y-5 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  3. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Żelazne Wyspy
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Greyjoyowie mawiają, że „twarda ziemia rodzi twardych ludzi, a twardzi ludzie rządzą światem”, i niewątpliwie zgadza się z nimi wielu innych żelaznych ludzi, w Westeros trudno bowiem o bardziej niegościnną krainę. Żelazne Wyspy to skupisko skał na zachodnim wybrzeżu Siedmiu Królestw, na zachód od Tridentu, na północ od Krain Zachodu i odrobinę na południe od Przesmyku. Choć na kontynencie klimat jest łagodny i umiarkowany, zimne północne wiatry i szkwały nieustannie targają Żelazną Zatoką, przenikając do serc jej mieszkańców.
+                </p>
+
+                <h3 class="pt-1 font-display text-lg font-bold text-red-950">
+                  Żelaźni ludzie
+                </h3>
+                <p>
+                  Kultura żelaznych ludzi zamieszkujących ten łańcuch wysp od tysięcy lat skupia się na łupieniu i najazdach. Łupieżcy, zwani w całym Westeros żelaznymi ludźmi, przemierzali dawniej całe wybrzeże, żeglując wzdłuż Przesmyku, wokół Przylądka Krakena i nad Płonącą Zatokę, aż po Niedźwiedzią Wyspę. Pływali też na południe, do Reach; nawet tak oddalone miejsca jak Stare Miasto i Arbor narażone były na ich najazdy, gwałty i ogień. Najnowszym świadectwem ich podbojów jest potężny zamek Harrenhal wzniesiony przez króla Harwyna Hardhanda i jego syna Harrena, aby podkreślić swą dominację nad Dorzeczem, od Przesmyku aż po Czarny Nurt.
+                </p>
+                <p>
+                  Żelaźni ludzie kultywowali wtedy obce Siedmiu Królestwom tradycje zwane dziś Dawną Drogą. Niektórzy z nich nadal trzymają się tej brutalnej filozofii i wierzą w Utopionego Boga, odrzucając zarówno Siedmiu, jak i dawnych bogów Pierwszych Ludzi. Kapłani Utopionego Boga to dziwni ludzie, którzy wplatają wodorosty we włosy i ubierają się w morskie kolory. Ich wyznawcy okazują swe poddaństwo i wiarę, pozwalając się utopić; kapłani cucą ich później, wyrywając ich z objęć śmierci. Głoszą, że podążający Dawną Drogą nagrodzeni zostaną za swe zwycięstwa miejscem przy stole na uczcie w zalanych salach Utopionego Boga. Według ich religii Utopiony Bóg trwa w wiecznym konflikcie z Bogiem Sztormów, który nienawidzi żelaznych ludzi i nieustannie naciera na ich wyspy.
+                </p>
+                <p>
+                  Dawna Droga nadaje znaczenie ich napadom i wiąże je z tradycją tego ludu. Wartość człowieka zależy od jego umiejętności walki; żelazny człowiek musi „zapłacić żelazem” za wszelkie kosztowności i luksusy, czyli zdobyć je przemocą, nie zaś kupić, jak robią to ludzie na stałym lądzie. Żelaźni ludzie nie ograniczają się jednak przy tym do dóbr materialnych – zdobywają też niewolników, których zmuszają do pracy na swych polach i w kopalniach lub do ogrzewania im nocą łóżek jako morskie żony. Żelaźni ludzie twierdzą, że ich synowie nie zostali stworzeni do żmudnej pracy; ich córki mogą zaś walczyć, łupić, a nawet dowodzić okrętami równie dobrze, jak mężczyźni. Na wyspach mówi się nawet, że „morze budzi w kobietach męski apetyt”. Te, które wychodzą za mąż, zostają skalnymi żonami i są w swym gospodarstwie niemal równe mężom.
+                </p>
+
+                <h3 class="pt-1 font-display text-lg font-bold text-red-950">
+                  Ród Greyjoyów
+                </h3>
+                <p>
+                  Ród Greyjoyów włada Żelaznymi Wyspami od czasów Aegona Zdobywcy. Po tym, jak spalił Harrena i całą jego linię w Harrenhal, Aegon pozwolił lordom żelaznych ludzi wybrać spośród siebie swych nowych władców. Żelaźni ludzie wybrali lorda Vickona Greyjoya i przysięgli mu posłuszeństwo. Równocześnie stracili jednak kontrolę nad Dorzeczem i zostali zepchnięci z powrotem na swój archipelag – trzy wyspy Pyke, Starą Wyk, Wielką Wyk, Harlaw, Orkmont, Saltcliffe, Blacktyde oraz dziesiątki skał, turni i wysepek, z których niektóre są zbyt małe, by pomieścić choćby jedną wieś. Od tamtego czasu Greyjoyowie zasiadają na Tronie z Morskiego Kamienia należnym lordowi Pyke.
+                </p>
+                <p>
+                  Żelaźni ludzie najlepiej czują się na pokładzie langskipów, którymi przemierzają swe ukochane morze; być może wynika to z posępności ich ziemi. Mówi się, że każdy kapitan jest królem na swym statku, a każdy król musi być również kapitanem.
+                </p>
+              </div>
+            </article>
+
+            <!-- 4. DORZECZE -->
+            <article id="intro-riverlands" class="space-y-5 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  4. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Dorzecze
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Jeśli Królewska Przystań jest sercem westeroskiej polityki, Dorzecze jest sercem pospólstwa – to żyzna kraina pełna gospodarstw, wsi i pełnych życia nadrzecznych miasteczek. Duszą Dorzecza jest Trident, potężna rzeka o trzech głównych odnogach i licznych mniejszych dopływach. Dorzecze podlegało w swej historii różnym władcom, od Królów Burzy po Królów Żelaznych Ludzi. Po spaleniu króla Harrena Aegon Zdobywca nadał zwierzchnictwo nad tą krainą rodowi Tullych z Riverrun, który po dziś dzień utrzymuje tę pozycję.
+                </p>
+
+                <h3 class="pt-1 font-display text-lg font-bold text-red-950">
+                  Trident
+                </h3>
+                <p>
+                  Zielone Widły Tridentu biegną na południe od Przesmyku i wpadają do Zatoki Krabów w Solankach, mijając liczne żyzne doliny, zielone lasy, bogate miasteczka i silne twierdze. Bliźniaki, warowne wieże Freyów, strzegą przeprawy w górnym biegu rzeki.
+                </p>
+                <p>
+                  Czerwone Widły wypływają spomiędzy wzgórz Krain Zachodu i przed dołączeniem do Tridentu mijają Riverrun, siedzibę rodu Tullych. Riverrun wznosi się w miejscu, w którym rzeki te się spotykają, a jego mury wyrastają wprost z wody. W czasie wojny możliwe jest też utworzenie fosy, dzięki której zamek zostaje oddzielony od atakujących wodą z każdego kierunku.
+                </p>
+                <p>
+                  Niebieskie Widły płyną pomiędzy Zielonymi i Czerwonymi, od Seagardu do Miasteczka Lorda Harrowaya, na północ od niewielkiej dolinki zwanej Szepczącym Lasem. Trident zaczyna się w miejscu, w którym spotykają się wszystkie Widły; to nad nim, w miejscu nazwanym później Rubinowym Brodem, Robert Baratheon zabił Rhaegara Targaryena.
+                </p>
+                <p>
+                  W Dorzeczu leży również ogromne jezioro zwane Bożym Okiem, na którym znajduje się Wyspa Twarzy. To tutaj dziesięć tysięcy lat temu Pierwsi Ludzie zawarli Pakt z Dziećmi Lasu. Drzewa na wyspie do dziś noszą na sobie wycięte twarze.
+                </p>
+                <p>
+                  Ziemie na południe od Bożego Oka to łagodne wzgórza, tarasowe pola uprawne, łąki, lasy i doliny poprzecinane płytkimi potokami. Na północnym brzegu jeziora, nieopodal brodów na Tridencie, wznosi się mroczny grobowiec Harrena – zamek Harrenhal, będący obecnie w rękach rodu Whentów. Zadaniem fortecy jest strzec ziem położonych dalej na południu, lecz pospólstwo uważa ją za przeklętą, odkąd Aegon zmienił ją w stos pogrzebowy. Wody Bożego Oka spływają Czarnym Nurtem do Królewskiej Przystani; rzeka ta wyznacza południową granicę Dorzecza.
+                </p>
+
+                <h3 class="pt-1 font-display text-lg font-bold text-red-950">
+                  Lojalność Tullych
+                </h3>
+                <p>
+                  Tully’owie dołączyli do Roberta Baratheona podczas jego wojny przeciw Targaryenom i większość lordów Dorzecza podążyła za ich przykładem, choć lord Frey zebrał swe wojska dopiero po zakończeniu walk, a Blackwoodowie i Brackenowie woleli kontynuować swe tradycyjne waśnie.
+                </p>
+                <p>
+                  Po wojnie sojusz utrwalono poprzez małżeństwa. Starsza z córek lorda Hostera Tully’ego – Catelyn Tully, wcześniej zaręczona z poległym dziedzicem Winterfell, Brandonem Starkiem – wydana została za lorda Eddarda Starka, młodsza zaś – Lysa Tully – za lorda Jona Arryna. Krew Andalów jest w Dorzeczu silnie obecna i większość jego mieszkańców oddaje cześć Siedmiu. Mimo to wciąż natrafić można na pewne ślady dawnych bogów. Wciąż wyznaje ich ród Blackwoodów, dumny ze swego pochodzenia od Pierwszych Ludzi. Właśnie ta tradycja jest historycznym źródłem ich sporów z rodem Brackenów, którzy po przybyciu Andalów nawrócili się na wiarę Siedmiu.
+                </p>
+              </div>
+            </article>
+
+            <!-- 5. KSIĘŻYCOWE GÓRY -->
+            <article id="intro-mountains-moon" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  5. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Księżycowe Góry
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Księżycowe Góry to pierwsze miejsce w Westeros, w którym pojawili się Andalowie, gdy wylądowali na skalistych, wcinających się w morze Paluchach. Z czasem zdobyli kontrolę nad całymi Siedmioma Królestwami, ale to tutejsze rody reprezentują krew Andalów najwyraźniej. Ród Arrynów, Obrońców Doliny i Namiestników Wschodu, to starożytna rodzina andalskiej szlachty wywodząca się bezpośrednio od dawnych Królów Góry i Doliny. Ten potężny ród od dawna włada Doliną Arrynów i Księżycowymi Górami, panuje też nad Paluchami, Zatoką Krabów oraz Szczypcowym Przylądkiem.
+                </p>
+                <p>
+                  Dolina Arrynów wyznacza część granicy pomiędzy Północą i południowymi krainami, leży bowiem nieopodal Przesmyku, na północ od Tridentu. Na tle cywilizowanego południa jest to dzikie i odludne miejsce, zaś same Księżycowe Góry to jedne z najbardziej złowrogich i surowych szczytów w Westeros. Górski Trakt to wąski, kamienisty szlak, który prowadzi powoli na drugą stronę gór i do Doliny. Na drodze tej często można natknąć się na rozbójników, niebezpieczne zwierzęta i złą pogodę, stanowiące poważne zagrożenie dla wszystkich podróżnych.
+                </p>
+                <p>
+                  Sama Dolina jest jednak żyzna i zielona – to jeden z najbardziej urodzajnych regionów Westeros. Niezliczone strumienie i jeziora nawadniają czarną ziemię pod licznymi sadami i polami uprawnymi. Znaleźć tu można wiele miasteczek i gospodarstw, których izolacja zapewnia względne bezpieczeństwo i spokój podczas niepokojów w innych częściach Siedmiu Królestw. Ich mieszkańcy to dumni i uprzejmi, choć ostrożni ludzie. Pomimo schronienia zapewnianego przez Dolinę obecność prymitywnych plemion w górach zmusza ich do zachowania czujności.
+                </p>
+              </div>
+            </article>
+
+            <!-- 6. KRAINY ZACHODU -->
+            <article id="intro-westerlands" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  6. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Krainy Zachodu
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Krainy Zachodu leżą na zachód od Tridentu, na północ od Reach i na południe od Przesmyku; wypełniają je łagodne wzgórza i niezbyt wysokie góry rozciągające się wzdłuż wybrzeża. Krainy Zachodu bogate są w srebro i złoto, przez co duża część pospólstwa pracuje w należących do szlachty kopalniach, choć rybactwo, hodowla i rolnictwo również są tu powszechne. Ziemia Krain Zachodu nie jest jednak tak żyzna, jak w Dorzeczu czy w Reach.
+                </p>
+                <p>
+                  Największym miastem w regionie jest Lannisport – ośrodek handlowy większy niż Gulltown czy Biały Port, choć blaknący w porównaniu ze Starym Miastem czy Królewską Przystanią. Na północ od miasta wznosi się Casterly Rock, siedziba władców Krain Zachodu. Rock poprzecinane jest żyłami złota, a zamek wycięty jest bezpośrednio w kamieniu; ryk morza jest ogłuszający, kiedy przypływy wpychają wodę do znajdujących się pod nim jaskiń.
+                </p>
+              </div>
+            </article>
+
+            <!-- 7. REACH -->
+            <article id="intro-reach" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  7. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Reach
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="dropcap">
+                  Z północy na południe, Reach rozciąga się od Czarnego Nurtu aż po Stare Miasto i od Dornijskiego Pogranicza po Morze Zachodzącego Słońca. Jest to kraina przystojnych rycerzy, bogatych gospodarstw, dorodnych zbiorów i takichże dziewek. Reach charakteryzują łagodne wzgórza, przejrzyste strumienie i pola dzikich kwiatów. Najważniejsza droga, zwana Różanym Traktem, zaczyna się wśród winnic na dalekim południu, przecina rzekę Mander i biegnie przez środek Westeros, aż spotka się z Królewskim Traktem w stolicy Siedmiu Królestw. Różany Trakt łączy ze sobą Stare Miasto, Wysogród oraz Królewską Przystań.
+                </p>
+                <p>
+                  Do Reach zalicza się również Wyspy Tarczowe, leżące na południe od Lannisportu, nieopodal Nadmorskiego Traktu – tradycyjnie najważniejszą linię obrony przed atakami łupieżców żelaznych ludzi. Wyspa Arbor leży o wiele dalej na południe, u ujścia Manderu, za przylądkiem nad Zatoką Szeptów, w pobliżu Starego Miasta. Arbor produkuje najsłynniejsze wina Westeros, które sprzedawane są na całym świecie. Szczególnie warte uwagi są wina letnie, czerwone wytrawne oraz bogate złote arborskie.
+                </p>
+                <p>
+                  Stare Miasto, naturalnie, znane jest w całym świecie jako wybitny i osławiony ośrodek nauki. Znajduje się w nim Cytadela, w której maesterzy pobierają nauki, wykuwają swe łańcuchy i składają przysięgi. Stare Miasto to też potężne, ustępujące jedynie Królewskiej Przystani miasto portowe.
+                </p>
+                <p>
+                  Reach to drugi – po Północy – największy region Siedmiu Królestw. Przed przybyciem Aegona Zdobywcy władali nim Królowie Reach ze szlachetnego rodu Gardenerów. Aegon zniszczył ich jednak na Polu Ognia i wyniósł Tyrellów, niegdyś zaledwie zarządców, do rangi suwerenów tego regionu. Tyrellowie z Wysogrodu rządzą nim do dziś, a ich złote róże zobaczyć można w każdym zakątku krainy.
+                </p>
+                <p>
+                  Reach posiada długą historię zmagań ze swymi dornijskimi sąsiadami z południa. Przed przybyciem Aegona Zdobywcy przez setki lat nieustannie dochodziło między nimi do walk, napadów i potyczek. Starcia nie wychodziły nigdy poza góry na pograniczu obu krain, a ich nasilenie spadło w ciągu ostatnich dwustu lat, jednak przelana krew wciąż żyje w ich pamięci.
+                </p>
+              </div>
+            </article>
+
+            <!-- 8. DORNE -->
+            <article id="intro-dorne" class="space-y-4 rounded-lg border border-amber-900/30 bg-amber-50/45 p-6 shadow-sm sm:p-8">
+              <div class="border-b border-amber-900/20 pb-3">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  8. KRAINA WESTEROS
+                </span>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Dorne
+                </h2>
+              </div>
+
+              <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+                <p class="font-serif text-lg italic text-stone-700">
+                  „W dawnym Dorne, nim małżeństwo związało Martellów z Daeronem II, wszystkie kwiaty kłaniały się przed słońcem” – tak mówią Dornijczycy o stuleciach przelewania krwi na pograniczu Dorne i Reach.
+                </p>
+                <p class="dropcap">
+                  Siódme królestwo Westeros to najbardziej wysunięta na południe z wszystkich krain podległych Żelaznemu Tronowi. Według podań historycznych Daeron Targaryen, Młody Smok, podbił Dorne w wieku czternastu lat, tracąc przy tym dziesięć tysięcy żołnierzy. Jego zwycięstwo trwało zaledwie jedno lato, podczas którego zginęło kolejne pięćdziesiąt tysięcy jego sług; później piaski Dorne przeleciały mu między martwymi palcami.
+                </p>
+                <p>
+                  Dorne na stałe dołączyło do Siedmiu Królestw dopiero sto lat temu, niczym niespokojna panna młoda, niepewna przyszłości, jednak świadoma swego przeznaczenia. Król Daeron II wziął wtedy za żonę dornijską księżniczkę Myriah, równocześnie wydając swą siostrę za księcia Dorne. Śluby te silnie związały rody Targaryenów i Martellów, podobnie jak ich krainy. Obecny książę Dorne, lord Doran Nymeros Martell, wydał swą córkę, księżniczkę Elię, za księcia koronnego Rhaegara; oboje zginęli jednak podczas Buntu Roberta.
+                </p>
+                <p>
+                  Mimo że lord Jon Arryn, Namiestnik Królewski, przybył po wojnie na południe, aby zawrzeć pokój pomiędzy królem Robertem i lordem Słonecznej Włóczni, od śmierci księżnej Elii kontakty z Dornijczykami są rzadkie i trudne. Mówi się, że księżną i jej małe dzieci brutalnie zamordowali ludzie Lannisterów. Książę Doran wielokrotnie żądał sprawiedliwości, lecz jej zabójcy po dziś dzień pozostają anonimowi i bezkarni.
+                </p>
+                <p>
+                  Dorne odizolowane jest od pozostałych królestw przez ukształtowanie terenu, odległość i zwyczaje. Leży daleko na południu, oddzielone od Krain Burzy Morzem Dornijskim, od Reach zaś Górami Czerwonymi i Dornijskim Pograniczem. Nie oznacza to, że nikt nie podróżuje przez te wrogie terytoria – najeźdźcy przeprawiali się na północ i południe przez tysiące lat – geografia tworzy tu jednak naturalne granice. Obce tradycje, które przywiodła ze sobą zza morza królowa Nymeria i jej Rhoynarowie, również nie zbliżyły Dornijczyków do Andalów.
+                </p>
+              </div>
+            </article>
+          </div>
 
           <div class="rounded border border-amber-900/30 bg-stone-950/90 p-6 text-amber-100">
             <div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
@@ -1578,6 +1879,12 @@
       }
 
       window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToIntroSection(sectionId) {
+      const target = document.getElementById(sectionId);
+      if (!target) return;
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
     function getDefaultStep1State() {
