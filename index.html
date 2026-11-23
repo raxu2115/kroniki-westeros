@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Kroniki Westeros — Kompendium RPG</title>
+  <meta name="description" content="Kompendium kampanii RPG w realiach Westeros: historia, rody, zwyczaje i prawa, religia, mapa i zasady." />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%E2%9A%94%3C/text%3E%3C/svg%3E" />
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -208,6 +210,12 @@
       box-shadow: inset 0 1px 0 rgba(255, 238, 200, 0.2);
     }
 
+    [id^="intro-"], #house-history-spotlight { scroll-margin-top: 6rem; }
+    button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, summary:focus-visible {
+      outline: 2px solid #d4a656; outline-offset: 2px;
+    }
+    details > summary { list-style-position: inside; }
+
     .tab-panel {
       display: none;
       animation: fadeIn 0.25s ease;
@@ -309,6 +317,22 @@
         </button>
         <button
           type="button"
+          data-tab="laws"
+          onclick="switchTab('laws')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Zwyczaje i Prawa
+        </button>
+        <button
+          type="button"
+          data-tab="religion"
+          onclick="switchTab('religion')"
+          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
+        >
+          Religia
+        </button>
+        <button
+          type="button"
           data-tab="map"
           onclick="switchTab('map')"
           class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
@@ -345,7 +369,7 @@
               „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
             </p>
             <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
-              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich rodów, zakładkę mapy oraz księgę zasad wraz z wieżą kości.
+              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich i pomniejszych rodów, zwyczaje i prawa, religie, mapę oraz księgę zasad.
             </p>
             <div class="flex flex-wrap gap-3 pt-2">
               <button
@@ -367,7 +391,7 @@
                 onclick="switchTab('rules')"
                 class="rounded border border-stone-800/45 bg-stone-900/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-stone-900 transition hover:bg-stone-900/20"
               >
-                ZASADY I KOŚCI
+                ZASADY GRY
               </button>
             </div>
           </div>
@@ -380,7 +404,7 @@
               <div class="space-y-2.5 font-body text-base text-stone-300">
                 <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
                   <span class="text-stone-400">Epoki w archiwum:</span>
-                  <span class="font-display font-semibold text-amber-200">6 Er</span>
+                  <span id="home-era-count" class="font-display font-semibold text-amber-200">6</span>
                 </div>
                 <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
                   <span class="text-stone-400">Zapisane postacie:</span>
@@ -480,7 +504,7 @@
                 Postacie
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Kreator postaci krok po kroku (z autozapisem) oraz rejestr postaci graczy, BN-ów i legend z filtrowaniem i podglądem karty.
+                Zasady określania rodu i ziem na start oraz rejestr postaci graczy, BN-ów i legend z filtrowaniem i podglądem karty.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
@@ -507,7 +531,7 @@
                 Rody Westeros
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Targaryen, Stark, Baratheon, Greyjoy, Arryn oraz inne wielkie domy — ich dewizy, siedziby, słowa, dzieje i miejsce w Siedmiu Królestwach.
+                Targaryen, Stark, Baratheon, Greyjoy, Arryn oraz liczne rody pomniejsze — ich herby, dewizy, siedziby, dzieje i znaczenie w Siedmiu Królestwach.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
@@ -551,21 +575,75 @@
             <div class="pointer-events-none space-y-3">
               <div class="flex items-center justify-between">
                 <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA VI • MECHANIKA I KOŚCI
+                  KSIĘGA VI • MECHANIKA
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
                   🎲
                 </span>
               </div>
               <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Zasady Gry i Wieża Kości
+                Zasady Gry
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Reguły testów umiejętności, stopni trudności, walki, ran, pancerza oraz intryg dworskich wraz z interaktywnym symulatorem rzutów kośćmi.
+                Reguły testów umiejętności, stopni trudności, walki, ran, pancerza oraz intryg dworskich.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ ZASADY I RZUTNIK</span>
+              <span>OTWÓRZ ZASADY</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('laws')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA VII • PRAWO I OBYCZAJ
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  ⚖
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Zwyczaje i Prawa
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Władza lorda, dziedziczenie, bękarci, kary, prawo gościnności, małżeństwo i wychowankowie — obyczaje obowiązujące w Siedmiu Królestwach.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>OTWÓRZ ZWYCZAJE I PRAWA</span>
+              <span class="transition-transform group-hover:translate-x-1">→</span>
+            </div>
+          </button>
+
+          <button
+            type="button"
+            onclick="switchTab('religion')"
+            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
+          >
+            <div class="pointer-events-none space-y-3">
+              <div class="flex items-center justify-between">
+                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
+                  KSIĘGA VIII • WIARA
+                </span>
+                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
+                  ✧
+                </span>
+              </div>
+              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
+                Wiara i Religia
+              </h3>
+              <p class="font-body text-base leading-relaxed text-stone-300">
+                Siedmiu, dawni bogowie, Utopiony Bóg, Rhoynarowie i R’hllor — wierzenia, duchowieństwo i przesądy Westeros.
+              </p>
+            </div>
+            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
+              <span>OTWÓRZ RELIGIĘ</span>
               <span class="transition-transform group-hover:translate-x-1">→</span>
             </div>
           </button>
@@ -609,13 +687,13 @@
           <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
             <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
               <span>WSKAZÓWKA</span>
-              <span class="text-stone-400">KOŚCI</span>
+              <span class="text-stone-400">ŚCIĄGA</span>
             </div>
             <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
-              Wieża Kości pod ręką
+              Prawo i wiara pod ręką
             </h3>
             <p class="font-body text-base leading-relaxed text-stone-300">
-              W zakładce <strong class="text-amber-200">Zasady Gry</strong> możesz testować rzuty kośćmi od k4 do k100, dodawać modyfikator atrybutu i sprawdzać wynik względem wybranego Stopnia Trudności.
+              W zakładkach <strong class="text-amber-200">Zwyczaje i Prawa</strong> oraz <strong class="text-amber-200">Religia</strong> znajdziesz szybkie ściągi: prawo gościnności, dziedziczenie, Siedmiu i dawnych bogów. Każda zakładka ma wyszukiwarkę.
             </p>
           </article>
         </div>
@@ -1032,7 +1110,7 @@
                   GOTOWY NA KOLEJNY KROK?
                 </h3>
                 <p class="font-body text-base text-stone-300">
-                  Przejdź do tworzenia postaci (Krok 1: Ród i ziemie), wybierz ród lub sprawdź kroniki i zasady.
+                  Sprawdź zasady określania rodu i ziem, poznaj rody albo przejrzyj kroniki i zasady.
                 </p>
               </div>
               <div class="flex flex-wrap gap-2.5">
@@ -1041,7 +1119,7 @@
                   onclick="switchTab('characters')"
                   class="rounded border border-amber-500/50 bg-red-950/70 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-100 transition hover:bg-red-900/70"
                 >
-                  TWORZENIE POSTACI →
+                  POSTACIE →
                 </button>
                 <button
                   type="button"
@@ -1104,120 +1182,34 @@
     <section id="tab-characters" class="tab-panel space-y-8">
       <div class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
         <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-
-        <div class="relative z-10 space-y-6">
-          <div class="flex flex-col justify-between gap-3 border-b border-amber-900/25 pb-4 lg:flex-row lg:items-center">
-            <div>
-              <div class="font-display text-xs font-bold tracking-[0.22em] text-red-900">
-                TWORZENIE POSTACI • KROK PIERWSZY
-              </div>
-              <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
-                Ród i ziemie
-              </h2>
-              <p class="mt-1 font-serif text-base italic text-stone-700 sm:text-lg">
-                Jeśli tworzycie postaci po raz pierwszy, zacznijcie od określenia rodu i ziem, z których pochodzić będzie wasza postać. Możecie też użyć domyślnego rodu albo wpisać własny ród lub nazwisko.
-              </p>
+        <div class="relative z-10 space-y-5">
+          <div class="border-b border-amber-900/25 pb-4">
+            <div class="font-display text-xs font-bold tracking-[0.22em] text-red-900">
+              TWORZENIE POSTACI
             </div>
-            <div class="rounded border border-amber-900/30 bg-amber-50/70 px-3.5 py-2 text-left lg:text-right">
-              <div class="font-display text-[11px] font-bold tracking-wider text-red-950">
-                AUTOZAPIS W PRZEGLĄDARCE
-              </div>
-              <div id="step1-save-status" class="font-body text-sm text-stone-700">
-                Gotowe — postęp zapisuje się automatycznie
-              </div>
-            </div>
+            <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+              Krok pierwszy: Ród i ziemie
+            </h2>
           </div>
-
-          <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
-            <div class="space-y-4 rounded border border-amber-900/25 bg-amber-50/50 p-5 lg:col-span-7">
-              <div>
-                <label for="step1-house-select" class="mb-1.5 block font-display text-xs font-bold tracking-wider text-red-950">
-                  WYBIERZ RÓD (Z ZAKŁADKI „RODY” LUB WŁASNY)
-                </label>
-                <select
-                  id="step1-house-select"
-                  onchange="handleStep1HouseChange()"
-                  class="w-full rounded border border-amber-900/35 bg-white/80 px-3.5 py-2.5 font-body text-base text-stone-950 focus:border-red-900 focus:outline-none"
-                ></select>
-                <p id="step1-default-hint" class="mt-1.5 font-body text-sm text-stone-700"></p>
-              </div>
-
-              <div id="step1-custom-house-wrap" class="hidden space-y-1.5 rounded border border-amber-900/25 bg-amber-100/50 p-3.5">
-                <label for="step1-custom-house" class="block font-display text-xs font-bold tracking-wider text-red-950">
-                  WŁASNY RÓD / NAZWISKO RODOWE
-                </label>
-                <input
-                  id="step1-custom-house"
-                  type="text"
-                  oninput="saveStep1Progress()"
-                  placeholder="np. Ród Blackwood, Vance, Rivers, Snow albo własny wymyślony ród..."
-                  class="w-full rounded border border-amber-900/35 bg-white/90 px-3.5 py-2 font-body text-base text-stone-950 placeholder-stone-500 focus:border-red-900 focus:outline-none"
-                />
-                <p class="font-body text-xs italic text-stone-700">
-                  Możesz wpisać dowolny ród, nazwisko rodowe, przydomek albo np. „Bez rodu / Bękart”.
-                </p>
-              </div>
-
-              <div>
-                <label for="step1-lands" class="mb-1.5 block font-display text-xs font-bold tracking-wider text-red-950">
-                  ZIEMIE POCHODZENIA
-                </label>
-                <input
-                  id="step1-lands"
-                  type="text"
-                  oninput="saveStep1Progress()"
-                  placeholder="np. Północ — okolice Winterfell, Dorzecze, Żelazne Wyspy, Królewska Przystań..."
-                  class="w-full rounded border border-amber-900/35 bg-white/80 px-3.5 py-2.5 font-body text-base text-stone-950 placeholder-stone-500 focus:border-red-900 focus:outline-none"
-                />
-                <div class="mt-2 flex flex-wrap gap-1.5">
-                  <button type="button" onclick="applyQuickLand('Północ')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Północ</button>
-                  <button type="button" onclick="applyQuickLand('Dorzecze')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Dorzecze</button>
-                  <button type="button" onclick="applyQuickLand('Dolina Arrynów')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Dolina Arrynów</button>
-                  <button type="button" onclick="applyQuickLand('Zachód')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Zachód</button>
-                  <button type="button" onclick="applyQuickLand('Reach')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Reach</button>
-                  <button type="button" onclick="applyQuickLand('Krainy Burzy')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Krainy Burzy</button>
-                  <button type="button" onclick="applyQuickLand('Żelazne Wyspy')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Żelazne Wyspy</button>
-                  <button type="button" onclick="applyQuickLand('Dorne')" class="rounded border border-amber-900/25 bg-amber-950/5 px-2.5 py-1 font-display text-[11px] font-semibold text-stone-800 hover:bg-amber-950/15">Dorne</button>
-                </div>
-              </div>
-
-              <div>
-                <label for="step1-notes" class="mb-1.5 block font-display text-xs font-bold tracking-wider text-red-950">
-                  DODATKOWE SZCZEGÓŁY POCHODZENIA (OPCJONALNIE)
-                </label>
-                <textarea
-                  id="step1-notes"
-                  rows="2"
-                  oninput="saveStep1Progress()"
-                  placeholder="np. młodsza gałąź rodu, służba chorążego, mała nadmorska osada lub więzy z miejscowymi..."
-                  class="w-full rounded border border-amber-900/35 bg-white/80 px-3.5 py-2 font-body text-base text-stone-950 placeholder-stone-500 focus:border-red-900 focus:outline-none"
-                ></textarea>
-              </div>
-            </div>
-
-            <div class="flex flex-col justify-between rounded border border-amber-900/30 bg-stone-950/90 p-5 text-amber-100 lg:col-span-5">
-              <div id="step1-preview" class="space-y-3"></div>
-
-              <div class="mt-6 space-y-2.5 border-t border-amber-500/20 pt-4">
-                <div class="flex flex-wrap gap-2.5">
-                  <button
-                    type="button"
-                    onclick="useDefaultStep1()"
-                    class="rounded border border-amber-500/35 bg-stone-900 px-3.5 py-2 font-display text-xs font-bold tracking-wider text-amber-200 transition hover:border-amber-400"
-                  >
-                    POMIŃ / UŻYJ DOMYŚLNEGO
-                  </button>
-                  <button
-                    type="button"
-                    onclick="confirmStep1()"
-                    class="rounded border border-amber-400/70 bg-gradient-to-b from-red-800 to-red-950 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-100 shadow transition hover:from-red-700 hover:to-red-950"
-                  >
-                    ZAPISZ KROK 1
-                  </button>
-                </div>
-                <div id="step1-confirm-banner" class="hidden rounded border border-amber-400/40 bg-amber-950/50 px-3 py-2 font-body text-sm text-amber-200"></div>
-              </div>
-            </div>
+          <div class="space-y-4 text-base leading-relaxed text-stone-800 sm:text-lg">
+            <p class="dropcap">
+              Jeśli tworzycie postaci po raz pierwszy, zacznijcie od określenia rodu i ziem, z których pochodzić będzie wasza grupa. Możecie pominąć ten etap i użyć domyślnego rodu zaproponowanego w tym podręczniku.
+            </p>
+            <p>
+              Jeśli kreujecie postać, która ma zastąpić zmarłego członka drużyny lub z innego powodu dołączyć do toczącej się już gry, użyjcie obecnego rodu grupy.
+            </p>
+            <p>
+              <strong class="text-stone-950">Nazwa rodu może zostać wymyślona przez gracza</strong> — nie musi pochodzić z listy rodów dostępnych w kompendium.
+            </p>
+          </div>
+          <div class="pt-1">
+            <button
+              type="button"
+              onclick="switchTab('houses')"
+              class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-amber-100 shadow-md transition hover:from-red-800 hover:to-red-950"
+            >
+              PRZEJDŹ DO RODÓW →
+            </button>
           </div>
         </div>
       </div>
@@ -1283,7 +1275,56 @@
 
       <div id="house-history-spotlight"></div>
 
+      <div class="flex flex-wrap items-center gap-3 border-t border-amber-500/20 pt-6">
+        <input
+          id="house-search"
+          type="text"
+          oninput="renderHouses()"
+          placeholder="Szukaj rodu, siedziby, ziem lub herbu..."
+          class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-80"
+        />
+        <select
+          id="house-size-filter"
+          onchange="renderHouses()"
+          class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
+        >
+          <option value="ALL">Wszystkie rody</option>
+          <option value="Wielkie">Znaczenie: Wielkie</option>
+          <option value="Duże">Znaczenie: Duże</option>
+          <option value="Małe">Znaczenie: Małe</option>
+          <option value="Wymarły">Wymarłe</option>
+          <option value="Błędni rycerze">Błędni rycerze</option>
+        </select>
+        <span id="house-count" class="font-serif text-base italic text-stone-400"></span>
+      </div>
+
       <div id="houses-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
+    </section>
+
+    <!-- 5a. ZWYCZAJE I PRAWA -->
+    <section id="tab-laws" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-3 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">PRAWO I OBYCZAJ SIEDMIU KRÓLESTW</div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">ZWYCZAJE I PRAWA</h1>
+        </div>
+        <input type="text" oninput="filterDetails(this,'laws-list')" placeholder="Szukaj w tej zakładce..."
+          class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
+      </div>
+      <div id="laws-list"></div>
+    </section>
+
+    <!-- 5b. RELIGIA -->
+    <section id="tab-religion" class="tab-panel space-y-6">
+      <div class="flex flex-col justify-between gap-3 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
+        <div>
+          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">WIARA, BOGOWIE I PRZESĄDY</div>
+          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">WIARA I RELIGIA</h1>
+        </div>
+        <input type="text" oninput="filterDetails(this,'religion-list')" placeholder="Szukaj w tej zakładce..."
+          class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
+      </div>
+      <div id="religion-list"></div>
     </section>
 
     <!-- 6. MAPA WESTEROS -->
@@ -1298,7 +1339,7 @@
           </h1>
         </div>
         <p class="font-serif text-base italic text-stone-400">
-          Połączona mapa północnych i południowych ziem kontynentu.
+          Połączona mapa północnych i południowych ziem kontynentu. Kliknij mapę, aby ją powiększyć.
         </p>
       </div>
 
@@ -1337,12 +1378,12 @@
           </h1>
         </div>
         <p class="font-serif text-base italic text-stone-400">
-          Testy umiejętności, stopnie trudności, walka, intrygi oraz interaktywna Wieża Kości.
+          Testy umiejętności, stopnie trudności, walka i intrygi.
         </p>
       </div>
 
-      <div class="grid grid-cols-1 gap-8 lg:grid-cols-12">
-        <div class="space-y-6 lg:col-span-8">
+      <div class="mx-auto max-w-5xl">
+        <div class="space-y-6">
           <article class="parchment-card rounded-lg p-6 sm:p-8">
             <div class="mb-3 flex items-center justify-between border-b border-amber-900/20 pb-2">
               <h2 class="font-display text-xl font-bold text-stone-900">
@@ -1418,99 +1459,6 @@
           </article>
         </div>
 
-        <aside class="lg:col-span-4">
-          <div class="sticky top-20 rounded-lg border border-amber-500/40 bg-gradient-to-b from-stone-900/95 to-stone-950/95 p-6 shadow-2xl">
-            <div class="mb-4 flex items-center justify-between border-b border-amber-500/20 pb-3">
-              <div>
-                <div class="font-display text-[11px] font-bold tracking-[0.2em] text-amber-400">
-                  SYMULATOR RZUTÓW
-                </div>
-                <h2 class="font-display text-xl font-bold text-amber-100">
-                  Wieża Kości
-                </h2>
-              </div>
-              <span class="text-2xl">🎲</span>
-            </div>
-
-            <div class="space-y-4">
-              <div>
-                <label class="mb-1.5 block font-display text-xs font-bold tracking-wider text-stone-300">
-                  RODZAJ KOŚCI
-                </label>
-                <div class="grid grid-cols-3 gap-2" id="dice-type-buttons">
-                  <button type="button" data-sides="4" onclick="selectDice(4)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k4</button>
-                  <button type="button" data-sides="6" onclick="selectDice(6)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k6</button>
-                  <button type="button" data-sides="8" onclick="selectDice(8)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k8</button>
-                  <button type="button" data-sides="10" onclick="selectDice(10)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k10</button>
-                  <button type="button" data-sides="12" onclick="selectDice(12)" class="dice-opt rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k12</button>
-                  <button type="button" data-sides="20" onclick="selectDice(20)" class="dice-opt rounded border border-amber-400 bg-amber-900/40 py-2 font-display text-xs font-bold text-amber-200">k20</button>
-                  <button type="button" data-sides="100" onclick="selectDice(100)" class="dice-opt col-span-3 rounded border border-amber-500/30 bg-stone-900 py-2 font-display text-xs font-bold text-stone-200 hover:border-amber-400">k100 (Procentowa)</button>
-                </div>
-              </div>
-
-              <div class="grid grid-cols-2 gap-3">
-                <div>
-                  <label for="dice-mod" class="mb-1 block font-display text-xs font-bold tracking-wider text-stone-300">
-                    MODYFIKATOR
-                  </label>
-                  <input
-                    id="dice-mod"
-                    type="number"
-                    value="0"
-                    class="w-full rounded border border-amber-500/35 bg-stone-950 px-3 py-2 font-display text-sm font-bold text-amber-100 focus:border-amber-400 focus:outline-none"
-                  />
-                </div>
-                <div>
-                  <label for="dice-dc" class="mb-1 block font-display text-xs font-bold tracking-wider text-stone-300">
-                    ST (OPCJONALNIE)
-                  </label>
-                  <input
-                    id="dice-dc"
-                    type="number"
-                    placeholder="np. 15"
-                    class="w-full rounded border border-amber-500/35 bg-stone-950 px-3 py-2 font-display text-sm font-bold text-amber-100 placeholder-stone-600 focus:border-amber-400 focus:outline-none"
-                  />
-                </div>
-              </div>
-
-              <button
-                type="button"
-                onclick="rollDiceTower()"
-                class="w-full rounded border border-amber-400/70 bg-gradient-to-b from-red-800 to-red-950 py-3 font-display text-sm font-bold tracking-widest text-amber-100 shadow-lg transition hover:from-red-700 hover:to-red-950"
-              >
-                RZUĆ KOŚCIĄ
-              </button>
-
-              <div id="dice-result-box" class="rounded border border-amber-500/25 bg-stone-950/90 p-4 text-center">
-                <div class="font-display text-xs tracking-widest text-stone-400">OSTATNI WYNIK</div>
-                <div id="dice-total" class="my-1 font-display text-4xl font-extrabold text-amber-300">—</div>
-                <div id="dice-breakdown" class="font-body text-sm text-stone-400">
-                  Wybierz kość i kliknij „Rzuć kością”.
-                </div>
-              </div>
-
-              <div class="space-y-2">
-                <div class="flex items-center justify-between">
-                  <span class="font-display text-xs font-bold tracking-wider text-stone-400">
-                    OSTATNIE RZUTY
-                  </span>
-                  <button
-                    type="button"
-                    onclick="clearDiceHistory()"
-                    class="font-display text-[11px] text-stone-500 hover:text-amber-300"
-                  >
-                    WYCZYŚĆ
-                  </button>
-                </div>
-                <ul id="dice-history" class="space-y-1.5 text-sm text-stone-300">
-                  <li class="rounded bg-stone-900/70 px-3 py-1.5 text-xs italic text-stone-500">
-                    Brak wykonanych rzutów.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </aside>
       </div>
     </section>
 
@@ -1646,7 +1594,8 @@
       }
     ];
 
-    const HOUSES = [
+    
+    const HOUSES_GREAT = [
       {
         name: 'Targaryen',
         words: 'Ogień i Krew',
@@ -1729,7 +1678,7 @@
       },
       {
         name: 'Lannister',
-        words: 'Słysz Ryk! (nieoficjalne: Lannister zawsze spłaca swoje długi)',
+        words: 'Słysz Ryk!',
         seat: 'Casterly Rock',
         region: 'Zachód',
         sigil: 'Złoty lew wspięty na karmazynowym polu',
@@ -1792,6 +1741,159 @@
         ]
       }
     ];
+
+    
+    const HOUSES_MINOR = [
+  {
+    "name": "Harte’ów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W popielicowym polu na białym skosie trzy czerwone głowy jeleni",
+    "description": "Ród Harte’ów jest małą rodziną szlachecką z Włości Korony. Ser Elwood Harte jest znanym rycerzem służącym królowi."
+  },
+  {
+    "name": "Hayfordów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W złotym polu z zielonym kratowaniem zielona rzeka w słup",
+    "description": "Ród Hayfordów kontroluje zamek oddalony od Królewskiej Przystani o zaledwie pół dnia jazdy na północ Królewskim Traktem. Jeden z lordów Hayford był niegdyś wprawnym i kompetentnym Namiestnikiem króla Daerona II Targaryena; zginął podczas Buntu Blackfyre’ów."
+  },
+  {
+    "name": "Hoggów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "seat": "Róg Maciory",
+    "description": "Ród Hoggów jest małą rodziną szlachecką z Włości Korony; ser Roger Hogg służy jako Rycerz Rogu Maciory."
+  },
+  {
+    "name": "Hollardów",
+    "size": "Wymarły",
+    "region": "Włości Korony",
+    "seat": "Brak",
+    "lands": "Brak",
+    "sigil": "Tarcza w pasy czerwone i różowe, w niebieskiej głowicy trzy złote krony",
+    "description": "Ród Hollardów służył niegdyś Darklynom z Duskendale i od czasów ich rządów należał do ich najbliższych sojuszników. Udział w Buncie Darklynów doprowadził do upadku i wybicia tego rodu. Ich ziemie przepadły, zamek został zburzony, a nazwisko pozbawione szlachectwa. Jedynym żyjącym członkiem rodu jest ser Dontos Hollard, zwany też Dontosem Czerwonym; jest on słynnym pijakiem i częstym bywalcem Królewskiej Przystani."
+  },
+  {
+    "name": "Kettleblacków",
+    "size": "Błędni rycerze",
+    "region": "Włości Korony",
+    "seat": "Brak",
+    "lands": "Brak",
+    "sigil": "W otoku na czerwonym polu czarny kocioł",
+    "description": "Kettleblackowie to rodzina błędnych rycerzy i najemników. Nie posiadają oni we Włościach Korony żadnych ziem, lecz często znaleźć ich można w służbie u różnych lordów. Seniorem rodziny jest Oswell Kettleblack; choć jest stary, wciąż dysponuje wielką siłą i potężnym głosem. Ma co najmniej trzech synów, którzy prześcigają się w ambicji: Osmunda, Osfryda i Osneya."
+  },
+  {
+    "name": "Langwardów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W bordowo-czarnym polu falowanym w pas trzy białe gwiazdy",
+    "description": "Ród Langwardów jest małą rodziną szlachecką z Włości Korony."
+  },
+  {
+    "name": "Mallerych",
+    "size": "Małe",
+    "region": "Westeros",
+    "sigil": "W fioletowym polu sześć białych gwiazd pięcioramiennych w klin",
+    "description": "Ród Mallerych jest małą rodziną, o której niewiele wiadomo; obecnym seniorem jest często goszczący na dworze króla Roberta lord Lothar Mallery."
+  },
+  {
+    "name": "Manningów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W białym polu czerwony lew morski pomiędzy dwoma czarnymi słupami",
+    "description": "Ród Manningów jest małą rodziną szlachecką z Włości Korony."
+  },
+  {
+    "name": "Masseyów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "seat": "Stonedance",
+    "lands": "Hak Masseya",
+    "sigil": "W błękitnym polu srebrny hak rybacki nad trzema białymi falami",
+    "sigilNote": "Herb dopisany na potrzeby kampanii (w materiałach źródłowych brak własnego herbu).",
+    "description": "Ród Masseyów włada długim półwyspem zwanym Hakiem Masseya, który rozciąga się na południe od Smoczej Skały i na północny wschód od Królewskiego Lasu. Ich siedzibą jest znajdujący się tam zamek Stonedance. Wallace Massey jest zarządcą w Nocnej Straży i giermkiem ser Denysa Mallistera, podczas gdy ser Justin Massey służy lady Selyse."
+  },
+  {
+    "name": "Pyle’ów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W białym polu żelazny hełm garnczkowy",
+    "description": "Ród Pyle’ów jest małą rodziną szlachecką z Włości Korony."
+  },
+  {
+    "name": "Pyne’ów",
+    "size": "Małe",
+    "region": "Szczypcowy Przylądek",
+    "lands": "Szczypcowy Przylądek",
+    "description": "Ród Pyne’ów jest jedną z wielu rodzin szlacheckich mających ziemie na Szczypcowym Przylądku. Jeden z jego członków służył niegdyś w Gwardii Królewskiej."
+  },
+  {
+    "name": "Rambtonów",
+    "size": "Małe",
+    "region": "Westeros",
+    "sigil": "W czerwonym polu biała głowa barana o złotych rogach",
+    "description": "Ród Rambtonów jest pomniejszą rodziną blisko związaną z Baratheonami. Ser Hubard Rambton jest jednym z najbardziej oddanych ludzi Stannisa, znanym ze swej pobożności. Ma trzech dorosłych synów; wszyscy są równie oddani Wierze."
+  },
+  {
+    "name": "Rollingfordów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "sigil": "W szarym polu sześć okrągłych fontann w klin",
+    "description": "Ród Rollingfordów jest małą rodziną szlachecką z Włości Korony."
+  },
+  {
+    "name": "Rosbych",
+    "size": "Duże",
+    "region": "Włości Korony",
+    "seat": "Rosby",
+    "sigil": "W gronostajowym polu trzy czerwone krokwie",
+    "description": "Ziemie i zamek rodu Rosbych znajdują się tuż na północ od Królewskiej Przystani, a lord Rosby jest częstym gościem dworu królewskiego. Jego córka, Bethany, była szóstą żoną lorda Waldera Freya i dała mu pięciu dziedziców. Lord Gyles Rosby jest starym i schorowanym człowiekiem, kolejnym w długiej linii słabowitych seniorów rodu. Bez przerwy kaszle, choć nie odbiera mu to miejsca na dworze króla Roberta. Jego ród jest wystarczająco bogaty i znaczący, aby zatrudniać maestera Melwysa."
+  },
+  {
+    "name": "Wendwaterów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "lands": "Wendwater",
+    "words": "O każdej porze roku",
+    "sigil": "W białym polu odwrócony karbowany zielony roztrój rozdzielający zielone, czerwone i bezlistne drzewo",
+    "description": "Ród Wendwaterów włada ziemiami wzdłuż rzeki Wendwater, szlaku wodnego płynącego przez Królewski Las na południe od Królewskiej Przystani."
+  },
+  {
+    "name": "Rykkerów",
+    "size": "Duże",
+    "region": "Włości Korony",
+    "seat": "Brunatny Fort",
+    "lands": "Duskendale",
+    "sigil": "W niebieskim polu na białym krzyżu ukośnym dwa czarne skrzyżowane młoty rycerskie",
+    "description": "Ród Rykkerów znacznie zyskał na spiskach i zdradzie rodu Darklynów – po nieudanym Buncie Duskendale, podczas którego Darklynowie porwali króla Aerysa II, lojalność Rykkerów nagrodzona została ziemiami zdrajców."
+  },
+  {
+    "name": "Stauntonów",
+    "size": "Małe",
+    "region": "Włości Korony",
+    "seat": "Rook’s Rest",
+    "sigil": "W czarno-szarej szachownicy na białym pasie dwa czarne skrzydła",
+    "description": "Ród Stauntonów jest małą rodziną szlachecką z Włości Korony."
+  },
+  {
+    "name": "Stokeworthów",
+    "size": "Duże",
+    "region": "Włości Korony",
+    "seat": "Stokeworth",
+    "words": "Dumni z wierności",
+    "sigil": "W zielonym polu białe jagnię dzierżące złoty kielich",
+    "description": "Ród Stokeworthów włada ziemiami i zamkiem leżącymi na północ od Królewskiej Przystani. Lady Tanda Stokeworth jest stałym gościem stolicy, podobnie jak jej córka, lady Lollys. Starsza córka lady Tandy, Falyse, jest żoną lorda Byrcha z rodu Byrchów. Stokeworthowie zatrudniają pulchnego, rudego maestera imieniem Frenken."
+  },
+  {
+    "name": "Thorne’ów",
+    "size": "Małe",
+    "region": "Westeros",
+    "sigil": "W czerwonym polu o czarnym promienistym skraju srebrny korbacz",
+    "description": "Ród Thorne’ów był istotnym stronnikiem rodu Targaryenów podczas Wojny Uzurpatora. Alliser Thorne, obecny mistrz miecza Czarnego Zamku, był jednym z najgorliwszych rycerzy w służbie Aerysa II; po przegraniu wojny zmuszony został przez lorda Tywina Lannistera do przywdziania czerni. Po wojnie znaczenie rodu jest znikome."
+  }
+];
+    const HOUSES = HOUSES_GREAT.map((h) => ({ size: 'Wielkie', ...h })).concat(HOUSES_MINOR);
 
     const CHARACTERS = [
       {
@@ -1872,14 +1974,11 @@
       }
     ];
 
-    const VALID_TABS = ['home', 'intro', 'history', 'characters', 'houses', 'map', 'rules'];
-    const STEP1_STORAGE_KEY = 'kroniki_westeros_char_step1_v1';
-    const DEFAULT_STEP1_HOUSE = 'Stark';
+    
+    const VALID_TABS = ['home', 'intro', 'history', 'characters', 'houses', 'laws', 'religion', 'map', 'rules'];
 
     let selectedEraId = ERAS[0].id;
     let selectedHouseName = 'Arryn';
-    let selectedDiceSides = 20;
-    let diceHistory = [];
 
     function getInitialTab() {
       const hashTab = window.location.hash.replace(/^#/, '').trim();
@@ -1918,347 +2017,7 @@
       target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    function getDefaultStep1State() {
-      const defaultHouseObj = HOUSES.find((h) => h.name === DEFAULT_STEP1_HOUSE) || HOUSES[0];
-      return {
-        selectedHouse: DEFAULT_STEP1_HOUSE,
-        customHouse: '',
-        lands: defaultHouseObj ? defaultHouseObj.region : 'Północ',
-        notes: '',
-        confirmed: false,
-        updatedAt: null
-      };
-    }
-
-    function readStep1Storage() {
-      try {
-        const raw = localStorage.getItem(STEP1_STORAGE_KEY);
-        if (!raw) return getDefaultStep1State();
-        const parsed = JSON.parse(raw);
-        return {
-          ...getDefaultStep1State(),
-          ...parsed
-        };
-      } catch (e) {
-        return getDefaultStep1State();
-      }
-    }
-
-    function writeStep1Storage(state) {
-      try {
-        localStorage.setItem(STEP1_STORAGE_KEY, JSON.stringify(state));
-      } catch (e) {}
-    }
-
-    function populateStep1HouseSelect() {
-      const select = document.getElementById('step1-house-select');
-      if (!select) return;
-
-      const houseOptions = HOUSES.map((h) => {
-        const isDefault = h.name === DEFAULT_STEP1_HOUSE;
-        const label = isDefault
-          ? `Ród ${h.name} (Domyślny) — ${h.region}`
-          : `Ród ${h.name} — ${h.region}`;
-        return `<option value="${h.name}">${label}</option>`;
-      }).join('');
-
-      select.innerHTML =
-        houseOptions +
-        '<option value="CUSTOM">✦ Własny ród / nazwisko rodowe (wpisz poniżej)</option>';
-    }
-
-    function initStep1Creator() {
-      populateStep1HouseSelect();
-      const state = readStep1Storage();
-
-      const select = document.getElementById('step1-house-select');
-      const customInput = document.getElementById('step1-custom-house');
-      const landsInput = document.getElementById('step1-lands');
-      const notesInput = document.getElementById('step1-notes');
-
-      if (select) {
-        const validValues = [...HOUSES.map((h) => h.name), 'CUSTOM'];
-        select.value = validValues.includes(state.selectedHouse)
-          ? state.selectedHouse
-          : DEFAULT_STEP1_HOUSE;
-      }
-      if (customInput) customInput.value = state.customHouse || '';
-      if (landsInput) landsInput.value = state.lands || '';
-      if (notesInput) notesInput.value = state.notes || '';
-
-      updateStep1CustomVisibility();
-      renderStep1Preview(state);
-      updateStep1StatusUI(state);
-    }
-
-    function updateStep1CustomVisibility() {
-      const select = document.getElementById('step1-house-select');
-      const customWrap = document.getElementById('step1-custom-house-wrap');
-      if (!select || !customWrap) return;
-
-      customWrap.classList.toggle('hidden', select.value !== 'CUSTOM');
-    }
-
-    function handleStep1HouseChange() {
-      const select = document.getElementById('step1-house-select');
-      const landsInput = document.getElementById('step1-lands');
-      updateStep1CustomVisibility();
-
-      if (select && select.value !== 'CUSTOM' && landsInput && !landsInput.value.trim()) {
-        const h = HOUSES.find((item) => item.name === select.value);
-        if (h) landsInput.value = h.region;
-      }
-
-      saveStep1Progress(false);
-    }
-
-    function applyQuickLand(regionName) {
-      const landsInput = document.getElementById('step1-lands');
-      if (!landsInput) return;
-      landsInput.value = regionName;
-      saveStep1Progress(false);
-    }
-
-    function collectStep1FormState(confirmed = false) {
-      const prev = readStep1Storage();
-      const selectedHouse = document.getElementById('step1-house-select')?.value || DEFAULT_STEP1_HOUSE;
-      const customHouse = document.getElementById('step1-custom-house')?.value || '';
-      const lands = document.getElementById('step1-lands')?.value || '';
-      const notes = document.getElementById('step1-notes')?.value || '';
-
-      return {
-        selectedHouse,
-        customHouse,
-        lands,
-        notes,
-        confirmed: confirmed ? true : Boolean(prev.confirmed),
-        updatedAt: new Date().toLocaleTimeString('pl-PL', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit'
-        })
-      };
-    }
-
-    function saveStep1Progress(markConfirmed = false) {
-      const state = collectStep1FormState(markConfirmed);
-      writeStep1Storage(state);
-      renderStep1Preview(state);
-      updateStep1StatusUI(state);
-    }
-
-    function useDefaultStep1() {
-      const defaultHouseObj = HOUSES.find((h) => h.name === DEFAULT_STEP1_HOUSE) || HOUSES[0];
-      const state = {
-        selectedHouse: DEFAULT_STEP1_HOUSE,
-        customHouse: '',
-        lands: defaultHouseObj ? defaultHouseObj.region : 'Północ',
-        notes: 'Wybrano ród domyślny / pominięto własne doprecyzowanie.',
-        confirmed: true,
-        updatedAt: new Date().toLocaleTimeString('pl-PL', {
-          hour: '2-digit',
-          minute: '2-digit',
-          second: '2-digit'
-        })
-      };
-
-      const select = document.getElementById('step1-house-select');
-      const customInput = document.getElementById('step1-custom-house');
-      const landsInput = document.getElementById('step1-lands');
-      const notesInput = document.getElementById('step1-notes');
-
-      if (select) select.value = state.selectedHouse;
-      if (customInput) customInput.value = state.customHouse;
-      if (landsInput) landsInput.value = state.lands;
-      if (notesInput) notesInput.value = state.notes;
-
-      updateStep1CustomVisibility();
-      writeStep1Storage(state);
-      renderStep1Preview(state);
-      updateStep1StatusUI(state);
-    }
-
-    function confirmStep1() {
-      saveStep1Progress(true);
-    }
-
-    function updateStep1StatusUI(state) {
-      const statusEl = document.getElementById('step1-save-status');
-      const bannerEl = document.getElementById('step1-confirm-banner');
-      const hintEl = document.getElementById('step1-default-hint');
-
-      if (hintEl) {
-        hintEl.textContent = `Domyślna propozycja na start: Ród ${DEFAULT_STEP1_HOUSE}. Możesz wybrać dowolny ród lub wpisać własny.`;
-      }
-
-      if (statusEl) {
-        statusEl.textContent = state.updatedAt
-          ? `Zapisano lokalnie (${state.updatedAt})`
-          : 'Gotowe — postęp zapisuje się automatycznie';
-      }
-
-      if (bannerEl) {
-        if (state.confirmed) {
-          const houseDisplay =
-            state.selectedHouse === 'CUSTOM'
-              ? state.customHouse.trim() || 'Własny ród / nazwisko (do wpisania)'
-              : `Ród ${state.selectedHouse}`;
-          const landsDisplay = state.lands.trim() || 'nieokreślone ziemie';
-          bannerEl.textContent = `Krok 1 zapisany: ${houseDisplay} • Ziemie: ${landsDisplay}. Dane pozostaną po odświeżeniu strony.`;
-          bannerEl.classList.remove('hidden');
-        } else {
-          bannerEl.classList.add('hidden');
-        }
-      }
-    }
-
-    function renderStep1Preview(state) {
-      const previewEl = document.getElementById('step1-preview');
-      if (!previewEl) return;
-
-      const landsText = state.lands.trim() || 'Nie wpisano jeszcze konkretnych ziem.';
-      const notesText = state.notes.trim();
-
-      if (state.selectedHouse === 'CUSTOM') {
-        const customName = state.customHouse.trim() || 'Własny ród / nazwisko';
-        previewEl.innerHTML = `
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-            PODGLĄD KROKU 1 • WŁASNY RÓD / NAZWISKO
-          </div>
-          <h3 class="font-display text-2xl font-bold text-amber-100">
-            ${customName}
-          </h3>
-          <p class="font-serif text-base italic text-stone-300">
-            Autorska przynależność, nazwisko lub bękart wykreowany przez gracza.
-          </p>
-          <div class="space-y-1.5 rounded border border-amber-500/20 bg-stone-900/80 p-3.5 text-sm text-stone-200">
-            <div><strong class="font-display text-xs text-amber-300">Ziemie:</strong> ${landsText}</div>
-            ${
-              notesText
-                ? `<div><strong class="font-display text-xs text-amber-300">Szczegóły:</strong> ${notesText}</div>`
-                : ''
-            }
-          </div>
-        `;
-        return;
-      }
-
-      const house = HOUSES.find((h) => h.name === state.selectedHouse) || HOUSES[0];
-      previewEl.innerHTML = `
-        <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-          PODGLĄD KROKU 1 • ${house.region.toUpperCase()}
-        </div>
-        <h3 class="font-display text-2xl font-bold text-amber-100">
-          Ród ${house.name}
-        </h3>
-        <p class="font-serif text-base italic text-amber-300">
-          „${house.words}”
-        </p>
-        <p class="font-body text-sm leading-relaxed text-stone-300">
-          ${house.description}
-        </p>
-        <div class="space-y-1.5 rounded border border-amber-500/20 bg-stone-900/80 p-3.5 text-sm text-stone-200">
-          <div><strong class="font-display text-xs text-amber-300">Siedziba rodu:</strong> ${house.seat}</div>
-          <div><strong class="font-display text-xs text-amber-300">Ziemie pochodzenia:</strong> ${landsText}</div>
-          ${
-            notesText
-              ? `<div><strong class="font-display text-xs text-amber-300">Szczegóły:</strong> ${notesText}</div>`
-              : ''
-          }
-        </div>
-      `;
-    }
-
-    function selectHouseForSpotlight(houseName) {
-      const exists = HOUSES.some((h) => h.name === houseName);
-      if (exists) {
-        selectedHouseName = houseName;
-      }
-      renderHouseSpotlight();
-      renderHouses();
-
-      const spotlight = document.getElementById('house-history-spotlight');
-      if (spotlight) {
-        spotlight.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-
-    function renderHouseSpotlight() {
-      const container = document.getElementById('house-history-spotlight');
-      if (!container) return;
-
-      const house = HOUSES.find((h) => h.name === selectedHouseName) || HOUSES[0];
-      const relatedChars = CHARACTERS.filter((c) => c.house === house.name);
-
-      container.innerHTML = `
-        <article class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
-          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-          <div class="relative z-10 space-y-5">
-            <div class="flex flex-col justify-between gap-3 border-b border-amber-900/25 pb-4 md:flex-row md:items-center">
-              <div>
-                <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
-                  KRONIKA RODU • ${house.region.toUpperCase()}
-                </div>
-                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
-                  Ród ${house.name}
-                </h2>
-                <p class="font-serif text-lg italic font-semibold text-red-950">
-                  „${house.words}”
-                </p>
-              </div>
-              <div class="rounded border border-amber-900/30 bg-amber-50/60 px-4 py-2.5 text-sm text-stone-800">
-                <div><strong class="font-display text-xs text-stone-950">Siedziba:</strong> ${house.seat}</div>
-                <div class="mt-0.5"><strong class="font-display text-xs text-stone-950">Herb:</strong> ${house.sigil}</div>
-              </div>
-            </div>
-
-            <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-lg">
-              ${house.history}
-            </p>
-
-            <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
-              <div class="rounded border border-amber-900/25 bg-amber-50/50 p-5 lg:col-span-7">
-                <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-red-950">
-                  KLUCZOWE WYDARZENIA W DZIEJACH RODU
-                </h3>
-                <ul class="list-disc space-y-2 pl-5 text-base text-stone-800">
-                  ${house.chroniclePoints.map((pt) => `<li>${pt}</li>`).join('')}
-                </ul>
-              </div>
-
-              <div class="rounded border border-amber-900/25 bg-stone-950/90 p-5 text-amber-100 lg:col-span-5">
-                <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-amber-400">
-                  POSTACIE POWIĄZANE Z RODEM
-                </h3>
-                ${
-                  relatedChars.length > 0
-                    ? `<div class="space-y-2.5">
-                        ${relatedChars
-                          .map(
-                            (c) => `
-                          <button
-                            type="button"
-                            onclick="openCharacterModal('${c.id}')"
-                            class="w-full rounded border border-amber-500/25 bg-stone-900/90 p-3 text-left transition hover:border-amber-400"
-                          >
-                            <div class="font-display text-sm font-bold text-amber-200">${c.name}</div>
-                            <div class="font-serif text-xs italic text-stone-400">${c.title}</div>
-                          </button>
-                        `
-                          )
-                          .join('')}
-                      </div>`
-                    : `<p class="font-body text-sm italic text-stone-400">
-                        W rejestrze postaci nie zapisano jeszcze bohaterów tego rodu.
-                      </p>`
-                }
-              </div>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
+    
     function renderHistory() {
       const listEl = document.getElementById('history-era-list');
       const readerEl = document.getElementById('history-reader');
@@ -2328,13 +2087,14 @@
       renderHistory();
     }
 
+    
     function populateCharacterHouseFilter() {
       const select = document.getElementById('char-house-filter');
       if (!select) return;
-      const houses = HOUSES.map((h) => h.name);
+      const used = [...new Set(CHARACTERS.map((c) => c.house))];
       select.innerHTML =
         '<option value="ALL">Wszystkie rody</option>' +
-        houses.map((h) => `<option value="${h}">Ród ${h}</option>`).join('');
+        used.map((h) => `<option value="${h}">Ród ${h}</option>`).join('');
     }
 
     function renderCharacters() {
@@ -2452,16 +2212,6 @@
           </ul>
         </div>
 
-        <div class="flex flex-wrap items-center justify-between gap-3 border-t border-amber-900/20 pt-4">
-          <button
-            type="button"
-            onclick="testCharacterRoll('${char.name}')"
-            class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-4 py-2 font-display text-xs font-bold tracking-wider text-amber-100 shadow hover:from-red-800"
-          >
-            TEST RZUTU k20
-          </button>
-          <span id="char-test-roll" class="font-display text-sm font-bold text-red-950"></span>
-        </div>
       `;
 
       const modal = document.getElementById('char-modal');
@@ -2469,154 +2219,400 @@
       modal.classList.add('flex');
     }
 
-    function testCharacterRoll(name) {
-      const roll = Math.floor(Math.random() * 20) + 1;
-      const el = document.getElementById('char-test-roll');
-      if (el) {
-        el.textContent = `${name} wyrzucił ${roll} na 1k20!`;
-      }
-    }
-
+    
     function closeCharacterModal() {
       const modal = document.getElementById('char-modal');
       modal.classList.add('hidden');
       modal.classList.remove('flex');
     }
 
+    
+    function selectHouseByIndex(i) {
+      if (HOUSES[i]) selectedHouseName = HOUSES[i].name;
+      renderHouseSpotlight();
+      renderHouses();
+      const spotlight = document.getElementById('house-history-spotlight');
+      if (spotlight) spotlight.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function houseFact(label, value) {
+      return value
+        ? `<div><strong class="font-display text-xs text-stone-950">${label}:</strong> ${value}</div>`
+        : '';
+    }
+
+    function renderHouseSpotlight() {
+      const container = document.getElementById('house-history-spotlight');
+      if (!container) return;
+
+      const house = HOUSES.find((h) => h.name === selectedHouseName) || HOUSES[0];
+      const relatedChars = CHARACTERS.filter((c) => c.house === house.name);
+      const hasPoints = Array.isArray(house.chroniclePoints) && house.chroniclePoints.length > 0;
+      const bodyText = house.history || house.description;
+
+      const pointsBox = hasPoints
+        ? `<div class="rounded border border-amber-900/25 bg-amber-50/50 p-5 lg:col-span-7">
+             <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-red-950">
+               KLUCZOWE WYDARZENIA W DZIEJACH RODU
+             </h3>
+             <ul class="list-disc space-y-2 pl-5 text-base text-stone-800">
+               ${house.chroniclePoints.map((pt) => `<li>${pt}</li>`).join('')}
+             </ul>
+           </div>`
+        : '';
+
+      const charsBox = `
+        <div class="rounded border border-amber-900/25 bg-stone-950/90 p-5 text-amber-100 ${hasPoints ? 'lg:col-span-5' : 'lg:col-span-12'}">
+          <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-amber-400">
+            POSTACIE POWIĄZANE Z RODEM
+          </h3>
+          ${
+            relatedChars.length > 0
+              ? `<div class="space-y-2.5">
+                  ${relatedChars
+                    .map(
+                      (c) => `
+                    <button
+                      type="button"
+                      onclick="openCharacterModal('${c.id}')"
+                      class="w-full rounded border border-amber-500/25 bg-stone-900/90 p-3 text-left transition hover:border-amber-400"
+                    >
+                      <div class="font-display text-sm font-bold text-amber-200">${c.name}</div>
+                      <div class="font-serif text-xs italic text-stone-400">${c.title}</div>
+                    </button>`
+                    )
+                    .join('')}
+                </div>`
+              : `<p class="font-body text-sm italic text-stone-400">
+                  W rejestrze postaci nie zapisano jeszcze bohaterów tego rodu.
+                </p>`
+          }
+        </div>`;
+
+      container.innerHTML = `
+        <article class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
+          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
+          <div class="relative z-10 space-y-5">
+            <div class="flex flex-col justify-between gap-3 border-b border-amber-900/25 pb-4 md:flex-row md:items-center">
+              <div>
+                <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
+                  KRONIKA RODU • ${house.region.toUpperCase()} • ZNACZENIE: ${house.size.toUpperCase()}
+                </div>
+                <h2 class="mt-1 font-display text-2xl font-bold text-stone-950 sm:text-3xl">
+                  Ród ${house.name}
+                </h2>
+                ${
+                  house.words
+                    ? `<p class="font-serif text-lg italic font-semibold text-red-950">„${house.words}”</p>`
+                    : ''
+                }
+              </div>
+              <div class="space-y-0.5 rounded border border-amber-900/30 bg-amber-50/60 px-4 py-2.5 text-sm text-stone-800">
+                ${houseFact('Siedziba', house.seat)}
+                ${houseFact('Ziemie', house.lands)}
+                ${houseFact('Herb', house.sigil)}
+                ${house.sigilNote ? `<div class="font-serif text-xs italic text-stone-600">${house.sigilNote}</div>` : ''}
+              </div>
+            </div>
+
+            <p class="${house.history ? 'dropcap ' : ''}text-base leading-relaxed text-stone-800 sm:text-lg">
+              ${bodyText}
+            </p>
+
+            <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
+              ${pointsBox}
+              ${charsBox}
+            </div>
+          </div>
+        </article>
+      `;
+    }
+
     function renderHouses() {
       const grid = document.getElementById('houses-grid');
       if (!grid) return;
 
-      grid.innerHTML = HOUSES.map((h) => {
-        const isSelected = h.name === selectedHouseName;
-        return `
+      const query = (document.getElementById('house-search')?.value || '').trim().toLowerCase();
+      const sizeFilter = document.getElementById('house-size-filter')?.value || 'ALL';
+
+      const filtered = HOUSES.filter((h) => {
+        const haystack = [h.name, h.region, h.seat, h.lands, h.sigil, h.description]
+          .filter(Boolean)
+          .join(' ')
+          .toLowerCase();
+        return (!query || haystack.includes(query)) && (sizeFilter === 'ALL' || h.size === sizeFilter);
+      });
+
+      const countEl = document.getElementById('house-count');
+      if (countEl) countEl.textContent = `Wyświetlono rodów: ${filtered.length} z ${HOUSES.length}`;
+
+      if (filtered.length === 0) {
+        grid.innerHTML = `
+          <div class="col-span-full rounded-lg border border-amber-500/25 bg-stone-950/75 p-8 text-center">
+            <p class="font-serif text-lg italic text-stone-400">Żaden ród nie spełnia wybranych kryteriów.</p>
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = filtered
+        .map((h) => {
+          const isSelected = h.name === selectedHouseName;
+          const idx = HOUSES.indexOf(h);
+          return `
           <article
-            onclick="selectHouseForSpotlight('${h.name}')"
+            onclick="selectHouseByIndex(${idx})"
             class="parchment-card relative flex cursor-pointer flex-col justify-between rounded-lg p-6 transition hover:-translate-y-1 ${
               isSelected ? 'ring-2 ring-red-900/65' : ''
             }"
           >
             <div class="space-y-3">
-              <div class="flex items-center justify-between border-b border-amber-900/20 pb-2">
+              <div class="flex items-center justify-between gap-2 border-b border-amber-900/20 pb-2">
                 <span class="font-display text-xs font-bold tracking-[0.18em] text-red-900">
                   ${h.region.toUpperCase()}
                 </span>
-                <span class="font-display text-xs font-semibold text-stone-700">
-                  ${h.seat}
+                <span class="rounded border border-amber-900/30 bg-amber-950/10 px-2 py-0.5 font-display text-[11px] font-bold tracking-wider text-stone-800">
+                  ${h.size.toUpperCase()}
                 </span>
               </div>
 
-              <h2 class="font-display text-2xl font-bold text-stone-950">
-                Ród ${h.name}
-              </h2>
+              <h2 class="font-display text-2xl font-bold text-stone-950">Ród ${h.name}</h2>
 
-              <p class="font-serif text-base italic font-semibold text-red-950">
-                „${h.words}”
-              </p>
+              ${h.words ? `<p class="font-serif text-base italic font-semibold text-red-950">„${h.words}”</p>` : ''}
 
-              <p class="text-sm text-stone-700">
-                <strong class="font-display text-xs uppercase tracking-wider text-stone-900">Herb:</strong> ${h.sigil}
-              </p>
+              <div class="space-y-0.5 text-sm text-stone-700">
+                ${h.seat ? `<p><strong class="font-display text-xs uppercase tracking-wider text-stone-900">Siedziba:</strong> ${h.seat}</p>` : ''}
+                ${h.lands ? `<p><strong class="font-display text-xs uppercase tracking-wider text-stone-900">Ziemie:</strong> ${h.lands}</p>` : ''}
+                ${h.sigil ? `<p><strong class="font-display text-xs uppercase tracking-wider text-stone-900">Herb:</strong> ${h.sigil}</p>` : ''}
+              </div>
 
-              <p class="text-base leading-relaxed text-stone-800">
-                ${h.description}
-              </p>
+              <p class="line-clamp-4 text-base leading-relaxed text-stone-800">${h.description}</p>
             </div>
 
             <div class="mt-5 flex items-center justify-between border-t border-amber-900/20 pt-3 font-display text-xs font-bold tracking-wider text-red-950">
-              <span>${isSelected ? 'WYBRANY W KRONICE' : 'ZOBACZ HISTORIĘ RODU'}</span>
+              <span>${isSelected ? 'WYBRANY W KRONICE' : 'ZOBACZ KRONIKĘ RODU'}</span>
               <span>↑</span>
             </div>
-          </article>
-        `;
-      }).join('');
-    }
-
-    function selectDice(sides) {
-      selectedDiceSides = sides;
-      document.querySelectorAll('.dice-opt').forEach((btn) => {
-        const active = Number(btn.dataset.sides) === sides;
-        btn.classList.toggle('border-amber-400', active);
-        btn.classList.toggle('bg-amber-900/40', active);
-        btn.classList.toggle('text-amber-200', active);
-        btn.classList.toggle('border-amber-500/30', !active);
-        btn.classList.toggle('bg-stone-900', !active);
-        btn.classList.toggle('text-stone-200', !active);
-      });
-    }
-
-    function rollDiceTower() {
-      const raw = Math.floor(Math.random() * selectedDiceSides) + 1;
-      const mod = parseInt(document.getElementById('dice-mod')?.value || '0', 10) || 0;
-      const dcRaw = document.getElementById('dice-dc')?.value;
-      const dc = dcRaw !== '' && dcRaw !== undefined ? parseInt(dcRaw, 10) : null;
-      const total = raw + mod;
-
-      const totalEl = document.getElementById('dice-total');
-      const breakdownEl = document.getElementById('dice-breakdown');
-
-      const modText = mod > 0 ? ` + ${mod}` : mod < 0 ? ` - ${Math.abs(mod)}` : '';
-      let outcomeText = `1k${selectedDiceSides} (${raw})${modText}`;
-
-      if (dc !== null && !Number.isNaN(dc)) {
-        const success = total >= dc;
-        outcomeText += ` vs ST ${dc} — ${success ? 'SUKCES' : 'PORAŻKA'}`;
-      }
-
-      if (totalEl) totalEl.textContent = String(total);
-      if (breakdownEl) breakdownEl.textContent = outcomeText;
-
-      diceHistory.unshift({
-        summary: `${outcomeText} = ${total}`
-      });
-      diceHistory = diceHistory.slice(0, 5);
-      renderDiceHistory();
-    }
-
-    function renderDiceHistory() {
-      const list = document.getElementById('dice-history');
-      if (!list) return;
-
-      if (diceHistory.length === 0) {
-        list.innerHTML =
-          '<li class="rounded bg-stone-900/70 px-3 py-1.5 text-xs italic text-stone-500">Brak wykonanych rzutów.</li>';
-        return;
-      }
-
-      list.innerHTML = diceHistory
-        .map(
-          (entry) =>
-            `<li class="rounded border border-amber-500/15 bg-stone-900/80 px-3 py-1.5 font-body text-sm text-amber-100">${entry.summary}</li>`
-        )
+          </article>`;
+        })
         .join('');
     }
 
-    function clearDiceHistory() {
-      diceHistory = [];
-      renderDiceHistory();
-      const totalEl = document.getElementById('dice-total');
-      const breakdownEl = document.getElementById('dice-breakdown');
-      if (totalEl) totalEl.textContent = '—';
-      if (breakdownEl) breakdownEl.textContent = 'Wybierz kość i kliknij „Rzuć kością”.';
+    /* ===== Zwyczaje i Prawa oraz Religia ===== */
+    const acc = (groups) => groups.map((g, i) => `
+    <details ${i ? "" : "open"} class="parchment-card mb-4 rounded-lg p-5 sm:p-6">
+      <summary class="cursor-pointer font-display text-lg font-bold text-stone-900">${g.t}</summary>
+      <ul class="mt-3 list-disc space-y-2 pl-5 text-base leading-relaxed text-stone-800 sm:text-lg">
+        ${g.p.map((x) => `<li>${x}</li>`).join("")}
+      </ul>
+    </details>`).join("");
+
+  window.filterDetails = function (input, id) {
+    const q = input.value.trim().toLowerCase();
+    document.querySelectorAll("#" + id + " details").forEach((d) => {
+      let any = false;
+      const titleHit = q && d.querySelector("summary").textContent.toLowerCase().includes(q);
+      d.querySelectorAll("li").forEach((li) => {
+        const m = !q || titleHit || li.textContent.toLowerCase().includes(q);
+        li.style.display = m ? "" : "none";
+        if (m) any = true;
+      });
+      d.style.display = any ? "" : "none";
+      if (q && any) d.open = true;
+    });
+  };
+
+  /* ---------- 2. Zwyczaje i Prawa ---------- */
+  const LAWS = [
+    { t: "Władza i status", p: [
+      "Władza pochodzi od króla, który otrzymuje ją od bogów — dawnych i nowych.",
+      "Szlachta ma więcej praw i obowiązków niż pospólstwo; jej status zależy od urodzenia.",
+      "Osoby o wyższej pozycji społecznej mają większe prawa i wpływy niż te o niższej.",
+      "Mężczyźni mają większe prawa niż kobiety — <strong>wyjątek: Dorne</strong>, gdzie decyduje starszeństwo, nie płeć."
+    ]},
+    { t: "Dziedziczenie i bękarci", p: [
+      "Dzieci szlachciców dziedziczą te same prawa co rodzice, o ile nie urodziły się poza małżeństwem.",
+      "Dziedziczenie jest dla szlachty kluczowe. Prawowitymi następcami są pierworodni synowie, po nich ich bracia. Siostry — niezależnie od kolejności urodzenia — dziedziczą wyłącznie, gdy zabraknie braci.",
+      "Bękarci (naturalne dzieci) mogą być uznani przez rodziców, a w szczególnych sytuacjach nawet dziedziczyć; zwykle jednak prawowite rodzeństwo ma pierwszeństwo w każdej kwestii.",
+      "Bękarci często spotykają się z nieufnością i uprzedzeniami — uważa się ich za zrodzonych z „żądzy i kłamstw”. Bękarci szlachty noszą nazwiska zależne od regionu, z którego pochodzą."
+    ]},
+    { t: "Władza lorda, sprawiedliwość i kary", p: [
+      "Lord danych ziem ma na nich największą władzę i stanowi o prawie: utrzymuje pokój, wysłuchuje próśb, wymierza królewską sprawiedliwość i nakłada kary — w imieniu suwerena i króla.",
+      "Kary obejmują okaleczenie, śmierć oraz odebranie ziemi, bogactwa i tytułów.",
+      "<strong>Przywdzianie czerni:</strong> przymusowa służba na Murze. Po dołączeniu do Nocnej Straży wszystkie winy zostają wybaczone, lecz oznacza to utratę ziem i praw (włącznie z prawem do małżeństwa) i dożywotnią służbę. Kobietom nie wolno przywdziewać czerni.",
+      "<strong>„Ciemnica i szubienica”:</strong> królewskie prawo lordów do wtrącania poddanych do lochu i zarządzania egzekucji, jeśli przestępstwo to uzasadnia. Rycerze na włościach mogą wymierzać sprawiedliwość, ale nie mają tego prawa.",
+      "<strong>Zwyczaj Pierwszych Ludzi:</strong> kto skazuje poddanego, powinien spojrzeć mu w oczy, wysłuchać ostatnich słów i osobiście wykonać wyrok. Północ nadal to kultywuje; na południu wielu lordów zatrudnia katów, np. Królewskiego Kata.",
+      "Złodziej może stracić rękę, gwałciciel zostać wykastrowany, drobniejsze przestępstwa karze się chłostą.",
+      "Egzekucje wykonuje się szubienicą, toporem lub mieczem; okrutni lordowie używają <strong>„wroniej klatki”</strong> — żelaznej klatki, w której skazaniec zamknięty bez wody i jedzenia umiera, dziobany przez wrony.",
+      "Król może ułaskawić dowolnego przestępcę. Robert oszczędził tak wielu lordów, którzy w czasie wojny pozostali lojalni Targaryenom.",
+      "Oskarżony lord może zażądać <strong>próby walki</strong> albo <strong>próby lordów</strong>, podczas której kilku szlachciców zapoznaje się z faktami i wygłasza wyrok."
+    ]},
+    { t: "Prawo gościnności", p: [
+      "Tradycja sięgająca czasów Pierwszych Ludzi: nikomu, kto zjadł posiłek przy stole gospodarza, nie wolno wyrządzić krzywdy, dopóki nie opuści jego progów.",
+      "Zwyczajowo gość może poprosić o <strong>chleb i sól</strong>; osoby nieufne wobec gospodarzy robią to czasem tuż po przybyciu.",
+      "Karą za złamanie tej zasady jest — jak mówią — przekleństwo bogów."
+    ]},
+    { t: "Dorosłość, małżeństwo i ślub", p: [
+      "Pełnoletność osiąga się w wieku <strong>16 lat</strong>; wcześniej młodzieniec bywa „prawie dorosłym mężczyzną”. Dla dziewcząt ważna jest też pierwsza „miesięczna krew” — szlachcianki często przechodzą ją młodziej.",
+      "Ślubów raczej nie zawiera się przed dorosłością, choć żadne prawo tego nie zakazuje. Szlachta często zaręcza dzieci bardzo młodo, a małżeństwo przed 16. rokiem życia bywa konieczne z powodów politycznych (np. dziedziczenia). Małżeństwa nie konsumuje się przed pierwszą krwią panny młodej — uznano by to za perwersję i obrazę bogów.",
+      "Wyznawcom Siedmiu ślubu udzielają septoni; czczący dawnych bogów składają przysięgi przed czardrzewem.",
+      "Nie można zmusić do ślubu kogoś, kto odmawia przysięgi, ale presja rodziny bywa silna, zdarzają się też groźby użycia siły.",
+      "Małżeństwo można unieważnić, szczególnie jeśli nie zostało skonsumowane."
+    ]},
+    { t: "Wychowankowie i zakładnicy", p: [
+      "Sojusze rodów zawiera się często przez wzięcie na wychowanie synów innego lorda w wieku 8–9 lat, aż do osiągnięcia dojrzałości. Chłopcy służą jako paziowie lub giermkowie i często zaprzyjaźniają się z rodziną gospodarzy.",
+      "Zakładnicy są podobni do wychowanków, lecz w rzeczywistości gwarantują umowy polityczne. Mogą być dobrze traktowani, ale prawdziwy charakter ich pobytu nigdy nie zostaje zapomniany."
+    ]}
+  ];
+
+  /* ---------- 3. Religia ---------- */
+  const RELIGION = [
+    { t: "Wiara i przesądy", p: [
+      "Większość mieszkańców Westeros wierzy w jakichś bogów, choć istnieje wiele uznanych religii. Wiara i przesądy wpływają na życie lordów i pospólstwa oraz na ich zwyczaje i tradycje.",
+      "Dzieciom opowiada się bajki o snarkach i grumkinach oraz straszniejszych potworach, takich jak Inni, którzy zabiorą je, jeśli będą niegrzeczne. Większość z tych opowieści wyrasta, lecz niedawno nad światem latały smoki — kto wie, co kryje dzika głusza?"
+    ]},
+    { t: "Siedmiu (Wiara Siedmiu)", p: [
+      "Najbardziej rozpowszechniona religia — andalska wiara w Siedmiu. Zwani „nowymi bogami”, choć ich kult dotarł do Westeros <strong>sześć tysięcy lat temu</strong>. To siedem aspektów jednego stwórcy; pospólstwo uważa ich zwykle za niezależne bóstwa, a teologię zostawia septonom.",
+      "Modli się zwykle do pierwszych sześciu aspektów; niewielu czci Nieznajomego, bo jako uosobienie śmierci budzi strach.",
+      "<strong>Ojciec</strong> (Ojciec Na Górze) — mądrość osądu, sprawiedliwy sąd nad zmarłymi. Brodaty mężczyzna, czasem w koronie, często z wagą.",
+      "<strong>Matka</strong> — patronka matek, dzieci i niewinnych; błogosławi ciężarnym i nienarodzonym. Uosobienie litości, przedstawiana z uśmiechem.",
+      "<strong>Wojownik</strong> — z mieczem; bóstwo rycerzy i żołnierzy, prowadzi broń i wzmacnia tarcze.",
+      "<strong>Kowal</strong> — zwykle z młotem; tworzenie i leczenie, obrońca kalekich. Prosi się go o naprawę zniszczonego, ochronę statków przed sztormem, wzmocnienie broni i zbroi.",
+      "<strong>Starucha</strong> — z latarnią; bogini mądrości i twarz przeznaczenia. Według wiernych sprowadziła na świat pierwszego kruka, gdy spojrzała za drzwi śmierci.",
+      "<strong>Dziewica</strong> — patronka dziewcząt, młodych kobiet i kochanków; bogini niewinności i cnoty.",
+      "<strong>Nieznajomy</strong> — oblicze śmierci; jednocześnie mężczyzna i kobieta lub żadne z nich, czasem przypomina zwierzę. Przeprowadza zmarłych do kolejnego świata i sądzi, czyją duszę nagrodzić, a czyją ukarać w siedmiu piekłach."
+    ]},
+    { t: "Duchowieństwo i organizacja Wiary", p: [
+      "Poświęceni Wierze to <strong>słudzy boży</strong>: septoni i septy. Wypowiadając śluby, zrzekają się nazwisk rodowych — w oczach bogów wszyscy są równi. Septy są w Wierze równe septonom.",
+      "Wierze przewodzi <strong>Wielki Septon</strong>, siedzący w Wielkim Septcie Baelora w Królewskiej Przystani. Obejmując urząd, zrzeka się także imienia, więc czasem mówi się o nich „ten gruby” i „ten przed grubym”.",
+      "Następni w hierarchii są <strong>Najwierniejsi</strong>, mający duży wpływ na religię i politykę. Septoni i septy są piśmienni i wykształceni, często uczą dzieci szlachty.",
+      "Niektóre zakony poświęcają się jednemu aspektowi (np. Kowalowi lub Wojownikowi).",
+      "<strong>Bracia Ubodzy</strong> — w szorstkich brązowych habitach, żebrzą i zanoszą Wiarę do najmniejszych wsi; rzadko wykształceni, znają modlitwy na pamięć.",
+      "<strong>Milczące Siostry</strong> — w szarościach, ze ślubem milczenia, służą Nieznajomemu; zakrywają twarze (poza oczami), bo patrzenie na twarze zmarłych przynosi nieszczęście. Przygotowują zmarłych do pochówku.",
+      "Modli się w <strong>septach</strong> i <strong>septriach</strong> (klasztorach) o siedmiu ścianach, ozdobionych pryzmatami lub siedmioramiennymi gwiazdami. Święta księga to <strong>Siedmioramienna Gwiazda</strong>; zaprzysiężeni często noszą kryształowy pryzmat.",
+      "Przed Podbojem Aegona Wiara miała znacznie większą władzę. Targaryenowie ją osłabili, lecz nadal ma duże wpływy. Nie stanowi prawa, ale silnie kształtuje moralność.",
+      "W oczach Siedmiu przeklęci są ci, którzy łamią prawo gościnności, zabijają członków rodziny lub dopuszczają się kazirodztwa. Targaryenowie uważali, że stoją ponad bogami, i nie zważali na te zakazy."
+    ]},
+    { t: "Dawni bogowie", p: [
+      "Pierwotnie bogowie Dzieci Lasu; Pierwsi Ludzie przejęli ich kult, gdy zapanował pokój. To bóstwa lasów, rzek i kamieni, reprezentowane przez <strong>czardrzewa</strong> o korze białej jak kość i liściach przypominających skrwawione dłonie.",
+      "Drzewo z wyrzeźbioną twarzą to <strong>drzewo-serce</strong>; jego żywica jest czerwona i zabarwia twarz na karmazynowo.",
+      "Przed pokojem Pierwsi Ludzie bali się twarzy w czardrzewach i ścinali je, wierząc, że zieloni prorocy Dzieci Lasu przez nie ich obserwują. Andalowie ścinali lub palili wszystkie czardrzewa, jakie napotkali.",
+      "Dziś dawni bogowie są czczeni na Północy i w kilku odosobnionych miejscach o silnej krwi Pierwszych Ludzi. Czardrzewa rosną wyłącznie na Północy, gdzie każdy zamek ma własny <strong>boży gaj</strong> z drzewem-sercem.",
+      "Na południu boże gaje bywają utrzymywane, lecz niewielu lordów w nich się modli; ich drzewa-serca to pospolite gatunki, bez rzeźbionych twarzy.",
+      "Wyznawcy dawnych bogów wypowiadają wszystkie przysięgi — modlitwy, zaprzysiężenia i śluby — przed starożytnym drzewem-sercem."
+    ]},
+    { t: "Inne religie", p: [
+      "<strong>Utopiony Bóg</strong> — czczony na Żelaznych Wyspach; bóg wód i łupieżców, mieszka w zalanych komnatach, a wyznawcy podążają jego Dawną Drogą. Żelaźni ludzie wierzą też w <strong>Boga Sztormów</strong>, starożytnego wroga Utopionego Boga.",
+      "<strong>Matka Rhoyne i bogowie Rhoynarów</strong> — gdy Rhoynarowie przybyli do Dorne, niektórzy pozostali wierni dawnej religii. Sieroty Zielonej Krwi pływają po rzece na kolorowych barkach i modlą się do Matki Rhoyne oraz pomniejszych bogów, m.in. Starca z Rzeki, przedstawianego jako olbrzymi żółw.",
+      "<strong>R’hllor, Pan Światła</strong> — słabo rozpowszechniony w Westeros, lecz jedna z najważniejszych religii na wschodzie. Wyznawcy noszą czerwień i czczą ogień i światło, wzywając je do obrony przed nocą pełną strachów."
+    ]}
+  ];
+  
+    function renderLawsAndReligion() {
+      document.getElementById('laws-list').innerHTML = acc(LAWS);
+      document.getElementById('religion-list').innerHTML = acc(RELIGION);
+    }
+
+    /* ===== Zoom mapy (kółko, przeciąganie, szczypanie, dwuklik) ===== */
+    function initMapZoom() {
+      const ov = document.createElement("div");
+  ov.style.cssText = "position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.93);display:none;touch-action:none;overflow:hidden";
+  const bs = "width:44px;height:44px;border-radius:6px;border:1px solid rgba(212,166,86,.6);background:#1d1714;color:#f6dfad;font-size:22px;cursor:pointer";
+  ov.innerHTML = `
+    <img id="mv-img" alt="Mapa Westeros" draggable="false" style="position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;cursor:grab">
+    <div style="position:absolute;top:12px;right:12px;display:flex;gap:8px;z-index:2">
+      <button type="button" data-act="in" style="${bs}" aria-label="Przybliż">+</button>
+      <button type="button" data-act="out" style="${bs}" aria-label="Oddal">−</button>
+      <button type="button" data-act="reset" style="${bs}" aria-label="Dopasuj">⟲</button>
+      <button type="button" data-act="close" style="${bs}" aria-label="Zamknij">✕</button>
+    </div>
+    <div style="position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#a8a29e;font:14px Georgia,serif;pointer-events:none">
+      Kółko myszy lub szczypnięcie — zoom • przeciągnij — przesuń • dwuklik — przybliż • Esc — zamknij
+    </div>`;
+  document.body.appendChild(ov);
+  const img = ov.querySelector("#mv-img");
+  const P = new Map();
+  let s = 1, x = 0, y = 0, fit = 1;
+  const apply = () => { img.style.transform = `translate(${x}px,${y}px) scale(${s})`; };
+  const reset = () => {
+    const w = img.naturalWidth || 1, h = img.naturalHeight || 1;
+    fit = Math.min(innerWidth / w, innerHeight / h) * 0.95;
+    s = fit; x = (innerWidth - w * s) / 2; y = (innerHeight - h * s) / 2; apply();
+  };
+  const zoomAt = (f, cx, cy) => {
+    const ns = Math.min(Math.max(s * f, fit * 0.8), fit * 12);
+    f = ns / s; x = cx - (cx - x) * f; y = cy - (cy - y) * f; s = ns; apply();
+  };
+  const open = (src) => {
+    ov.style.display = "block";
+    document.body.style.overflow = "hidden";
+    if (img.getAttribute("src") !== src) img.src = src; else reset();
+  };
+  const close = () => { ov.style.display = "none"; document.body.style.overflow = ""; };
+  img.onload = reset;
+
+  ov.addEventListener("wheel", (e) => { e.preventDefault(); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY); }, { passive: false });
+  ov.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("button")) return;
+    ov.setPointerCapture(e.pointerId);
+    P.set(e.pointerId, [e.clientX, e.clientY]);
+  });
+  ov.addEventListener("pointermove", (e) => {
+    const o = P.get(e.pointerId);
+    if (!o) return;
+    if (P.size === 1) {
+      x += e.clientX - o[0]; y += e.clientY - o[1];
+      P.set(e.pointerId, [e.clientX, e.clientY]); apply();
+    } else {
+      const other = P.get([...P.keys()].find((k) => k !== e.pointerId));
+      const d0 = Math.hypot(o[0] - other[0], o[1] - other[1]);
+      P.set(e.pointerId, [e.clientX, e.clientY]);
+      const d1 = Math.hypot(e.clientX - other[0], e.clientY - other[1]);
+      if (d0 > 0) zoomAt(d1 / d0, (e.clientX + other[0]) / 2, (e.clientY + other[1]) / 2);
+    }
+  });
+  const up = (e) => P.delete(e.pointerId);
+  ov.addEventListener("pointerup", up);
+  ov.addEventListener("pointercancel", up);
+  ov.addEventListener("dblclick", (e) => { if (s > fit * 1.5) reset(); else zoomAt(3, e.clientX, e.clientY); });
+  ov.addEventListener("click", (e) => {
+    const a = e.target.closest("button")?.dataset.act;
+    if (a === "in") zoomAt(1.5, innerWidth / 2, innerHeight / 2);
+    if (a === "out") zoomAt(1 / 1.5, innerWidth / 2, innerHeight / 2);
+    if (a === "reset") reset();
+    if (a === "close") close();
+  });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ov.style.display === "block") close(); });
+  window.addEventListener("resize", () => { if (ov.style.display === "block") reset(); });
+
+  document.querySelectorAll('img[alt="Połączona mapa Westeros"]').forEach((im) => {
+    im.style.cursor = "zoom-in";
+    im.title = "Kliknij, aby powiększyć";
+    im.addEventListener("click", () => open(im.getAttribute("src")));
+  });
+
     }
 
     window.addEventListener('hashchange', () => {
       switchTab(getInitialTab(), false);
     });
 
-    function initPortal() {
-      const charCountEl = document.getElementById('home-char-count');
-      const houseCountEl = document.getElementById('home-house-count');
-      if (charCountEl) charCountEl.textContent = String(CHARACTERS.length);
-      if (houseCountEl) houseCountEl.textContent = String(HOUSES.length);
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') closeCharacterModal();
+    });
 
-      initStep1Creator();
+    function initPortal() {
+      const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
+      set('home-char-count', CHARACTERS.length);
+      set('home-house-count', HOUSES.length);
+      set('home-era-count', ERAS.length);
+
       renderHistory();
       populateCharacterHouseFilter();
       renderCharacters();
       renderHouseSpotlight();
       renderHouses();
-      selectDice(20);
+      renderLawsAndReligion();
+      initMapZoom();
       switchTab(getInitialTab(), false);
     }
 
@@ -2626,6 +2622,5 @@
       initPortal();
     }
   </script>
-  <script src="kompendium-dodatki.js"></script>
 </body>
 </html>
