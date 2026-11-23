@@ -2459,81 +2459,248 @@
   {
     "num": "Krok pierwszy",
     "title": "Ród i Imię",
-    "items": [
-      "Stwórz ród i imię.",
-      "Opracujcie wspólnie ród szlachecki."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Stwórz ród i imię."
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Gracze mogą pochodzić z tego samego rodu, ale może on zostać w całości wymyślony przez nich samych — nie trzeba wybierać rodu z listy dostępnej w zakładce „Rody”."
+      }
     ]
   },
   {
     "num": "Krok drugi",
     "title": "Koncepcja bohatera",
-    "items": [
-      "Wybierz lub wylosuj wiek: dziecko, nastolatek, młodzieniec, dorosły, w średnim wieku, stary, bardzo stary, sędziwy.",
-      "Wybierz lub wylosuj Status: dowolny od 1 do 6.",
-      "Określ rolę: intrygant, łotr, przywódca, specjalista, wojownik.",
-      "Określ przeszłość: wymyśl przynajmniej jedno wydarzenie z przeszłości, które wpłynęło na twoje życie.",
-      "Określ cel: co bohater chce osiągnąć?",
-      "Określ motywację: dlaczego chce to osiągnąć?",
-      "Określ cnoty: wymyśl przynajmniej jedną godną uznania cechę bohatera.",
-      "Określ słabość: wymyśl przynajmniej jedną negatywną cechę charakteru bohatera."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Wybierz wiek wraz z MG albo wylosuj go, rzucając 3k6 i sprawdzając wynik w tabeli poniżej."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Rzut 3k6 — wiek bohatera",
+        "head": [
+          "Rzut (3k6)",
+          "Wiek"
+        ],
+        "rows": [
+          [
+            "3",
+            "Dziecko"
+          ],
+          [
+            "4",
+            "Nastolatek"
+          ],
+          [
+            "5–6",
+            "Młodzieniec"
+          ],
+          [
+            "7–11",
+            "Dorosły"
+          ],
+          [
+            "12–15",
+            "W średnim wieku"
+          ],
+          [
+            "16",
+            "Stary"
+          ],
+          [
+            "17",
+            "Bardzo stary"
+          ],
+          [
+            "18",
+            "Sędziwy"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "Jeśli masz już pomysł na postać, wiek możesz po prostu ustalić wspólnie z MG — losowanie nie jest obowiązkowe."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Wybierz Status wraz z MG albo wylosuj go, rzucając 2k6 i sprawdzając wynik w tabeli poniżej."
+        ]
+      },
+      {
+        "type": "table",
+        "caption": "Rzut 2k6 — status początkowy",
+        "head": [
+          "Rzut (2k6)",
+          "Status",
+          "Dostępne pozycje*",
+          "Przykład"
+        ],
+        "rows": [
+          [
+            "2",
+            "2",
+            "Brak limitu",
+            "Służba, błędni rycerze, pospólstwo"
+          ],
+          [
+            "3–4",
+            "3",
+            "32",
+            "Zaprzysiężone miecze, strażnicy, giermkowie"
+          ],
+          [
+            "5–9",
+            "4",
+            "16",
+            "Kluczowa służba, maesterzy, młodzi septoni, rycerze na włościach, szlacheccy bękarci"
+          ],
+          [
+            "10–11",
+            "5",
+            "8",
+            "Chorążowie, wychowankowie, dworzanie, septoni, doradcy"
+          ],
+          [
+            "12",
+            "6",
+            "4",
+            "Lord rodu, dziedzic, lady, potomkowie"
+          ]
+        ]
+      },
+      {
+        "type": "note",
+        "text": "* Podane wartości są orientacyjne. Jeśli grupa stworzy własny ród, prawdopodobnie będą się one różnić."
+      },
+      {
+        "type": "note",
+        "text": "Jeśli masz już pomysł na postać, Status możesz po prostu ustalić wspólnie z MG — losowanie nie jest obowiązkowe."
+      },
+      {
+        "type": "list",
+        "items": [
+          "Określ rolę: intrygant, łotr, przywódca, specjalista, wojownik.",
+          "Określ przeszłość: wymyśl przynajmniej jedno wydarzenie z przeszłości, które wpłynęło na twoje życie.",
+          "Określ cel: co bohater chce osiągnąć?",
+          "Określ motywację: dlaczego chce to osiągnąć?",
+          "Określ cnoty: wymyśl przynajmniej jedną godną uznania cechę bohatera.",
+          "Określ słabość: wymyśl przynajmniej jedną negatywną cechę charakteru bohatera."
+        ]
+      }
     ]
   },
   {
     "num": "Krok trzeci",
     "title": "Przydzielenie zdolności",
-    "items": [
-      "Określ początkowe punkty doświadczenia na podstawie wieku.",
-      "Przy pierwszym wyborze punkty wydaj na Status.",
-      "Wydaj wszystkie pozostałe punkty doświadczenia na zdolności."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Określ początkowe punkty doświadczenia na podstawie wieku.",
+          "Przy pierwszym wyborze punkty wydaj na Status.",
+          "Wydaj wszystkie pozostałe punkty doświadczenia na zdolności."
+        ]
+      }
     ]
   },
   {
     "num": "Krok czwarty",
     "title": "Przydzielenie specjalizacji",
-    "items": [
-      "Określ początkowe punkty doświadczenia na podstawie wieku.",
-      "Wydaj wszystkie punkty doświadczenia na specjalizację."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Określ początkowe punkty doświadczenia na podstawie wieku.",
+          "Wydaj wszystkie punkty doświadczenia na specjalizację."
+        ]
+      }
     ]
   },
   {
     "num": "Krok piąty",
     "title": "Punkty losu i korzyści",
-    "items": [
-      "Określ początkowe punkty losu na podstawie wieku.",
-      "Wydaj punkty losu na korzyści — ich maksymalną liczbę określa wiek."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Określ początkowe punkty losu na podstawie wieku.",
+          "Wydaj punkty losu na korzyści — ich maksymalną liczbę określa wiek."
+        ]
+      }
     ]
   },
   {
     "num": "Krok szósty",
     "title": "Przeciwności",
-    "items": [
-      "Określ wymagane przeciwności na podstawie wieku.",
-      "Wybierz przeciwności, które najbardziej pasują do koncepcji bohatera i jego słabości."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Określ wymagane przeciwności na podstawie wieku.",
+          "Wybierz przeciwności, które najbardziej pasują do koncepcji bohatera i jego słabości."
+        ]
+      }
     ]
   },
   {
-    "num": "Krok ósmy",
+    "num": "Krok siódmy",
     "title": "Statystyki pochodne",
-    "items": [
-      "Oblicz Obronę w intrydze: Spostrzegawczość + Spryt + Status.",
-      "Oblicz Obronę w walce: Kondycja + Spostrzegawczość + Zręczność.",
-      "Oblicz punkty opanowania: 3 × Wola.",
-      "Oblicz punkty życia: 3 × Zdrowie.",
-      "Punkty pancerza (PP): sprawdź wartość PP twojej zbroi (Tabela 9-2: Pancerz, str. 155) i zapisz ją na karcie bohatera.",
-      "Wypełnij statystyki broni zgodnie z Tabelą 9-3: Broń (str. 155–157)."
+    "blocks": [
+      {
+        "type": "list",
+        "items": [
+          "Oblicz Obronę w intrydze: Spostrzegawczość + Spryt + Status.",
+          "Oblicz Obronę w walce: Kondycja + Spostrzegawczość + Zręczność.",
+          "Oblicz punkty opanowania: 3 × Wola.",
+          "Oblicz punkty życia: 3 × Zdrowie.",
+          "Punkty pancerza (PP): sprawdź wartość PP twojej zbroi (Tabela 9-2: Pancerz, str. 155) i zapisz ją na karcie bohatera.",
+          "Wypełnij statystyki broni zgodnie z Tabelą 9-3: Broń (str. 155–157)."
+        ]
+      }
     ]
   }
 ];
 
+    function creationBlockHtml(b) {
+      if (b.type === 'list') {
+        return `<ul class="list-disc space-y-1.5 pl-5 text-base leading-relaxed text-stone-800">${b.items.map((it) => `<li>${it}</li>`).join('')}</ul>`;
+      }
+      if (b.type === 'note') {
+        return `<p class="rounded border border-amber-900/25 bg-amber-950/5 px-3.5 py-2.5 text-sm italic leading-relaxed text-stone-700">${b.text}</p>`;
+      }
+      if (b.type === 'table') {
+        return `
+          <div class="overflow-x-auto rounded border border-amber-900/25 bg-amber-50/50">
+            <table class="w-full text-left font-body text-sm text-stone-900">
+              <thead class="border-b border-amber-900/25 bg-amber-950/10 font-display text-[0.65rem] uppercase tracking-wider text-red-950">
+                <tr>${b.head.map((h) => `<th class="px-3 py-2">${h}</th>`).join('')}</tr>
+              </thead>
+              <tbody class="divide-y divide-amber-900/15">
+                ${b.rows.map((r) => `<tr>${r.map((c, i) => `<td class="px-3 py-1.5${i === 0 ? ' font-display font-bold' : ''}">${c}</td>`).join('')}</tr>`).join('')}
+              </tbody>
+            </table>
+          </div>`;
+      }
+      return '';
+    }
+
     function openCreationGuide() {
       const content = document.getElementById('creation-modal-content');
       content.innerHTML = CREATION_STEPS.map((s) => `
-        <div class="rule-step">
-          <div class="font-display text-xs font-bold tracking-[0.18em] text-red-900">${s.num.toUpperCase()}</div>
-          <h3 class="mt-0.5 font-display text-lg font-bold text-stone-950 sm:text-xl">${s.title}</h3>
-          <ul class="mt-2 list-disc space-y-1.5 pl-5 text-base leading-relaxed text-stone-800">
-            ${s.items.map((it) => `<li>${it}</li>`).join('')}
-          </ul>
+        <div class="rule-step space-y-3">
+          <div>
+            <div class="font-display text-xs font-bold tracking-[0.18em] text-red-900">${s.num.toUpperCase()}</div>
+            <h3 class="mt-0.5 font-display text-lg font-bold text-stone-950 sm:text-xl">${s.title}</h3>
+          </div>
+          ${s.blocks.map((b) => creationBlockHtml(b)).join('')}
         </div>
       `).join('');
 
