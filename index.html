@@ -504,7 +504,7 @@
                 Postacie
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Zasady określania rodu i ziem na start oraz rejestr postaci graczy, BN-ów i legend z filtrowaniem i podglądem karty.
+                Zasady określania rodu i ziem na start oraz rejestr Bohaterów Neutralnych z wyszukiwarką, filtrem rodów i podglądem karty.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
@@ -558,7 +558,7 @@
                 Mapa Westeros
               </h3>
               <p class="font-body text-base leading-relaxed text-stone-300">
-                Połączona mapa północnych i południowych ziem Westeros w zakładce mapy oraz na dole strony.
+                Połączona mapa północnych i południowych ziem Westeros z płynnym przybliżaniem kółkiem myszy.
               </p>
             </div>
             <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
@@ -1218,7 +1218,7 @@
         <div class="flex flex-col justify-between gap-4 border-b border-amber-500/25 pb-4 lg:flex-row lg:items-end">
           <div>
             <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-              REJESTR BOHATERÓW I BN-ÓW
+              REJESTR BOHATERÓW NEUTRALNYCH
             </div>
             <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
               POSTACIE WESTEROS
@@ -1239,16 +1239,6 @@
               class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
             >
               <option value="ALL">Wszystkie rody</option>
-            </select>
-            <select
-              id="char-type-filter"
-              onchange="renderCharacters()"
-              class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
-            >
-              <option value="ALL">Wszyscy (Gracze / BN / Legendy)</option>
-              <option value="Gracz">Gracze</option>
-              <option value="BN">Postacie niezależne (BN)</option>
-              <option value="Legenda">Legendy</option>
             </select>
           </div>
         </div>
@@ -1339,29 +1329,42 @@
           </h1>
         </div>
         <p class="font-serif text-base italic text-stone-400">
-          Połączona mapa północnych i południowych ziem kontynentu. Kliknij mapę, aby ją powiększyć.
+          Połączona mapa północnych i południowych ziem kontynentu.
         </p>
       </div>
 
-      <div class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
-        <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-        <div class="relative z-10 mx-auto max-w-2xl space-y-4 text-center">
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
-            PEŁNA MAPA KONTYNENTU
+      <div class="parchment-card relative rounded-lg p-4 sm:p-6">
+        <div class="relative z-10 space-y-3">
+          <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">PEŁNA MAPA KONTYNENTU</div>
+              <h2 class="font-display text-xl font-bold text-stone-950 sm:text-2xl">Od Krain Wiecznej Zimy po Dorne</h2>
+            </div>
+            <div class="flex gap-2" role="group" aria-label="Sterowanie mapą">
+              <button type="button" id="map-zoom-in" aria-label="Przybliż" class="h-10 w-10 rounded border border-amber-900/50 bg-stone-950 font-display text-xl text-amber-200 hover:border-amber-500">+</button>
+              <button type="button" id="map-zoom-out" aria-label="Oddal" class="h-10 w-10 rounded border border-amber-900/50 bg-stone-950 font-display text-xl text-amber-200 hover:border-amber-500">−</button>
+              <button type="button" id="map-reset" aria-label="Dopasuj mapę do okna" class="h-10 rounded border border-amber-900/50 bg-stone-950 px-3 font-display text-xs font-bold tracking-wider text-amber-200 hover:border-amber-500">DOPASUJ</button>
+              <button type="button" id="map-full" aria-label="Pełny ekran" class="h-10 rounded border border-amber-900/50 bg-stone-950 px-3 font-display text-xs font-bold tracking-wider text-amber-200 hover:border-amber-500">PEŁNY EKRAN</button>
+            </div>
           </div>
-          <h2 class="font-display text-2xl font-bold text-stone-950">
-            Od Krain Wiecznej Zimy po Dorne
-          </h2>
-          <figure class="overflow-hidden rounded border border-amber-900/35 bg-stone-950 p-2 shadow-lg">
+
+          <div
+            id="map-viewport"
+            class="relative overflow-hidden rounded border border-amber-900/35 bg-stone-950 shadow-lg"
+            style="height:72vh;min-height:340px;touch-action:none;cursor:grab"
+          >
             <img
+              id="map-img"
               src="assetsmapa-westeros.jpg"
               alt="Połączona mapa Westeros"
-              class="mx-auto h-auto w-full rounded"
+              draggable="false"
+              style="position:absolute;left:0;top:0;max-width:none;transform-origin:0 0;user-select:none;will-change:transform"
             />
-            <figcaption class="mt-2 font-serif text-sm italic text-amber-200/85">
-              Połączona mapa Westeros — od Północy i Muru po Żelazne Wyspy, Trident, Reach i Dorne.
-            </figcaption>
-          </figure>
+          </div>
+
+          <p class="text-center font-serif text-sm italic text-stone-700">
+            Kółko myszy — płynne przybliżanie i oddalanie • przeciągnij — przesuń mapę • dwuklik — przybliż • na telefonie: szczypnięcie. Aby przewinąć stronę, zjedź kursorem poza mapę.
+          </p>
         </div>
       </div>
     </section>
@@ -1459,34 +1462,6 @@
           </article>
         </div>
 
-      </div>
-    </section>
-
-    <!-- MAPA NA KOŃCU STRONY -->
-    <section id="bottom-westeros-map" class="mt-12 space-y-5 border-t border-amber-500/25 pt-10">
-      <div class="ornate-divider">
-        <h2 class="font-display text-lg font-bold tracking-[0.18em] text-amber-200 sm:text-xl">
-          MAPA WESTEROS
-        </h2>
-      </div>
-
-      <div class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
-        <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-        <div class="relative z-10 mx-auto max-w-2xl space-y-4 text-center">
-          <p class="font-serif text-base italic text-stone-700 sm:text-lg">
-            Połączone archiwa kartograficzne Północy i Południa Siedmiu Królestw.
-          </p>
-          <figure class="overflow-hidden rounded border border-amber-900/35 bg-stone-950 p-2 shadow-lg">
-            <img
-              src="assetsmapa-westeros.jpg"
-              alt="Połączona mapa Westeros"
-              class="mx-auto h-auto w-full rounded"
-            />
-            <figcaption class="mt-2 font-serif text-sm italic text-amber-200/85">
-              Pełna połączona mapa Westeros.
-            </figcaption>
-          </figure>
-        </div>
       </div>
     </section>
   </main>
@@ -1901,16 +1876,8 @@
         name: 'Jon Snow',
         title: 'Bękart z Winterfell • Człowiek Nocnej Straży',
         house: 'Stark',
-        type: 'Gracz',
+        type: 'Bohater Neutralny',
         status: 'Na Murze',
-        stats: {
-          Siła: 14,
-          Zręczność: 15,
-          Wytrzymałość: 14,
-          Intelekt: 13,
-          Spryt: 14,
-          Charyzma: 12
-        },
         equipment: ['Długi miecz ze stali valyriańskiej', 'Czarny płaszcz Nocnej Straży', 'Skórzany kaftan', 'Sztylet'],
         bio:
           'Wychowany w Winterfell u boku prawowitych dzieci rodu Starków, odnalazł swoje miejsce wśród przysięgłych braci strzegących północnej granicy.'
@@ -1920,16 +1887,8 @@
         name: 'Ser Jaime Lannister',
         title: 'Dowódca Gwardii Królewskiej',
         house: 'Lannister',
-        type: 'BN',
+        type: 'Bohater Neutralny',
         status: 'Królewska Przystań',
-        stats: {
-          Siła: 16,
-          Zręczność: 16,
-          Wytrzymałość: 15,
-          Intelekt: 12,
-          Spryt: 13,
-          Charyzma: 14
-        },
         equipment: ['Złocona zbroja płytowa', 'Miecz rycerski', 'Biały płaszcz Gwardii', 'Wierzchowiec bojowy'],
         bio:
           'Mistrz szermierki o ostrym języku i dumie, której nie sposób ukryć nawet za lśniącą zbroją.'
@@ -1939,16 +1898,8 @@
         name: 'Asha Greyjoy',
         title: 'Kapitan „Czarnego Wichru”',
         house: 'Greyjoy',
-        type: 'Gracz',
+        type: 'Bohater Neutralny',
         status: 'Żelazne Wyspy',
-        stats: {
-          Siła: 13,
-          Zręczność: 16,
-          Wytrzymałość: 14,
-          Intelekt: 14,
-          Spryt: 16,
-          Charyzma: 15
-        },
         equipment: ['Topór abordażowy', 'Ćwiekowana skóra', 'Sztylet z żelaza', 'Mapa cieśnin'],
         bio:
           'Doświadczona dowódczyni drakkara, nawykła do lodowatych sztormów, twardych negocjacji i nagłych uderzeń z morza.'
@@ -1958,16 +1909,8 @@
         name: 'Aegon I Zdobywca',
         title: 'Król Siedmiu Królestw',
         house: 'Targaryen',
-        type: 'Legenda',
+        type: 'Bohater Neutralny',
         status: 'Kroniki Dawne',
-        stats: {
-          Siła: 15,
-          Zręczność: 14,
-          Wytrzymałość: 16,
-          Intelekt: 16,
-          Spryt: 17,
-          Charyzma: 17
-        },
         equipment: ['Miecz Czarny Ogień', 'Korona z czarnego żelaza i rubinów', 'Więź ze smokiem Balerionem'],
         bio:
           'Postać, od której zaczęła się nowa rachuba czasu w Westeros i zjednoczenie większości królestw pod jednym berłem.'
@@ -2173,20 +2116,6 @@
       if (!char) return;
 
       const content = document.getElementById('char-modal-content');
-      const statsHtml = Object.entries(char.stats)
-        .map(([attr, val]) => {
-          const mod = Math.floor((val - 10) / 2);
-          const modStr = mod >= 0 ? `+${mod}` : `${mod}`;
-          return `
-            <div class="rounded border border-amber-900/25 bg-amber-50/60 p-3 text-center">
-              <div class="font-display text-[11px] font-bold tracking-wider text-stone-700">${attr}</div>
-              <div class="font-display text-xl font-bold text-stone-950">${val}</div>
-              <div class="font-display text-xs font-semibold text-red-900">(${modStr})</div>
-            </div>
-          `;
-        })
-        .join('');
-
       content.innerHTML = `
         <div class="border-b border-amber-900/25 pb-3 pr-20">
           <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
@@ -2199,11 +2128,6 @@
         </div>
 
         <p class="text-base leading-relaxed text-stone-800 sm:text-lg">${char.bio}</p>
-
-        <div>
-          <h3 class="mb-2 font-display text-xs font-bold tracking-[0.18em] text-red-950">ATRYBUTY</h3>
-          <div class="grid grid-cols-2 gap-2.5 sm:grid-cols-3">${statsHtml}</div>
-        </div>
 
         <div>
           <h3 class="mb-2 font-display text-xs font-bold tracking-[0.18em] text-red-950">EKWIPUNEK</h3>
@@ -2512,84 +2436,165 @@
       document.getElementById('religion-list').innerHTML = acc(RELIGION);
     }
 
-    /* ===== Zoom mapy (kółko, przeciąganie, szczypanie, dwuklik) ===== */
+    /* ===== Mapa: płynny zoom kółkiem myszy, przeciąganie, szczypanie ===== */
     function initMapZoom() {
-      const ov = document.createElement("div");
-  ov.style.cssText = "position:fixed;inset:0;z-index:100;background:rgba(0,0,0,.93);display:none;touch-action:none;overflow:hidden";
-  const bs = "width:44px;height:44px;border-radius:6px;border:1px solid rgba(212,166,86,.6);background:#1d1714;color:#f6dfad;font-size:22px;cursor:pointer";
-  ov.innerHTML = `
-    <img id="mv-img" alt="Mapa Westeros" draggable="false" style="position:absolute;left:0;top:0;transform-origin:0 0;max-width:none;user-select:none;cursor:grab">
-    <div style="position:absolute;top:12px;right:12px;display:flex;gap:8px;z-index:2">
-      <button type="button" data-act="in" style="${bs}" aria-label="Przybliż">+</button>
-      <button type="button" data-act="out" style="${bs}" aria-label="Oddal">−</button>
-      <button type="button" data-act="reset" style="${bs}" aria-label="Dopasuj">⟲</button>
-      <button type="button" data-act="close" style="${bs}" aria-label="Zamknij">✕</button>
-    </div>
-    <div style="position:absolute;bottom:10px;left:0;right:0;text-align:center;color:#a8a29e;font:14px Georgia,serif;pointer-events:none">
-      Kółko myszy lub szczypnięcie — zoom • przeciągnij — przesuń • dwuklik — przybliż • Esc — zamknij
-    </div>`;
-  document.body.appendChild(ov);
-  const img = ov.querySelector("#mv-img");
-  const P = new Map();
-  let s = 1, x = 0, y = 0, fit = 1;
-  const apply = () => { img.style.transform = `translate(${x}px,${y}px) scale(${s})`; };
-  const reset = () => {
-    const w = img.naturalWidth || 1, h = img.naturalHeight || 1;
-    fit = Math.min(innerWidth / w, innerHeight / h) * 0.95;
-    s = fit; x = (innerWidth - w * s) / 2; y = (innerHeight - h * s) / 2; apply();
-  };
-  const zoomAt = (f, cx, cy) => {
-    const ns = Math.min(Math.max(s * f, fit * 0.8), fit * 12);
-    f = ns / s; x = cx - (cx - x) * f; y = cy - (cy - y) * f; s = ns; apply();
-  };
-  const open = (src) => {
-    ov.style.display = "block";
-    document.body.style.overflow = "hidden";
-    if (img.getAttribute("src") !== src) img.src = src; else reset();
-  };
-  const close = () => { ov.style.display = "none"; document.body.style.overflow = ""; };
-  img.onload = reset;
+      const vp = document.getElementById('map-viewport');
+      const img = document.getElementById('map-img');
+      if (!vp || !img) return;
 
-  ov.addEventListener("wheel", (e) => { e.preventDefault(); zoomAt(e.deltaY < 0 ? 1.2 : 1 / 1.2, e.clientX, e.clientY); }, { passive: false });
-  ov.addEventListener("pointerdown", (e) => {
-    if (e.target.closest("button")) return;
-    ov.setPointerCapture(e.pointerId);
-    P.set(e.pointerId, [e.clientX, e.clientY]);
-  });
-  ov.addEventListener("pointermove", (e) => {
-    const o = P.get(e.pointerId);
-    if (!o) return;
-    if (P.size === 1) {
-      x += e.clientX - o[0]; y += e.clientY - o[1];
-      P.set(e.pointerId, [e.clientX, e.clientY]); apply();
-    } else {
-      const other = P.get([...P.keys()].find((k) => k !== e.pointerId));
-      const d0 = Math.hypot(o[0] - other[0], o[1] - other[1]);
-      P.set(e.pointerId, [e.clientX, e.clientY]);
-      const d1 = Math.hypot(e.clientX - other[0], e.clientY - other[1]);
-      if (d0 > 0) zoomAt(d1 / d0, (e.clientX + other[0]) / 2, (e.clientY + other[1]) / 2);
-    }
-  });
-  const up = (e) => P.delete(e.pointerId);
-  ov.addEventListener("pointerup", up);
-  ov.addEventListener("pointercancel", up);
-  ov.addEventListener("dblclick", (e) => { if (s > fit * 1.5) reset(); else zoomAt(3, e.clientX, e.clientY); });
-  ov.addEventListener("click", (e) => {
-    const a = e.target.closest("button")?.dataset.act;
-    if (a === "in") zoomAt(1.5, innerWidth / 2, innerHeight / 2);
-    if (a === "out") zoomAt(1 / 1.5, innerWidth / 2, innerHeight / 2);
-    if (a === "reset") reset();
-    if (a === "close") close();
-  });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && ov.style.display === "block") close(); });
-  window.addEventListener("resize", () => { if (ov.style.display === "block") reset(); });
+      let s = 1, ts = 1;            // skala bieżąca i docelowa
+      let x = 0, y = 0;             // położenie obrazu w oknie
+      let ax = 0, ay = 0, ix = 0, iy = 0; // punkt zakotwiczenia zoomu (okno / współrzędne obrazu)
+      let fit = 1, minS = 1, maxS = 10, dirty = false, raf = null, last = 0;
+      const pointers = new Map();
 
-  document.querySelectorAll('img[alt="Połączona mapa Westeros"]').forEach((im) => {
-    im.style.cursor = "zoom-in";
-    im.title = "Kliknij, aby powiększyć";
-    im.addEventListener("click", () => open(im.getAttribute("src")));
-  });
+      const clamp = (v, lo, hi) => Math.min(Math.max(v, lo), hi);
+      const apply = () => { img.style.transform = `translate(${x}px, ${y}px) scale(${s})`; };
 
+      function keepInside() {
+        const w = img.naturalWidth * s, h = img.naturalHeight * s;
+        const vw = vp.clientWidth, vh = vp.clientHeight;
+        const nx = w <= vw ? (vw - w) / 2 : clamp(x, vw - w, 0);
+        const ny = h <= vh ? (vh - h) / 2 : clamp(y, vh - h, 0);
+        ax += nx - x; ay += ny - y;
+        x = nx; y = ny;
+      }
+
+      function tick(now) {
+        const dt = Math.min(now - (last || now), 50);
+        last = now;
+        const diff = ts - s;
+        if (Math.abs(diff) < ts * 0.0008) {
+          s = ts;
+        } else {
+          s += diff * (1 - Math.exp(-dt / 85));
+        }
+        x = ax - ix * s;
+        y = ay - iy * s;
+        keepInside();
+        apply();
+        if (s !== ts) {
+          raf = requestAnimationFrame(tick);
+        } else {
+          raf = null; last = 0;
+        }
+      }
+      const start = () => { if (!raf) raf = requestAnimationFrame(tick); };
+
+      function anchorAt(cx, cy) {
+        ix = (cx - x) / s; iy = (cy - y) / s;
+        ax = cx; ay = cy;
+      }
+
+      function measure() {
+        const w = img.naturalWidth, h = img.naturalHeight;
+        if (!w || !vp.clientWidth) return false;
+        fit = Math.min(vp.clientWidth / w, vp.clientHeight / h);
+        minS = fit; maxS = Math.max(fit * 10, 1.5);
+        return true;
+      }
+
+      function reset() {
+        if (!measure()) return;
+        s = ts = fit; x = y = 0; ix = iy = 0; ax = ay = 0;
+        keepInside();
+        apply();
+        dirty = false;
+      }
+
+      function zoomBy(factor, cx, cy) {
+        if (!measure()) return;
+        dirty = true;
+        s = raf ? s : ts;
+        anchorAt(cx, cy);
+        ts = clamp(ts * factor, minS, maxS);
+        start();
+      }
+
+      vp.addEventListener('wheel', (e) => {
+        e.preventDefault();
+        const r = vp.getBoundingClientRect();
+        let dy = e.deltaY;
+        if (e.deltaMode === 1) dy *= 16;
+        else if (e.deltaMode === 2) dy *= vp.clientHeight;
+        zoomBy(Math.exp(-dy * 0.0018), e.clientX - r.left, e.clientY - r.top);
+      }, { passive: false });
+
+      vp.addEventListener('pointerdown', (e) => {
+        vp.setPointerCapture(e.pointerId);
+        pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
+        s = ts; if (raf) { cancelAnimationFrame(raf); raf = null; last = 0; }
+        x = ax - ix * s; y = ay - iy * s;
+        vp.style.cursor = 'grabbing';
+      });
+
+      vp.addEventListener('pointermove', (e) => {
+        const p = pointers.get(e.pointerId);
+        if (!p) return;
+        dirty = true;
+        if (pointers.size === 1) {
+          x += e.clientX - p.x; y += e.clientY - p.y;
+          p.x = e.clientX; p.y = e.clientY;
+          keepInside();
+          ix = iy = 0; ax = x; ay = y;
+          apply();
+        } else if (pointers.size === 2) {
+          const other = [...pointers.entries()].find(([id]) => id !== e.pointerId)[1];
+          const d0 = Math.hypot(p.x - other.x, p.y - other.y);
+          const m0x = (p.x + other.x) / 2, m0y = (p.y + other.y) / 2;
+          p.x = e.clientX; p.y = e.clientY;
+          const d1 = Math.hypot(p.x - other.x, p.y - other.y);
+          const m1x = (p.x + other.x) / 2, m1y = (p.y + other.y) / 2;
+          if (d0 > 0) {
+            const r = vp.getBoundingClientRect();
+            const ns = clamp(s * (d1 / d0), minS, maxS);
+            const k = ns / s;
+            const cx = m0x - r.left, cy = m0y - r.top;
+            x = cx - (cx - x) * k + (m1x - m0x);
+            y = cy - (cy - y) * k + (m1y - m0y);
+            s = ts = ns;
+            keepInside();
+            ix = iy = 0; ax = x; ay = y;
+            apply();
+          }
+        }
+      });
+
+      const endPointer = (e) => {
+        pointers.delete(e.pointerId);
+        if (pointers.size === 0) vp.style.cursor = 'grab';
+      };
+      vp.addEventListener('pointerup', endPointer);
+      vp.addEventListener('pointercancel', endPointer);
+
+      vp.addEventListener('dblclick', (e) => {
+        const r = vp.getBoundingClientRect();
+        const cx = e.clientX - r.left, cy = e.clientY - r.top;
+        if (ts > fit * 1.6) zoomBy(fit / ts, vp.clientWidth / 2, vp.clientHeight / 2);
+        else zoomBy(3, cx, cy);
+      });
+
+      const center = () => [vp.clientWidth / 2, vp.clientHeight / 2];
+      document.getElementById('map-zoom-in')?.addEventListener('click', () => zoomBy(1.6, ...center()));
+      document.getElementById('map-zoom-out')?.addEventListener('click', () => zoomBy(1 / 1.6, ...center()));
+      document.getElementById('map-reset')?.addEventListener('click', () => {
+        if (raf) { cancelAnimationFrame(raf); raf = null; last = 0; }
+        reset();
+      });
+      document.getElementById('map-full')?.addEventListener('click', () => {
+        if (document.fullscreenElement) document.exitFullscreen();
+        else if (vp.requestFullscreen) vp.requestFullscreen();
+      });
+
+      img.addEventListener('load', reset);
+      if (img.complete && img.naturalWidth) reset();
+
+      // karta Mapa jest ukryta przy starcie — dopasuj mapę, gdy okno dostanie rozmiar
+      new ResizeObserver(() => {
+        if (!img.naturalWidth || !vp.clientWidth) return;
+        if (!dirty) reset();
+        else { measure(); ts = clamp(ts, minS, maxS); s = ts; x = ax - ix * s; y = ay - iy * s; keepInside(); apply(); }
+      }).observe(vp);
     }
 
     window.addEventListener('hashchange', () => {
