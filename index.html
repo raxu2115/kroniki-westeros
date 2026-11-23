@@ -2200,7 +2200,7 @@
       return VALID_TABS.includes(hashTab) ? hashTab : 'home';
     }
 
-    function switchTab(tabId, updateHash = true) {
+    function switchTab(tabId, updateHash = true, replaceHistory = false) {
       const safeTab = VALID_TABS.includes(tabId) ? tabId : 'home';
 
       document.querySelectorAll('.tab-panel').forEach((panel) => {
@@ -2219,7 +2219,9 @@
       if (updateHash) {
         const nextHash = `#${safeTab}`;
         if (window.location.hash !== nextHash) {
-          history.replaceState(null, '', nextHash);
+          // zwykłe przejście = nowy wpis w historii, dzięki czemu „Wstecz” wraca do poprzedniej karty
+          if (replaceHistory) history.replaceState(null, '', nextHash);
+          else history.pushState(null, '', nextHash);
         }
       }
 
