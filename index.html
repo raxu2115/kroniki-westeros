@@ -252,6 +252,184 @@
       background: #6a5034;
     }
   </style>
+
+  <meta name="theme-color" content="#0a0908" />
+  <style id="theme-grim">
+    /* ===== MOTYW: SUROWA PÓŁNOC (mroczny, zimny, postarzony) ===== */
+    :root {
+      --parchment-light: #d8ccb0;
+      --parchment-base: #c6b792;
+      --parchment-shadow: #a8977a;
+      --blood: #7c1d1d;
+      --iron: #8d8a84;
+      --tarnish: #a98a4d;
+    }
+
+    html { background: #070605; }
+
+    body {
+      background-color: #0a0908;
+      background-image:
+        radial-gradient(ellipse at 50% -12%, rgba(125, 140, 165, 0.12), transparent 55%),
+        radial-gradient(circle at 8% 30%, rgba(120, 20, 20, 0.10), transparent 42%),
+        radial-gradient(circle at 92% 62%, rgba(40, 58, 82, 0.16), transparent 46%),
+        linear-gradient(180deg, #0b0a09 0%, #0e0c0b 50%, #070605 100%);
+    }
+
+    /* ziarno + winieta na całej stronie */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; z-index: 0; pointer-events: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .85 0 0 0 0 .75 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      opacity: 0.10; mix-blend-mode: overlay;
+    }
+    body::after {
+      content: "";
+      position: fixed; inset: 0; z-index: 30; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 52%, rgba(0, 0, 0, 0.62) 100%);
+    }
+    main, footer { position: relative; z-index: 1; }
+    #embers { position: fixed; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+
+    /* przygaszone, „zmatowiałe" złoto zamiast jaskrawego */
+    body .text-amber-100 { color: #e7dec9; }
+    body .text-amber-200 { color: #d3c29a; }
+    body .text-amber-300 { color: #c1a56a; }
+    body .text-amber-400 { color: #a98a4d; }
+    body .text-amber-400\/90 { color: rgba(169, 138, 77, 0.92); }
+    body .text-stone-400 { color: #9b958c; }
+
+    h1.font-display, h2.font-display { text-shadow: 0 2px 16px rgba(0, 0, 0, 0.75); }
+
+    /* ===== nagłówek: kuta belka z krwistą linią ===== */
+    header.sticky {
+      background: linear-gradient(180deg, rgba(12, 10, 9, 0.96), rgba(10, 8, 7, 0.92)) !important;
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.65);
+    }
+    header.sticky::after {
+      content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 1px;
+      background: linear-gradient(90deg, transparent, #6e1a1a 20%, #a98a4d 50%, #6e1a1a 80%, transparent);
+      opacity: 0.75;
+    }
+    .emblem svg { filter: drop-shadow(0 0 5px rgba(169, 138, 77, 0.45)); animation: torch 5s ease-in-out infinite; }
+    @keyframes torch {
+      0%, 100% { opacity: 1; }
+      45% { opacity: 0.82; }
+      60% { opacity: 1; }
+      80% { opacity: 0.9; }
+    }
+
+    .nav-btn { border-radius: 2px !important; letter-spacing: 0.1em; }
+    .nav-btn.active {
+      background: linear-gradient(180deg, rgba(138, 35, 35, 0.30), rgba(18, 10, 8, 0.55));
+      color: #ecd9ad;
+      border-color: rgba(138, 35, 35, 0.75);
+      box-shadow: inset 0 -2px 0 #8a2323, 0 0 14px rgba(138, 35, 35, 0.22);
+    }
+
+    /* ===== pergamin: postarzony, przypalony na brzegach, z ziarnem ===== */
+    .parchment-card {
+      border-radius: 3px !important;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .22 0 0 0 0 .15 0 0 0 0 .08 0 0 0 .38 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+        radial-gradient(ellipse at 14% 8%, rgba(240, 230, 205, 0.34), transparent 55%),
+        radial-gradient(ellipse at 100% 100%, rgba(70, 40, 15, 0.38), transparent 62%),
+        linear-gradient(160deg, var(--parchment-light) 0%, var(--parchment-base) 62%, var(--parchment-shadow) 100%);
+      border: 1px solid rgba(62, 42, 20, 0.85);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 245, 220, 0.16),
+        inset 0 0 46px rgba(58, 34, 12, 0.50),
+        inset 0 0 120px rgba(30, 16, 6, 0.18),
+        0 18px 42px rgba(0, 0, 0, 0.72);
+    }
+    .parchment-card > .pointer-events-none.absolute {
+      border: 1px double rgba(80, 52, 24, 0.50) !important;
+      border-radius: 2px !important;
+    }
+    .parchment-card h1, .parchment-card h2, .parchment-card h3 { text-shadow: 0 1px 0 rgba(255, 245, 220, 0.22); }
+    .parchment-card [class*="bg-amber-50"] { background-color: rgba(236, 226, 196, 0.26) !important; }
+    .parchment-card [class*="bg-amber-100"] { background-color: rgba(220, 205, 165, 0.30) !important; }
+    .parchment-card input, .parchment-card select, .parchment-card textarea { background-color: rgba(246, 238, 215, 0.78); }
+
+    .dropcap::first-letter {
+      color: #6a1515;
+      text-shadow: 1px 1px 0 rgba(255, 245, 220, 0.35), 0 0 10px rgba(106, 21, 21, 0.35);
+    }
+
+    /* ===== karty „ksiąg": kuty żelazny panel z narożnikami ===== */
+    .tome-card {
+      position: relative;
+      border-radius: 2px !important;
+      background:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .9 0 0 0 0 .85 0 0 0 0 .75 0 0 0 .5 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"),
+        radial-gradient(circle at 50% 0%, rgba(150, 160, 175, 0.10), transparent 62%),
+        linear-gradient(175deg, rgba(30, 26, 23, 0.97) 0%, rgba(14, 11, 10, 0.99) 100%);
+      background-blend-mode: soft-light, normal, normal;
+      border: 1px solid rgba(110, 96, 74, 0.38);
+      box-shadow: inset 0 1px 0 rgba(255, 240, 210, 0.07), inset 0 0 40px rgba(0, 0, 0, 0.55), 0 14px 30px rgba(0, 0, 0, 0.6);
+    }
+    .tome-card::before, .tome-card::after {
+      content: ""; position: absolute; width: 18px; height: 18px; pointer-events: none;
+      border: 1px solid rgba(169, 138, 77, 0.65);
+      transition: width 0.22s ease, height 0.22s ease, border-color 0.22s ease;
+    }
+    .tome-card::before { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
+    .tome-card::after { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
+    .tome-card:hover {
+      border-color: rgba(138, 35, 35, 0.75);
+      box-shadow: inset 0 1px 0 rgba(255, 236, 196, 0.12), inset 0 0 40px rgba(0, 0, 0, 0.5), 0 18px 36px rgba(0, 0, 0, 0.75), 0 0 26px rgba(138, 35, 35, 0.20);
+    }
+    .tome-card:hover::before, .tome-card:hover::after { width: 30px; height: 30px; border-color: #c9a45c; }
+
+    /* ===== ozdobne linie ===== */
+    .ornate-divider { color: rgba(169, 138, 77, 0.8); }
+    .ornate-divider::before, .ornate-divider::after {
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(110, 26, 26, 0.75) 35%, rgba(169, 138, 77, 0.6) 70%, transparent);
+    }
+    .ornate-divider::after { transform: scaleX(-1); }
+
+    .rule-diamond { position: relative; height: 14px; margin: 0.35rem 0; }
+    .rule-diamond::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+      background: linear-gradient(90deg, #7c1d1d, rgba(110, 79, 38, 0.55) 45%, transparent);
+    }
+    .rule-diamond::after {
+      content: ""; position: absolute; left: 0; top: 50%; width: 9px; height: 9px;
+      transform: translateY(-50%) rotate(45deg); background: #7c1d1d;
+      box-shadow: 0 0 0 2px rgba(124, 29, 29, 0.28);
+    }
+    .rule-center { position: relative; height: 14px; max-width: 340px; margin: 0 auto 0.85rem; }
+    .rule-center::before {
+      content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(169, 138, 77, 0.6), transparent);
+    }
+    .rule-center::after {
+      content: ""; position: absolute; left: 50%; top: 50%; width: 9px; height: 9px;
+      transform: translate(-50%, -50%) rotate(45deg); background: #0a0908;
+      border: 1px solid #a98a4d; box-shadow: 0 0 10px rgba(138, 35, 35, 0.5);
+    }
+
+    .hero-quote {
+      border-left: 3px solid #7c1d1d;
+      padding-left: 1rem;
+      color: #3a322b;
+    }
+
+    footer { background: linear-gradient(180deg, rgba(8, 7, 6, 0.9), rgba(4, 3, 3, 0.97)) !important; }
+
+    /* ===== przejścia i dostępność ===== */
+    .tab-panel { animation: inkIn 0.45s ease; }
+    @keyframes inkIn {
+      from { opacity: 0; transform: translateY(8px); filter: blur(3px); }
+      to { opacity: 1; transform: translateY(0); filter: blur(0); }
+    }
+    ::selection { background: rgba(138, 35, 35, 0.55); color: #f6ecd4; }
+    @media (prefers-reduced-motion: reduce) {
+      .tab-panel, .emblem svg { animation: none !important; }
+      #embers { display: none; }
+    }
+  </style>
 </head>
 <body class="antialiased selection:bg-amber-700/40 selection:text-amber-100">
   <header class="sticky top-0 z-40 border-b border-amber-500/25 bg-stone-950/90 backdrop-blur-md">
@@ -261,8 +439,8 @@
         onclick="switchTab('home')"
         class="group flex items-center gap-3 text-left focus:outline-none"
       >
-        <span class="flex h-10 w-10 items-center justify-center rounded border border-amber-500/45 bg-gradient-to-b from-amber-950/70 to-stone-950 font-display text-lg font-bold text-amber-300 shadow-inner transition group-hover:border-amber-400">
-          ⚔
+        <span class="emblem flex h-10 w-10 items-center justify-center rounded border border-amber-500/45 bg-gradient-to-b from-amber-950/70 to-stone-950 font-display text-lg font-bold text-amber-300 shadow-inner transition group-hover:border-amber-400">
+          <svg viewBox="0 0 32 32" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round" aria-hidden="true"><path d="M16 3l10 3v8c0 7-4.5 12-10 15C10.5 26 6 21 6 14V6z"/><path d="M16 8v15M11.5 12.5h9"/></svg>
         </span>
         <div>
           <div class="font-display text-sm font-bold tracking-[0.16em] text-amber-200 sm:text-base">
@@ -365,7 +543,8 @@
             <h1 class="font-display text-3xl font-bold tracking-wide text-stone-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
               KRONIKI SIEDMIU KRÓLESTW
             </h1>
-            <p class="font-serif text-lg italic leading-relaxed text-stone-700 sm:text-xl">
+            <div class="rule-diamond" aria-hidden="true"></div>
+            <p class="hero-quote font-serif text-lg italic leading-relaxed text-stone-700 sm:text-xl">
               „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
             </p>
             <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
@@ -470,7 +649,7 @@
                   KSIĘGA II • ROCZNIKI
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ⏳
+                  ⏳︎
                 </span>
               </div>
               <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
@@ -497,7 +676,7 @@
                   KSIĘGA III • BOHATEROWIE
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  🗡
+                  🗡︎
                 </span>
               </div>
               <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
@@ -551,7 +730,7 @@
                   KSIĘGA V • KARTOGRAFIA
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  🗺
+                  🗺︎
                 </span>
               </div>
               <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
@@ -578,7 +757,7 @@
                   KSIĘGA VI • MECHANIKA
                 </span>
                 <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  🎲
+                  ⚔
                 </span>
               </div>
               <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
@@ -1486,6 +1665,7 @@
 
   <footer class="mt-16 border-t border-amber-500/20 bg-stone-950/85 py-6 text-center">
     <div class="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-8">
+      <div class="rule-center" aria-hidden="true"></div>
       <p class="font-serif text-base italic text-stone-400">
         Kroniki Westeros • Kompendium Kampanii RPG w realiach Siedmiu Królestw
       </p>
@@ -2605,6 +2785,74 @@
       if (e.key === 'Escape') closeCharacterModal();
     });
 
+
+    /* ===== Tło: opadający popiół i wznoszący się żar ===== */
+    function initEmbers() {
+      if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const canvas = document.createElement('canvas');
+      canvas.id = 'embers';
+      canvas.setAttribute('aria-hidden', 'true');
+      document.body.prepend(canvas);
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let w = 0, h = 0, dpr = 1, parts = [], rafId = null, lastT = 0;
+
+      const spawn = (initial) => {
+        const ember = Math.random() < 0.22;
+        return {
+          ember,
+          x: Math.random() * w,
+          y: initial ? Math.random() * h : (ember ? h + 10 : -10),
+          r: ember ? 0.7 + Math.random() * 1.3 : 0.6 + Math.random() * 1.5,
+          vy: ember ? -(14 + Math.random() * 26) : 8 + Math.random() * 18,
+          sway: 6 + Math.random() * 18,
+          phase: Math.random() * Math.PI * 2,
+          speed: 0.3 + Math.random() * 0.7,
+          alpha: ember ? 0.5 + Math.random() * 0.45 : 0.14 + Math.random() * 0.26,
+          t: Math.random() * 100
+        };
+      };
+
+      const resize = () => {
+        dpr = Math.min(window.devicePixelRatio || 1, 2);
+        w = window.innerWidth; h = window.innerHeight;
+        canvas.width = Math.round(w * dpr); canvas.height = Math.round(h * dpr);
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        const n = Math.min(80, Math.round((w * h) / 20000));
+        parts = Array.from({ length: n }, () => spawn(true));
+      };
+
+      const frame = (now) => {
+        const dt = Math.min((now - (lastT || now)) / 1000, 0.05);
+        lastT = now;
+        ctx.clearRect(0, 0, w, h);
+        for (const p of parts) {
+          p.t += dt * p.speed;
+          p.y += p.vy * dt;
+          p.x += Math.sin(p.t + p.phase) * p.sway * dt;
+          if (p.y < -12 || p.y > h + 12 || p.x < -20 || p.x > w + 20) Object.assign(p, spawn(false));
+          const flicker = p.ember ? 0.75 + 0.25 * Math.sin(p.t * 6 + p.phase) : 1;
+          ctx.beginPath();
+          ctx.fillStyle = p.ember
+            ? `rgba(232, 126, 48, ${p.alpha * flicker})`
+            : `rgba(190, 184, 172, ${p.alpha})`;
+          if (p.ember) { ctx.shadowColor = 'rgba(232, 110, 30, 0.9)'; ctx.shadowBlur = 6; } else { ctx.shadowBlur = 0; }
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fill();
+        }
+        rafId = requestAnimationFrame(frame);
+      };
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) { cancelAnimationFrame(rafId); rafId = null; lastT = 0; }
+        else if (!rafId) rafId = requestAnimationFrame(frame);
+      });
+      window.addEventListener('resize', resize);
+      resize();
+      rafId = requestAnimationFrame(frame);
+    }
+
     function initPortal() {
       const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
       set('home-char-count', CHARACTERS.length);
@@ -2618,6 +2866,7 @@
       renderHouses();
       renderLawsAndReligion();
       initMapZoom();
+      initEmbers();
       switchTab(getInitialTab(), false);
     }
 
