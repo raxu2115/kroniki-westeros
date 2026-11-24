@@ -436,6 +436,9 @@
     .legend-grid { display: grid; gap: 1.75rem; grid-template-columns: minmax(0, 1fr); }
     @media (min-width: 980px) { .legend-grid { grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr) minmax(0, 1.1fr); } }
     .rule-step { border-left: 3px solid rgba(124, 29, 29, 0.55); padding: 0.1rem 0 0.1rem 1rem; }
+    .role-acc summary { list-style: none; }
+    .role-acc summary::-webkit-details-marker { display: none; }
+
     .rule-step + .rule-step { margin-top: 0.25rem; }
     .legend-h {
       font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
@@ -2587,7 +2590,44 @@
       {
         "type": "list",
         "items": [
-          "Określ rolę: intrygant, łotr, przywódca, specjalista, wojownik.",
+          "Określ rolę (zobacz pełny opis ról poniżej)."
+        ]
+      },
+      {
+        "type": "roles",
+        "intro": "Bohaterowie mogą rozwijać się na rozmaite sposoby, a gracze mogą ich dowolnie kształtować, często dobrym pomysłem jest jednak obranie za cel wypełniania konkretnej roli, co pomoże w wyborze najważniejszych zdolności — nie tylko dla danej postaci, ale i całej grupy. Rola to ogólne określenie tego, czym bohater zajmować się będzie podczas rozgrywki, i zapewnia mu ona w grupie konkretną pozycję, gdzie będzie się mógł wykazać. W idealnej sytuacji drużyna posiada przedstawicieli każdej z ról i każdy z graczy ma szansę zabłysnąć, nie jest to jednak konieczne — grupy mogą składać się z dowolnej kombinacji ról, nawet jeśli niektóre z nich się dublują, inne zaś są całkowicie nieobecne. Rola nie zapewnia żadnych premii ani kar, jest po prostu narzędziem pomocnym w budowaniu ciekawego bohatera i zrównoważonej drużyny. Reprezentowanie każdej z ról jest dla grupy korzystne, lecz nie konieczne. Uzgodnijcie wspólnie postawę, jaką chcielibyście przyjąć w grze, i dobierzcie role, które najlepiej pasować będą do wybranych koncepcji bohaterów.",
+        "roles": [
+          {
+            "name": "Intrygant",
+            "abilities": "Język, Perswazja, Przebiegłość, Spostrzegawczość, Spryt, Status, Wiedza, Wola",
+            "text": "Jako mistrzowie spisków, intryganci są w ośrodkach władzy równie niebezpieczni, co namaszczeni rycerze na polach bitew. To negocjatorzy i wytrawni gracze w grze o tron, których wpływ na świat jest równie silny, jak poznaczonych bliznami generałów. Pojedynczym słowem, subtelnym kłamstwem lub przeinaczoną prawdą mogą pogrążyć świat w krwawej wojnie, doprowadzić do upadku ukochanych przywódców i wynieść na wyżyny najbardziej nikczemnych złoczyńców. Mimo że większość intrygantów używa swych umiejętności do realizacji własnych celów, nie wszyscy z nich są tak nieetyczni, jak najbardziej niesławni przedstawiciele tej grupy."
+          },
+          {
+            "name": "Łotr",
+            "abilities": "Perswazja, Spostrzegawczość, Spryt, Strzelectwo, Ukrycie, Walka, Złodziejstwo, Zręczność",
+            "text": "Dla specjalisty najważniejsza jest wąska dziedzina, lecz cechą łotra jest wszechstronność. Rola ta obejmuje różnorodne postaci, od prostych złodziei i upadłych szlachciców po żądnych krwi morderców — łotrzy to ludzie, którzy nie zważają na oczekiwania społeczne i obowiązki mieszkańców Siedmiu Królestw; czują się równie dobrze wśród arystokratów, jak i pospolitych zbirów."
+          },
+          {
+            "name": "Przywódca",
+            "abilities": "Perswazja, Prowadzenie wojny, Spryt, Status, Walka, Żywotność",
+            "text": "Przywódca to dowolny bohater, który prowadzi innych do określonego celu. Przywódcy to osoby podejmujące decyzje, choć powinni być również zdolni do wysłuchiwania różnych opinii, nawet jeśli zignorują udzielane im rady. Wielu z nich prowadzi żołnierzy na wojnę, mogą też jednak stać na czele innych organizacji — dbać o duży sept, kontrolować imperium handlowe czy być kapitanami statków."
+          },
+          {
+            "name": "Wojownik",
+            "abilities": "Kondycja, Opieka nad zwierzętami, Prowadzenie wojny, Strzelectwo, Walka, Zręczność, Żywotność",
+            "text": "Żadna inna z ról nie jest tak szeroko reprezentowana, jak wojownik. Może ona oznaczać każdego od namaszczonych rycerzy i członków Gwardii Królewskiej po podłych najemników, bandytów i błędnych rycerzy, obejmuje więc bardzo różnorodne i szerokie spektrum postaci. Znaczenia wojowników w Siedmiu Królestwach nie da się przecenić. Ich historię i kulturę kształtowały brutalne konflikty od Ery Herosów do niedawnej Wojny Uzurpatora. Wojownicy zajmują więc w oczach mieszkańców Westeros szczególną pozycję. Niewątpliwie są narzędziami w rękach władców, jednak najwspanialsi z nich są wcieleniem ideału mężczyzny — śmiałego i walecznego człowieka, który trzyma swą agresję na wodzy dzięki pobożności, uprzejmości i skromności, który walczy za króla i Wiarę, chroni pospólstwo i przysparza chwały swemu rodowi. Wielu mężczyzn — jak i część kobiet — stara się dorównać temu obrazowi i opowieściom budującym tę wojowniczą kulturę, inni zaś porzucają honor i rycerskie zachowanie, aby używać swych umiejętności do zabierania siłą tego, na co mają ochotę, i zabijania wszystkich, którzy wejdą im w drogę."
+          },
+          {
+            "name": "Specjalista",
+            "abilities": null,
+            "text": "Specjalista to bohater, który jest ekspertem wąskiej dziedziny umiejętności. Określić tak można zwykle maesterów i septonów, ale i dużą część służby — kowali, psiarzy, mentorów, uczonych, heroldów i inne osoby niezbędne dla funkcjonowania dworu. Specjalista to rola wypełniana przez wielu bohaterów, jest bowiem w grze najbardziej wszechstronna i najłatwiejsza do dostosowania do konkretnych potrzeb."
+          }
+        ],
+        "mixed": "Proponowane role są niesłychanie szerokie, jednak konstruując własnych bohaterów, możecie też łączyć je ze sobą, by stworzyć na przykład przywódców-wojowników, jak Stannis Baratheon i Eddard Stark, czy przywódców-spiskowców, jak Wielki Maester Pycelle. Pamiętajcie jednak, że im szersza będzie specjalizacja postaci, tym trudniej będzie jej stać się mistrzem jakiejkolwiek dziedziny."
+      },
+      {
+        "type": "list",
+        "items": [
           "Określ przeszłość: wymyśl przynajmniej jedno wydarzenie z przeszłości, które wpłynęło na twoje życie.",
           "Określ cel: co bohater chce osiągnąć?",
           "Określ motywację: dlaczego chce to osiągnąć?",
@@ -2675,6 +2715,26 @@
       }
       if (b.type === 'note') {
         return `<p class="rounded border border-amber-900/25 bg-amber-950/5 px-3.5 py-2.5 text-sm italic leading-relaxed text-stone-700">${b.text}</p>`;
+      }
+      if (b.type === 'roles') {
+        return `
+          <div class="space-y-3">
+            <p class="text-base leading-relaxed text-stone-800">${b.intro}</p>
+            <div class="role-acc space-y-2.5">
+              ${b.roles.map((r) => `
+                <details class="group rounded border border-amber-900/30 bg-amber-50/60 open:bg-amber-50/90">
+                  <summary class="flex cursor-pointer items-center justify-between gap-3 px-4 py-3 font-display text-base font-bold text-stone-950 marker:content-none">
+                    <span>${r.name}</span>
+                    <span class="shrink-0 font-display text-xs font-bold tracking-widest text-red-900 transition-transform group-open:rotate-180">▾</span>
+                  </summary>
+                  <div class="space-y-2.5 border-t border-amber-900/20 px-4 py-3.5">
+                    <p class="text-base leading-relaxed text-stone-800">${r.text}</p>
+                    ${r.abilities ? `<p class="text-sm text-stone-700"><strong class="font-display text-xs uppercase tracking-wider text-red-950">Kluczowe zdolności:</strong> ${r.abilities}</p>` : ''}
+                  </div>
+                </details>`).join('')}
+            </div>
+            <p class="rounded border border-amber-900/25 bg-amber-950/5 px-3.5 py-3 text-sm leading-relaxed text-stone-700"><strong class="font-display text-xs uppercase tracking-wider text-red-950">${b.mixed ? 'Role mieszane — ' : ''}</strong>${b.mixed}</p>
+          </div>`;
       }
       if (b.type === 'table') {
         return `
@@ -3349,13 +3409,12 @@
     }
 
     function legendRegionsHtml(compact) {
-      return `<ul class="legend-list">${MAP_REGIONS.map((r, i) => `
+      return `<ul class="legend-list">${MAP_REGIONS.map((r) => `
         <li class="legend-row">
           <span class="legend-swatch" style="background:${r.fill};border-color:${r.stroke}"></span>
           <div>
             <div class="legend-name">${r.pl} <span class="legend-en">${r.en !== r.pl ? '(' + r.en + ')' : ''}</span></div>
             ${compact ? '' : `<div class="legend-note">${r.note}</div>`}
-            ${!compact && r.q ? `<button type="button" class="legend-chip" data-houses="${i}">RODY TEJ KRAINY →</button>` : ''}
           </div>
         </li>`).join('')}</ul>`;
     }
@@ -3416,8 +3475,6 @@
             if (window.mapFlyTo) window.mapFlyTo(p.fx, p.fy, p.name + (p.en ? ' · ' + p.en : ''));
             return;
           }
-          const house = e.target.closest('[data-houses]');
-          if (house) openHousesFor(MAP_REGIONS[Number(house.dataset.houses)].q);
         });
       }
     }
