@@ -1548,8 +1548,17 @@
           <option value="Wielkie">Znaczenie: Wielkie</option>
           <option value="Duże">Znaczenie: Duże</option>
           <option value="Małe">Znaczenie: Małe</option>
+          <option value="Klan">Klany</option>
+          <option value="Właściciele ziemscy">Właściciele ziemscy</option>
           <option value="Wymarły">Wymarłe</option>
           <option value="Błędni rycerze">Błędni rycerze</option>
+        </select>
+        <select
+          id="house-region-filter"
+          onchange="renderHouses()"
+          class="rounded border border-amber-500/35 bg-stone-950/90 px-3 py-2 font-display text-xs tracking-wider text-amber-100 focus:border-amber-400 focus:outline-none"
+        >
+          <option value="ALL">Wszystkie regiony</option>
         </select>
         <span id="house-count" class="font-serif text-base italic text-stone-400"></span>
       </div>
@@ -2172,6 +2181,240 @@
     "region": "Westeros",
     "sigil": "W czerwonym polu o czarnym promienistym skraju srebrny korbacz",
     "description": "Ród Thorne’ów był istotnym stronnikiem rodu Targaryenów podczas Wojny Uzurpatora. Alliser Thorne, obecny mistrz miecza Czarnego Zamku, był jednym z najgorliwszych rycerzy w służbie Aerysa II; po przegraniu wojny zmuszony został przez lorda Tywina Lannistera do przywdziania czerni. Po wojnie znaczenie rodu jest znikome."
+  },
+  {
+    "name": "Flintów z Palców Flinta",
+    "size": "Małe",
+    "region": "Północ",
+    "lands": "Płonąca Zatoka",
+    "seat": "Palce Flinta",
+    "sigil": "W palowanym czarno-szarym polu na białym odwróconym roztroju szara kamienna dłoń",
+    "description": "Ta gałąź rodu Flintów spokrewniona jest z Flintami z Wdowiej Strażnicy i o wiele mniej licznymi klanami Flintów z północnych gór. Do ich ziem należą południowe wybrzeża Płonącej Zatoki. Głową tego rodu jest lord Robin Flint, jeden ze stałych sprzymierzeńców Starków."
+  },
+  {
+    "name": "Cerwynów",
+    "size": "Małe",
+    "region": "Północ",
+    "seat": "Zamek Cerwyn",
+    "words": "Naostrzeni i gotowi",
+    "description": "Ród Cerwynów jest pomniejszym rodem zaprzysiężonym Starkom. Głową rodu jest lord Medger Cerwyn, łagodny i cichy człowiek, który nieustannie szuka odpowiedniego męża dla lady Jonelle Cerwyn, jego nieładnej, pulchnej, trzydziestodwuletniej córki. Dziedzicem Medgera jest Cley Cerwyn, bystry, czternastoletni chłopak."
+  },
+  {
+    "name": "Condonów",
+    "size": "Małe",
+    "region": "Północ",
+    "lands": "Hak Masseya",
+    "seat": "Ostry Przylądek",
+    "sigil": "W białym polu czerwona głowa orła pomiędzy skrzyżowanymi trójzębami",
+    "description": "Ród Condonów jest pomniejszym rodem zaprzysiężonym rodowi Cerwynów. Jego najbardziej liczącym się członkiem jest ser Kyle Condon, jeden ze stałych towarzyszy Medgera."
+  },
+  {
+    "name": "Flintów z Wdowiej Strażnicy",
+    "size": "Małe",
+    "region": "Północ",
+    "seat": "Wdowia Strażnica",
+    "sigil": "Niebieskie pole usiane białymi bałwanami morskimi, w żółtej falowanej głowicy para niebieskich oczu",
+    "words": "Zawsze czujni",
+    "description": "Starsza gałąź rozległego rodu Flintów władająca półwyspem na wschód i północ od Białego Portu. Flintowie ci mają powiązania dynastyczne ze Starkami, do których rodziny wżenili się kilka pokoleń temu. Obecnie głową Wdowiej Strażnicy jest ciężarna lady Lyessa Flint."
+  },
+  {
+    "name": "Dustinów",
+    "size": "Małe",
+    "region": "Północ",
+    "lands": "Kraina Kurhanów",
+    "seat": "Barrowton",
+    "sigil": "W żółtym polu czarna korona pomiędzy dwoma skrzyżowanymi zardzewiałymi toporami o czarnych styliskach",
+    "description": "Lord Willam Dustin był jednym z towarzyszy Eddarda Starka podczas konfrontacji z Gwardią Królewską w Wieży Radości. Zwykle dosiadał potężnego kasztanowatego ogiera i świetnie radził sobie w tej słynnej bitwie, lecz poległ w niej, podobnie jednak jak większość towarzyszy Starka. Od jego śmierci rodowi przewodzi wdowa po nim, lady Barbrey Dustin z rodu Ryswellów."
+  },
+  {
+    "name": "Gloverów",
+    "size": "Duże",
+    "region": "Północ",
+    "seat": "Deepwood Motte",
+    "sigil": "W szkarłatnym polu srebrna pięść",
+    "description": "Ród Gloverów jest silnie związany z rodem Starków, a zmarły Ethan Glover był jednym z rycerzy towarzyszących Eddardowi Starkowi podczas Wojny Uzurpatora, był też giermkiem Brandona Starka. Obecnie ich ziemiami rządzi jego syn, lord Galbart Glover; są to dzikie tereny leżące wokół Deepwood Motte, na północ od Przylądka Morskiego Smoka, po przeciwnej stronie Wilczego Lasu niż Winterfell, nieopodal zalewanego przez przypływy wybrzeża Lodowej Zatoki. Deepwood Motte to tylko prosta drewniana twierdza na wzgórzu, dla rodu Starków ma ona jednak duże znaczenie strategiczne, może bowiem być użyta do zaopatrywania armii z morza, a jej oddalenie utrudnia oblężenia. Garnizon Deepwood Motte nie jest liczny, lecz ludzie z tego regionu są twardzi, zdecydowani i przystosowani do życia w dziczy. Lord Galbart kontynuuje tradycje Pierwszych Ludzi, wielbiąc dawnych bogów, podobnie jak Starkowie. Ma reputację dobrego człowieka, lojalnego i stałego."
+  },
+  {
+    "name": "Hornwoodów",
+    "size": "Małe",
+    "region": "Północ",
+    "seat": "Hornwood",
+    "words": "Słuszni w gniewie",
+    "sigil": "W pomarańczowym polu brązowy łoś o czarnym porożu",
+    "description": "Ród Hornwoodów włada terenami na wschód od Winterfell, wzdłuż terytorium Boltonów, a jego głową jest lord Harys Hornwood. To ambitny mężczyzna, który patrzy na włości sąsiadów głodnym wzrokiem i zawsze stara się zdobyć przewagę potrzebną do poszerzenia swych ziem. Jego żoną jest lady Donella, ma też jednego prawowitego syna, Daryna Hornwooda, oraz jednego bękarta, który wychowywany jest w Deepwood Motte. Hornwoodowie są też powiązani z rodem Tallhartów dzięki małżeństwu Bereny Hornwood z Leobaldem Tallhartem."
+  },
+  {
+    "name": "Ironsmithów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W złotym polu o szaro-zielonym skraju na sztorc czarny miecz pomiędzy czterema czarnymi podkowami",
+    "description": "Ród Ironsmithów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
+  },
+  {
+    "name": "Lake’ów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W brązowym polu siedem zielonych medalionów w klin",
+    "description": "Ród Lake’ów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
+  },
+  {
+    "name": "Lightfootów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W ciemnobrązowym polu rząd białych śladów stóp w skos lewy",
+    "description": "Ród Lightfootów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
+  },
+  {
+    "name": "Karstarków",
+    "size": "Duże",
+    "region": "Północ",
+    "seat": "Karhold",
+    "sigil": "W czarnym polu białe promienie słońca",
+    "description": "Tak jak wiele innych rodzin szlacheckich Północy, Karstarkowie wywodzą swój ród bezpośrednio od Pierwszych Ludzi. Z dumą wskazują też na swe bliskie powiązania ze Starkami: ród Karstark powstał tysiąc lat temu, gdy Karlon Stark pokonał zbuntowanego przeciw Królom Zimy lorda, za co jego młodsza gałąź Starków nagrodzona została ziemiami na północny zachód od Winterfell, w lesie za Ostatnią Rzeką. W końcu tak zwani Karholdowi Starkowie stali się Karstarkami, zupełnie osobną rodziną. Są to potężni, dzicy wojownicy noszący długie brody i włosy oraz płaszcze z futer niedźwiedzi, wilków i fok."
+  },
+  {
+    "name": "Locke’ów",
+    "size": "Małe",
+    "region": "Północ",
+    "seat": "Stary Zamek",
+    "sigil": "W purpurowym polu na skróconym białym klinie na opak brązowe skrzyżowane klucze",
+    "description": "Ród Locke’ów jest pomniejszą rodziną z Północy. Lord Ondrew Locke jest starym, schorowanym mężczyzną, który nie jest w stanie podróżować zbyt daleko od swych włości. Sprawami rodu zajmuje się w jego imieniu ser Donnel Locke. Inny z jego synów, ser Mallador Locke, służy w Nocnej Straży."
+  },
+  {
+    "name": "Manderlych",
+    "size": "Duże",
+    "region": "Północ",
+    "lands": "Biały Port",
+    "seat": "Biały Port",
+    "sigil": "W niebiesko-zielonym polu biały tryton o ciemnozielonych włosach, brodzie i ogonie, dzierżący czarny trójząb",
+    "description": "Zamek w Białym Porcie zbudowany został przez króla Jona Starka, aby bronić Północy przed piratami ze wschodu. Wraz z okolicznymi ziemiami nadał ją Manderlym, wygnanym z ziem nad rzeką Mander (która wedle członków rodu wywodzi swą nazwę od nich, nie na odwrót); po dziś dzień władają nią oni jako oddani chorążowie Starków. Ród pochodzi z południa, czczą więc oni Siedmiu, nie dawnych bogów Północy, są też bardzo oddani ideałom rycerstwa. Obecnie Biały Port to dostatni region, który wzbogacił się na handlu i pełnych ryb wodach."
+  },
+  {
+    "name": "Marshów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W żółtym polu dziesięć zielonych żab w klin",
+    "description": "Jest to mała rodzina o znikomym znaczeniu. Jej najbardziej znanym członkiem jest Bowen Marsh służący w Nocnej Straży."
+  },
+  {
+    "name": "Mollenów",
+    "size": "Właściciele ziemscy",
+    "region": "Północ",
+    "sigil": "W polu białym na bladozielonym klinie ośnieżona sosna",
+    "description": "Najbardziej znanym członkiem rodu Mollenów jest Hallis Mollen, umięśniony strażnik Winterfell, będący zastępcą Jory’ego Cassela, dowódcy straży zamku."
+  },
+  {
+    "name": "Mormontów",
+    "size": "Małe",
+    "region": "Północ",
+    "lands": "Niedźwiedzia Wyspa",
+    "words": "Oto jesteśmy",
+    "sigil": "W zielonym lesie czarny niedźwiedź",
+    "description": "Mormontowie to stary i ubogi, lecz dumny i honorowy ród, który służy Starkom wiernie od wielu pokoleń. Mówi się, że Niedźwiedzią Wyspę podarował Mormontom król Rodrik Stark, który wygrał ją, siłując się na rękę z jej poprzednim właścicielem z rodu Woodfootów. Nikt nie wie, czy historia ta jest prawdziwa – nie ulega jednak wątpliwości, że jest to piękne miejsce, pokryte pradawnymi lasami i kwitnącymi ciernistymi krzewami i poprzecinane rwącymi potokami. Siedziba Mormontów jest zbudowana z olbrzymich bali i otoczona wałem ziemnym. Ich ziemie są dziewicze i słabo zaludnione – znaleźć można na nich jedynie kilku rolników i rybaków. Mormontowie są znanym i podziwianym rodem. Mówi się, że w przeszłości ich kobiety musiały bronić się przed najazdami żelaznych ludzi i dzikich, gdy ich mężowie wypływali w morze; do dziś są one twarde i wojownicze niczym niedźwiedzice. Historia ta utrwalona jest w stojącym u wejścia do twierdzy Mormontów pomniku: przedstawia on kobietę w niedźwiedziej skórze, w jednej ręce trzymającą topór, a w drugiej niemowlę. Jeor Mormont, obecny Lord Dowódca Nocnej Straży, był niegdyś lordem Niedźwiedziej Wyspy, ustąpił jednak miejsca swemu synowi, Jorah, aby zostać czarnym bratem. Po zbrodniach i wygnaniu Jorah przewodnictwo rodu objęła siostra Jeora, Maege Mormont."
+  },
+  {
+    "name": "Ryswellów",
+    "size": "Duże",
+    "region": "Północ",
+    "lands": "Strumienisko",
+    "sigil": "W brązowym polu o czarnym blankowanym skraju czarna głowa konia o czerwonych oczach i grzywie",
+    "description": "Ród Ryswellów włada pagórkowatymi ziemiami na południowy zachód od Torrhen’s Square, zwanymi Strumieniskiem. Większość polityki Północy jest im obca, ser Mark Ryswell był jednak wśród towarzyszy Eddarda Starka, którzy zginęli w Wieży Radości. Obecną głową rodu jest lord Rodrik Ryswell, który wydał swą córkę Barbrey za jednego z Dustinów, drugą zaś, obecnie zmarłą Bethany, za Roose’a Boltona. Lord Rodrick ma wielu kłótliwych kuzynów, którzy tworzą jego armię: Rogera Ryswella, Rickarda Ryswella oraz Roose’a Ryswella. Według legendy siedemdziesięciu dziewięciu ludzi zdezerterowało kiedyś z Nocnej Straży i szukało schronienia u lorda Ryswella, ponieważ jeden z nich był jego synem. Lord Ryswell zebrał ich i zaprowadził z powrotem na Mur, gdzie każdy z nich został po kolei zamurowany w lodowej ścianie, aby honorowi stało się zadość. W ostatnich dniach swego życia lord Ryswell sam przywdział czerń, aby stanąć u boku syna, którego skazał na śmierć."
+  },
+  {
+    "name": "Tallhartów",
+    "size": "Duże",
+    "region": "Północ",
+    "seat": "Torrhen's Square",
+    "words": "Dumni i wolni",
+    "sigil": "W brązowym polu trzy zielone drzewa strażnicze",
+    "description": "Prowadzone przez ser Helmana Tallharta Torrhen’s Square jest małą krainą otaczającą silną fortecę wznoszącą się nad brzegiem jeziora na dzikich ziemiach na południe od Wilczego Lasu i na północ od Krainy Kurhanów. Choć są dość nieliczni, Tallhartowie to ważni sprzymierzeńcy Starków, ponieważ Torrhen’s Square jest jedynym zamkiem w tym regionie i miałby ogromne znaczenie w przypadku inwazji lub napadów z zachodu. Żelaźni ludzie są w pełni świadomi strategicznej wagi zamku i z pewnością byłby on jednym z ich pierwszych celów, gdyby wojna z nimi znów wybuchła. Dziedzicem Helmana jest jego najstarszy syn, Benfred Tallhart, tęgi mężczyzna ciężki od mięśni i tłuszczu. Helman ma też młodą córkę, lady Eddarę. Młodszy brat Helmana, Leobald, jest jego kasztelanem i mężem lady Bereny z rodu Hornwood, z którą ma dwóch nieletnich synów, Brandona i Berena."
+  },
+  {
+    "name": "Umberów",
+    "size": "Małe",
+    "region": "Północ",
+    "lands": "Zatoka Fok",
+    "seat": "Ostatnie Domostwo",
+    "sigil": "W ognisto czerwonym polu ryczący brązowowłosy olbrzym w futrze i rozerwanych srebrnych kajdanach",
+    "description": "Umberowie kontrolują surowe ziemie wokół Zatoki Fok – miejsce pełne pierwotnych wzgórz oraz wiekowych i sosnowych lasów. Są twardymi ludźmi, zahartowanymi przez ostry północny klimat i często wzywanymi, aby bronić Muru przed łupieżcami dzikich. Umberowie odnieśli słynne zwycięstwo jako część armii, która pokonała Gendela i Gorne’a, braci, którzy razem ogłosili się Królami za Murem ponad trzy tysiące lat temu. Obecna reputacja rodu jest dość przerażająca; według niektórych opowieści Nocny Król nie był wcale Boltonem, lecz Umberem. Panem Ostatniego Domostwa i okolicznych ziem jest Greatjon, człowiek, który pod wieloma względami przypomina olbrzyma z rodowego herbu. Greatjon jest głośnym, żywiołowym człowiekiem, który ceni sobie polowania, uczty i zapasy i nie darzy szczególnym szacunkiem osób, które przejawiają słabości lub nie potrafią podejmować decyzji. Najprostszym sposobem na zdobycie sympatii Greatjona jest pokazanie mu swej siły i odwagi. Jeśli raz zdobędzie się przyjaźń Umberów, są oni wierni do samego końca."
+  },
+  {
+    "name": "Slate’ów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "Szare pole o podwójnej białej orle",
+    "description": "Ród Slate’ów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
+  },
+  {
+    "name": "Stoutów",
+    "size": "Małe",
+    "region": "Północ",
+    "seat": "Goldgrass",
+    "sigil": "W rdzawym polu złote krokwie w słup",
+    "description": "Ród Stoutów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom. Lord Harwood Stout włada swymi włościami z zamku Goldgrass."
+  },
+  {
+    "name": "Watermanów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W białym polu dwa skrzyżowane brązowe wiosła pomiędzy niebieskimi zaokrąglonymi flankami",
+    "description": "Ród Watermanów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
+  },
+  {
+    "name": "Burleyów",
+    "size": "Klan",
+    "region": "Północ",
+    "sigil": "W białym polu na niebieskim skróconym klinie na opak biały nóż",
+    "description": "Ród Burleyów jest jednym z północnych klanów. Jego głową jest Burley, w Winterfell zwany lordem Burleyem."
+  },
+  {
+    "name": "Harclayów",
+    "size": "Klan",
+    "region": "Północ",
+    "sigil": "W niebieskim polu na białym skosie trzy niebieskie księżyce: dopełniający się, w pełni i zanikający",
+    "description": "Ród Harclayów jest jednym z północnych klanów, którego terytorium przypada na podnóża gór na północ od Wilczego Lasu. Z rodu tego pochodzi Ronnel Harclay z Nocnej Straży."
+  },
+  {
+    "name": "Knottów",
+    "size": "Klan",
+    "region": "Północ",
+    "sigil": "W białym polu brązowy węzeł",
+    "description": "Ród Knottów jest jednym z północnych klanów, którego terytorium przypada na góry na północ od Wilczego Lasu. Jego głową jest Knott, w Winterfell zwany lordem Knottem."
+  },
+  {
+    "name": "Liddle’ów",
+    "size": "Klan",
+    "region": "Północ",
+    "sigil": "W białym polu na zielonym słupie o jodłowatych brzegach trzy brązowe szyszki",
+    "description": "Ród Liddle’ów to kolejny klan z północnych gór. Włada wyżynami na północ od Wilczego Lasu. Jego wodzem jest Torren Liddle, zwany po prostu Liddle."
+  },
+  {
+    "name": "Norreyów",
+    "size": "Klan",
+    "region": "Północ",
+    "sigil": "W żółtym polu sześć zielonych ostów w klin",
+    "description": "Ród Norreyów to następny pomniejszy klan z Północy, którego ziemie leżą w górach na północ od Wilczego Lasu. Wodzem klanu jest Brandon Norrey (lub po prostu Norrey). Spokrewniony z nim Owen Norrey odwiedza czasem Winterfell."
+  },
+  {
+    "name": "Wellsów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W ukośnej zielono-białej szachownicy szary pas z pięcioma czarnymi medalionami",
+    "description": "Ród Wellsów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom. Najbardziej znanym członkiem rodu jest ser Theodan Wells, zwany też ser Theodanem Wiernym. Jest znany ze swej wyjątkowej pobożności i oddał swe życie służbie Wierze."
+  },
+  {
+    "name": "Whitehillów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W granatowym polu biały skrócony klin, nad nim białe czteroramienne gwiazdy w łuku",
+    "description": "Ród Whitehillów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom. W przeciwieństwie do większości rodów Północy, Whitehillowie czczą Siedmiu."
+  },
+  {
+    "name": "Woolfieldów",
+    "size": "Małe",
+    "region": "Północ",
+    "sigil": "W purpurowym polu o białym skraju trzy białe sterty wełny",
+    "description": "Ród Woolfieldów jest pomniejszą rodziną z Północy zaprzysiężoną Starkom."
   }
 ];
     const HOUSES = HOUSES_GREAT.map((h) => ({ size: 'Wielkie', ...h })).concat(HOUSES_MINOR);
@@ -3579,19 +3822,41 @@
       `;
     }
 
+    function populateHouseRegionFilter() {
+      const sel = document.getElementById('house-region-filter');
+      if (!sel || sel.dataset.filled) return;
+      sel.dataset.filled = '1';
+      const regions = [...new Set(HOUSES.map((h) => h.region).filter(Boolean))].sort((a, b) =>
+        a.localeCompare(b, 'pl')
+      );
+      regions.forEach((r) => {
+        const opt = document.createElement('option');
+        opt.value = r;
+        opt.textContent = r;
+        sel.appendChild(opt);
+      });
+    }
+
     function renderHouses() {
       const grid = document.getElementById('houses-grid');
       if (!grid) return;
 
+      populateHouseRegionFilter();
+
       const query = (document.getElementById('house-search')?.value || '').trim().toLowerCase();
       const sizeFilter = document.getElementById('house-size-filter')?.value || 'ALL';
+      const regionFilter = document.getElementById('house-region-filter')?.value || 'ALL';
 
       const filtered = HOUSES.filter((h) => {
         const haystack = [h.name, h.region, h.seat, h.lands, h.sigil, h.description]
           .filter(Boolean)
           .join(' ')
           .toLowerCase();
-        return (!query || haystack.includes(query)) && (sizeFilter === 'ALL' || h.size === sizeFilter);
+        return (
+          (!query || haystack.includes(query)) &&
+          (sizeFilter === 'ALL' || h.size === sizeFilter) &&
+          (regionFilter === 'ALL' || h.region === regionFilter)
+        );
       });
 
       const countEl = document.getElementById('house-count');
