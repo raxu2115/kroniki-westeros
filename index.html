@@ -1804,7 +1804,13 @@
           'Sesja zero — zanim historia się zacznie. Drużyna jeszcze nie istnieje, postacie czekają na stworzenie.'
         ],
         players: ['Piotr', 'Jakub', 'Krzysztof', 'Igor', 'Oskar'],
-        characters: [],
+        characters: [
+          { name: 'Test1', house: 'TestRód1' },
+          { name: 'Test2', house: 'TestRód2' },
+          { name: 'Test3', house: 'TestRód3' },
+          { name: 'Test4', house: 'TestRód4' },
+          { name: 'Test5', house: 'TestRód5' }
+        ],
         letters: [
           {
             id: 'letter-s0-1',
@@ -4443,7 +4449,7 @@
           <h3 class="mb-2 font-display text-lg font-bold text-amber-100">${s.title || ''}</h3>
           ${(s.paragraphs || []).map((p) => `<p class="font-body text-base leading-relaxed text-stone-300">${p}</p>`).join('')}
           ${s.players && s.players.length ? `<p class="mt-3 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Gracze:</strong> ${s.players.join(', ')}</p>` : ''}
-          ${s.characters && s.characters.length ? `<p class="mt-1 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Grają jako:</strong> ${s.characters.join(', ')}</p>` : ''}
+          ${s.characters && s.characters.length ? `<p class="mt-1 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Grają jako:</strong> ${s.characters.map((c) => typeof c === 'string' ? c : `${c.name}${c.house ? ` (z rodu ${c.house})` : ''}`).join(', ')}</p>` : ''}
           ${s.letters && s.letters.length ? `<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">${s.letters.map((l) => letterGateHtml(s, l)).join('')}</div>` : ''}
         </article>
       `).join('');
