@@ -612,73 +612,22 @@
   <main class="mx-auto max-w-[1440px] px-4 py-8 sm:px-6 lg:px-8 lg:py-10">
     <!-- 1. STRONA GŁÓWNA -->
     <section id="tab-home" class="tab-panel active space-y-10">
-      <div class="parchment-card relative overflow-hidden rounded-lg p-6 sm:p-8 lg:p-10">
+      <div class="parchment-card relative overflow-hidden rounded-lg p-5 sm:p-7">
         <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-        <div class="relative z-10 grid items-center gap-8 lg:grid-cols-12">
-          <div class="space-y-4 lg:col-span-8">
-            <div class="inline-flex items-center gap-2 rounded border border-amber-900/30 bg-amber-950/5 px-3 py-1 font-display text-xs font-semibold tracking-[0.18em] text-red-900">
+        <div class="relative z-10 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <div class="inline-flex items-center gap-2 font-display text-xs font-semibold tracking-[0.18em] text-red-900">
               <span>✦</span>
-              <span>STARE TOWN • CYTADELA MAESTERÓW</span>
+              <span>KRONIKI SIEDMIU KRÓLESTW</span>
             </div>
-            <h1 class="font-display text-3xl font-bold tracking-wide text-stone-900 sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
-              KRONIKI SIEDMIU KRÓLESTW
-            </h1>
-            <div class="rule-diamond" aria-hidden="true"></div>
-            <p class="hero-quote font-serif text-lg italic leading-relaxed text-stone-700 sm:text-xl">
-              „Kiedy spada śnieg i wieją białe wichry, samotny wilk umiera, lecz stado żyje dalej.”
+            <p class="mt-1 font-serif text-base italic text-stone-700">
+              Od Ery Świtu po wydarzenia przy Waszym stole.
             </p>
-            <p class="text-base leading-relaxed text-stone-800 sm:text-lg">
-              Witaj w archiwum kampanii osadzonej w realiach Westeros. Znajdziesz tu księgi wprowadzające do świata przed stworzeniem karty bohatera, roczniki dawnych er, rejestr postaci, heraldykę wielkich i pomniejszych rodów, zwyczaje i prawa, religie, mapę oraz księgę zasad.
-            </p>
-            <div class="flex flex-wrap gap-3 pt-2">
-              <button
-                type="button"
-                onclick="switchTab('intro')"
-                class="rounded border border-amber-900/60 bg-gradient-to-b from-red-900 to-red-950 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-amber-100 shadow-md transition hover:from-red-800 hover:to-red-950"
-              >
-                ZANIM STWORZYSZ POSTAĆ
-              </button>
-              <button
-                type="button"
-                onclick="switchTab('map')"
-                class="rounded border border-amber-900/45 bg-amber-950/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-red-950 transition hover:bg-amber-950/20"
-              >
-                ZAKŁADKA MAPA
-              </button>
-              <button
-                type="button"
-                onclick="switchTab('rules')"
-                class="rounded border border-stone-800/45 bg-stone-900/10 px-5 py-2.5 font-display text-xs font-bold tracking-widest text-stone-900 transition hover:bg-stone-900/20"
-              >
-                ZASADY GRY
-              </button>
-            </div>
           </div>
-
-          <div class="lg:col-span-4">
-            <div class="rounded border border-amber-900/30 bg-stone-950/90 p-5 text-amber-100 shadow-inner">
-              <div class="mb-2 font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-                STAN KRONIKI
-              </div>
-              <div class="space-y-2.5 font-body text-base text-stone-300">
-                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
-                  <span class="text-stone-400">Epoki w archiwum:</span>
-                  <span id="home-era-count" class="font-display font-semibold text-amber-200">6</span>
-                </div>
-                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
-                  <span class="text-stone-400">Zapisane postacie:</span>
-                  <span id="home-char-count" class="font-display font-semibold text-amber-200">4</span>
-                </div>
-                <div class="flex items-center justify-between border-b border-amber-500/15 pb-2">
-                  <span class="text-stone-400">Wielkie rody:</span>
-                  <span id="home-house-count" class="font-display font-semibold text-amber-200">9</span>
-                </div>
-                <div class="flex items-center justify-between pt-0.5">
-                  <span class="text-stone-400">Pora roku w kronice:</span>
-                  <span class="italic text-amber-300">Długie Lato / Zapach Zimy</span>
-                </div>
-              </div>
-            </div>
+          <div class="flex items-center gap-4 font-display text-xs tracking-wider text-stone-800">
+            <span id="home-now-season" class="rounded border border-amber-900/30 bg-amber-950/5 px-3 py-1.5">
+              Długie Lato / Zapach Zimy
+            </span>
           </div>
         </div>
       </div>
@@ -686,276 +635,25 @@
       <div class="space-y-5">
         <div class="ornate-divider">
           <h2 class="font-display text-lg font-bold tracking-[0.18em] text-amber-200 sm:text-xl">
-            KSIĘGI KOMPENDIUM
+            KRONIKA WYDARZEŃ
           </h2>
         </div>
-
-        <div class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3">
-          <button
-            type="button"
-            onclick="switchTab('intro')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA I • WPROWADZENIE
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ❖
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Zanim stworzysz postać / Wstęp do Westeros
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Prolog o smokach i Targaryenach, historia powstania Siedmiu Królestw oraz przewodnik po Stolicy i krainach Westeros.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ WSTĘP</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('history')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA II • ROCZNIKI
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ⏳︎
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Historia Westeros
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Interaktywna oś czasu i szeroki czytnik kronikarski — od Ery Świtu i Wieku Bohaterów po Podbój Aegona i Rebelię Roberta.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>PRZEGLĄDAJ EPOKI</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('characters')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA III • BOHATEROWIE
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  🗡︎
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Postacie
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Zasady określania rodu i ziem na start oraz rejestr Bohaterów Neutralnych z wyszukiwarką, filtrem rodów i podglądem karty.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>ZOBACZ POSTACIE</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('houses')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA IV • HERALDYKA
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ♛
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Rody Westeros
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Targaryen, Stark, Baratheon, Greyjoy, Arryn oraz liczne rody pomniejsze — ich herby, dewizy, siedziby, dzieje i znaczenie w Siedmiu Królestwach.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>POZNAJ RODY</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('map')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA V • KARTOGRAFIA
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  🗺︎
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Mapa Westeros
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Połączona mapa północnych i południowych ziem Westeros z płynnym przybliżaniem kółkiem myszy.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ MAPĘ</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('rules')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA VI • MECHANIKA
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ⚔
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Zasady Gry
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Reguły testów umiejętności, stopni trudności, walki, ran, pancerza oraz intryg dworskich.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ ZASADY</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('laws')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA VII • PRAWO I OBYCZAJ
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ⚖
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Zwyczaje i Prawa
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Władza lorda, dziedziczenie, bękarci, kary, prawo gościnności, małżeństwo i wychowankowie — obyczaje obowiązujące w Siedmiu Królestwach.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ ZWYCZAJE I PRAWA</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-
-          <button
-            type="button"
-            onclick="switchTab('religion')"
-            class="tome-card group flex min-h-[260px] flex-col justify-between rounded-lg p-7 text-left focus:outline-none"
-          >
-            <div class="pointer-events-none space-y-3">
-              <div class="flex items-center justify-between">
-                <span class="font-display text-xs font-bold tracking-[0.2em] text-amber-400/90">
-                  KSIĘGA VIII • WIARA
-                </span>
-                <span class="font-display text-xl text-amber-400/80 transition group-hover:text-amber-300">
-                  ✧
-                </span>
-              </div>
-              <h3 class="font-display text-xl font-bold leading-snug text-amber-100 group-hover:text-amber-300">
-                Wiara i Religia
-              </h3>
-              <p class="font-body text-base leading-relaxed text-stone-300">
-                Siedmiu, dawni bogowie, Utopiony Bóg, Rhoynarowie i R’hllor — wierzenia, duchowieństwo i przesądy Westeros.
-              </p>
-            </div>
-            <div class="pointer-events-none mt-6 flex items-center justify-between border-t border-amber-500/20 pt-3.5 font-display text-xs font-semibold tracking-widest text-amber-300">
-              <span>OTWÓRZ RELIGIĘ</span>
-              <span class="transition-transform group-hover:translate-x-1">→</span>
-            </div>
-          </button>
-        </div>
+        <p class="font-serif text-sm italic text-stone-400">
+          Dzieje świata od zarania do dnia dzisiejszego — kliknij wpis, aby rozwinąć zapis kronikarza. Dalszy ciąg tej kroniki piszą wydarzenia Waszej kampanii.
+        </p>
+        <div id="chronicle-timeline" class="space-y-8"></div>
       </div>
 
       <div class="space-y-5">
         <div class="ornate-divider">
           <h2 class="font-display text-lg font-bold tracking-[0.18em] text-amber-200 sm:text-xl">
-            WIEŚCI Z CYTADELI
+            DZIENNIK SESJI
           </h2>
         </div>
-
-        <div class="grid grid-cols-1 gap-6 lg:grid-cols-3">
-          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
-            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
-              <span>OGŁOSZENIE MG</span>
-              <span class="text-stone-400">SESJA I</span>
-            </div>
-            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
-              Przygotowania w cieniu Królewskiej Przystani
-            </h3>
-            <p class="font-body text-base leading-relaxed text-stone-300">
-              Przed rozpoczęciem gry zapoznaj się ze wstępem do Westeros oraz wybierz ród, z którym wiążą się losy Twojego bohatera — jego dewiza i pozycja wpłyną na startowe relacje.
-            </p>
-          </article>
-
-          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
-            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
-              <span>ZAPIS KRONIKARZA</span>
-              <span class="text-stone-400">MECHANIKA</span>
-            </div>
-            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
-              Waga honoru i konsekwencji
-            </h3>
-            <p class="font-body text-base leading-relaxed text-stone-300">
-              W Westeros stal bywa zawodna, gdy zawodzi lojalność. Każdy test, obietnica złożona lordowi i rana odniesiona w starciu zostawiają ślad w dalszej opowieści.
-            </p>
-          </article>
-
-          <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
-            <div class="mb-2 flex items-center justify-between font-display text-xs tracking-widest text-amber-400">
-              <span>WSKAZÓWKA</span>
-              <span class="text-stone-400">ŚCIĄGA</span>
-            </div>
-            <h3 class="mb-2 font-display text-lg font-bold text-amber-100">
-              Prawo i wiara pod ręką
-            </h3>
-            <p class="font-body text-base leading-relaxed text-stone-300">
-              W zakładkach <strong class="text-amber-200">Zwyczaje i Prawa</strong> oraz <strong class="text-amber-200">Religia</strong> znajdziesz szybkie ściągi: prawo gościnności, dziedziczenie, Siedmiu i dawnych bogów. Każda zakładka ma wyszukiwarkę.
-            </p>
-          </article>
-        </div>
+        <p class="font-serif text-sm italic text-stone-400">
+          Zapiski z kolejnych sesji przy stole — aktualizowane po każdej przygodzie.
+        </p>
+        <div id="session-journal" class="space-y-5"></div>
       </div>
     </section>
 
@@ -1885,6 +1583,279 @@
     ];
 
     
+    const CHRONICLE = [
+      {
+        group: 'ERA ŚWITU',
+        entries: [
+          {
+            id: 'c-era-switu',
+            period: 'Czterdzieści do pięciuset tysięcy lat temu',
+            title: 'Era Świtu',
+            paragraphs: [
+              'Tak jak wiele innych tematów dotyczących historii Westeros, kwestia wieku tych krain budzi wiele kontrowersji. Maesterzy twierdzą, że świat ma od czterdziestu do pięciuset tysięcy lat. Szerokość tego zakresu wynika z niepełnych zapisków z tych najwcześniejszych czasów, ze sprzeczności w opowieściach o wielu mitycznych postaciach oraz z często magicznego charakteru tych historii. Wiele legend opisuje królów i bohaterów żyjących przez setki lat; inne przypisują wielkie czyny osobom, które jeszcze się nie urodziły. Niezależnie jednak od trudności w dokładnym datowaniu tego okresu, był to czas potężnej magii, odważnych bohaterów i fantastycznych dokonań. Pomimo całego heroizmu i splendoru była to też jednak era wojen i rozlewu krwi.'
+            ]
+          },
+          {
+            id: 'c-dzieci-lasu',
+            period: 'Era Świtu',
+            title: 'Dzieci Lasu',
+            paragraphs: [
+              'Przed przybyciem ludzi Westeros było domem Dzieci Lasu, ciekawego i tajemniczego ludu o wyjątkowych zdolnościach magicznych i dziwnych zwyczajach. Według legend Dzieci Lasu były drobne i zamieszkiwały wioski ukryte w jaskiniach, na jeziorach i na drzewach. Były ciemne i piękne, nie wyższe od dzieci, nawet po osiągnięciu dorosłości. Czciły bogów świata przyrody, duchy strumieni, drzew, kamieni i wiatru. W przeciwieństwie do ludzi, którzy przybyli później, Dzieci Lasu nie używały metalu i nie tkały tkanin; zamiast tego tworzyły narzędzia z kamienia i ubrania z liści i kory. Były silnie i głęboko związane ze swą ziemią.',
+              'Najstarsze opowieści przypisują Dzieciom wiele nadprzyrodzonych zdolności, takich jak latanie jak ptaki i pływanie jak ryby. Potrafiły też wysyłać swe umysły do ciał zwierząt i przebywać w ich skórze jak we własnej, a ich sny wypełniały wizje i przepowiednie przyszłości. Wywarły na krainę tak silny wpływ, że wiele z ich dzieł dotrwało do dnia dzisiejszego, nawet jeśli na splądrowanym południu jest ich mniej niż na Północy. Biała kora czardrzew do dziś nosi wyryte przez nie twarze, które podobno pozwalają starym bogom patrzeć na świat ludzi i dbać o losy swych wyznawców. Jeszcze więcej przetrwało jednak z ich zwyczajów i wierzeń, które trwają do dziś w różnych elementach kultury Północy i innych krain, na przykład wśród podobnych Dzieciom zarówno posturą, jak i wierzeniami mieszkańców bagien na Przesmyku, czy też poprzez Święty Zakon Zielonych Ludzi, który wciąż przestrzega starożytnych paktów, dzięki którym między Pierwszymi Ludźmi i Dziećmi Lasu wreszcie zapanował pokój. Powszechnie uważa się, że nie ma już Dzieci Lasu, niektórzy jednak twierdzą, że lud ten żyje nadal, kryjąc się przed ludźmi w tak odosobnionych miejscach, jak dziewicze rejony za Murem czy głusza Wilczego Lasu na Północy.'
+            ]
+          },
+          {
+            id: 'c-pierwsi-ludzie',
+            period: 'Ok. 12 000 lat temu',
+            title: 'Pierwsi Ludzie',
+            paragraphs: [
+              'Nie wiadomo, jak długo Dzieci Lasu żyły na ziemiach, które pewnego dnia miały stać się Siedmioma Królestwami, zanim spotkały Pierwszych Ludzi, wydarzenie to zmieniło jednak bieg historii i stało się źródłem wielu konfliktów. Możliwe, że dysponujące proroczymi snami Dzieci spodziewały się przybycia tych barbarzyńskich hord; nawet jeśli tak było, nie pomogło im to jednak w powstrzymaniu ich napływu. Pierwsi Ludzie przynieśli ze sobą przemoc, wojnę i śmierć.',
+              'Pierwsi Ludzie wkroczyli do Westeros około dwunastu tysięcy lat temu, poprzez Ramię Dorne, pomost lądowy zniszczony w nadchodzącym konflikcie. Dosiadający koni, uzbrojeni w brąz i utwardzoną gotowaniem skórę, przemknęli przez całą krainę, ścinając drzewa, niszcząc gospodarstwa i wioski Dzieci, a także wznosząc świątynie swym dziwnym bogom i ich brutalności. Najpierw Dzieci skryły się w głębi lasów, bojąc się koni niemal tak bardzo, jak Pierwsi Ludzie bali się twarzy w drzewach. Pierwsi Ludzie byli wojownikami, a starożytne moce tej krainy były obce ich kulturze; wznosili więc swoje domy, wyrębując lasy pod ziemie uprawne, ścinając twarze z drzew i bezczeszcząc nieskalaną wcześniej dzicz. To wystarczyło, aby Dzieci otrząsnęły się ze swego strachu i ruszyły na wojnę.'
+            ]
+          },
+          {
+            id: 'c-wojny-ery-switu',
+            period: 'Era Świtu',
+            title: 'Wojny Ery Świtu',
+            paragraphs: [
+              'Oburzone niszczeniem przez Pierwszych Ludzi ich domu, Dzieci Lasu porzuciły pokój i chwyciły za broń, nękając wrogów sieciami i salwami strzał wystrzeliwanymi z łuków z czardrzewa. Mistycy i czarownicy zielonych proroków sięgnęli po mroczną magię, wznieśli morza i zmietli lądy, roztrzaskując Ramię Dorne i tworząc dzisiejsze Stopnie. Zniszczenia były ogromne, było już jednak za późno, Pierwsi Ludzie mieli tu już zostać. Powszechnie uważa się, że wojny trwały przez niemal dwa tysiące lat.',
+              'Pomimo swej waleczności Dzieci nie były w stanie powstrzymać naporu większych, silniejszych Ludzi, którzy używali brązu przeciwko ich obsydianowym ostrzom i grotom. Gdy ziemia przesiąkła krwią poległych, a przewaga liczebna zmarłych nad żywymi stała się oczywista, wodzowie i bohaterowie Pierwszych Ludzi spotkali się z zielonymi prorokami i leśnymi tancerzami Dzieci na zalesionej wyspie pośrodku Bożego Oka, wielkiego jeziora w samym centrum Westeros. Zadecydowano tam, że Pierwsi Ludzie otrzymają wybrzeża, łąki, mokradła i góry, jednak Dzieciom wolno będzie żyć bezpiecznie w swych lasach po wsze czasy. Pierwsi Ludzie przysięgli nigdy więcej nie ścinać czardrzew i zostawić Dzieci Lasu w pokoju. Dzieci wyryły twarze na każdym czardrzewie, aby zagwarantować boską opiekę nad traktatem. Powołano Święty Zakon Zielonych Ludzi, który na zawsze pilnować miał Wyspy Twarzy i przestrzegania paktu.'
+            ]
+          }
+        ]
+      },
+      {
+        group: 'ERA HEROSÓW',
+        entries: [
+          {
+            id: 'c-era-herosow',
+            period: 'Niemal cztery tysiące lat po Pakcie',
+            title: 'Era Herosów',
+            paragraphs: [
+              'Pakt trwał nienaruszony przez niemal cztery tysiące lat; w końcu Dzieci Lasu i Pierwsi Ludzie zbliżyli się do siebie. Z czasem Pierwsi Ludzie porzucili część ze swych dawnych wierzeń i przyjęli zwyczaje Dzieci. Za wyjątkiem Utopionego Boga z Żelaznych Wysp, bogowie Dzieci stali się też bogami Pierwszych Ludzi, a długotrwały pokój pomógł zrodzić w nich głęboki szacunek dla przyrody. Dzieci żyły tak, jak dawniej; tymczasem w krainach Pierwszych Ludzi pojawiły się wielkie miasta, a potężne królestwa rozkwitały i upadały.',
+              'Era Herosów czerpie swą nazwę od wyjątkowych ludzi, którzy żyli w czasie zapewnionego przez pakt pokoju. Do dziś krąży wiele opowieści, pieśni i legend na temat tego okresu, a maesterzy wskazują go jako właściwy początek Siedmiu Królestw. W tej erze Garth Zielonoręki założył w Reach ród Gardenerów, który zapoczątkował wiele innych linii i rodzin. Durran, pierwszy z Królów Burzy, wzniósł twierdzę Koniec Burzy, aby powstrzymać gniew bogów, których córkę poślubił. Legendy twierdzą też, że Szary Król na Żelaznych Wyspach poślubił wówczas syrenę, po czym został władcą zachodnich wysp i całego leżącego za nimi morza. Epoka ta przyniosła wiele korzyści, odbyło się to jednak wysokim kosztem.'
+            ]
+          },
+          {
+            id: 'c-dluga-noc',
+            period: 'Era Herosów',
+            title: 'Długa Noc',
+            paragraphs: [
+              'Na Erę Herosów przypadła też najdłuższa i najczarniejsza zima. Słońce zaszło i nie wzeszło przez całe pokolenie, nadchodzący z najdalszej Północy lód przyniósł ze sobą potworne istoty, których ofiarą padali tak Pierwsi Ludzie, jak i Dzieci Lasu. Były wśród nich mamuty, olbrzymy, wilkory i jeszcze więcej, jednak nic nie mogło równać się z demonicznymi Innymi, tajemniczym i bezlitosnym ludem, którego celem było oczyszczenie Westeros z plagi ludzi.'
+            ]
+          },
+          {
+            id: 'c-wojna-o-swit',
+            period: 'Koniec Długiej Nocy',
+            title: 'Wojna o Świt',
+            paragraphs: [
+              'Długa Noc trwała, a Inni maszerowali na południe, siejąc śmierć i wskrzeszając swe ofiary jako nieumarłe sługi. W najczarniejszej godzinie pojawił się jednak wielki bohater. Zjednoczył on Pierwszych Ludzi i Dzieci Lasu, i mieszkańcom Westeros udało się odepchnąć Innych z powrotem na zamarznięte rubieże Dalekiej Północy.'
+            ]
+          },
+          {
+            id: 'c-mur',
+            period: 'Po Wojnie o Świt',
+            title: 'Mur i Nocna Straż',
+            paragraphs: [
+              'Zgodnie z legendą po pokonaniu Innych Bran Budowniczy z pomocą olbrzymów, Pierwszych Ludzi i, być może, Dzieci Lasu, wzniósł Mur – złowrogą barierę z lodu, która przecina Westeros i chroni ziemie leżące na południu przed prastarym złem Dalekiej Północy. Mimo iż ta najwyższa budowla zbudowana kiedykolwiek przez ludzi zaklęta była starożytną magią, wciąż potrzebowała strażników, którzy pilnowaliby jej, przemierzając całą jej długość i broniąc mieszkańców południa. Dlatego powołano Zakon Nocnej Straży. Jego członkowie zrzekli się swych krewnych, nadziei na potomków i lojalności wobec rządzących krainami królów i ślubowali bronić Muru i wszystkich mieszkańców Westeros, wyglądając wszelkich czających się w ciemności zagrożeń. U swego zarania Nocna Straż była nieskazitelną organizacją, grupą szlachetnych wojowników, którzy dokonali największego poświęcenia, aby stać się obrońcami wszystkich.'
+            ]
+          }
+        ]
+      },
+      {
+        group: 'INWAZJA ANDALÓW I ŚWIAT POZA WESTEROS',
+        entries: [
+          {
+            id: 'c-inwazja-andalow',
+            period: 'Niemal dwa tysiące lat po Wojnie o Świt',
+            title: 'Inwazja Andalów',
+            paragraphs: [
+              'Po Wojnie o Świt Pierwsi Ludzie i Dzieci Lasu żyli we względnym pokoju, choć w tym okresie Dzieci zaczęły się już powoli wycofywać z krain zamieszkanych przez ludzi, uciekając wgłąb swych lasów lub za Mur. Pokój nie trwał jednak wiecznie – niemal dwa tysiące lat po zwycięstwie nad Innymi do wybrzeży Westeros przybili nowi najeźdźcy. Po wylądowaniu w miejscu, które pewnego dnia stać się miało Doliną Arrynów, Andalowie podbili Siedem Królestw z podobną łatwością, z jaką tysiące lat wcześniej zrobili to Pierwsi Ludzie. Dysponujący szkolonymi do walki wierzchowcami i stalową bronią, przepełnieni religijnym zapałem andalscy najeźdźcy okazali się zbyt silnym przeciwnikiem, aby Pierwsi Ludzie mogli stawić im czoła – upadli, tak jak Dzieci Lasu przed nimi.',
+              'Ci nowi ludzie przybyli ze wschodniego kontynentu, miejsca zwanego Wzgórzami Andalos. Odwiedziło ich tam siedem świętych bytów, które uznawano za aspekty jednego, najwyższego bóstwa. Kult tych siedmiorga stał się w końcu Wiarą Siedmiu. Czy była to święta misja, ucieczka przed jakimś innym zagrożeniem, czy też sam głód podboju, Andalowie przybyli i podbili Westeros. Niosąc siedmioramienną gwiazdę, znak swych nowych bogów, wypędzili oni Pierwszych Ludzi, zniszczyli ich boże gaje i zabili wszystkie Dzieci Lasu, jakie udało im się odnaleźć. Królestwa padały jedno po drugim; wkrótce ostatnim niezależnym państwem, dzięki sile fortyfikacji Fosy Cailin i zaciekłości swych wojowników, została Północ. Mimo to zwycięstwa Andalów na południu oznaczały koniec Paktu. Dzieci Lasu, które tam pozostały, zostały brutalnie wytępione lub wygnane.'
+            ]
+          },
+          {
+            id: 'c-odbudowa',
+            period: 'Po inwazji Andalów',
+            title: 'Odbudowa Siedmiu Królestw',
+            paragraphs: [
+              'Po zwycięskim podboju Andalowie odbudowali sześć własnych, potężnych królestw, które wraz z dawnym królestwem Pierwszych Ludzi stały się w efekcie nowymi Siedmioma Królestwami. Królestwo Północy zostało przy wierze w dawnych bogów, z kolei Królestwo Żelaznych Wysp, choć podbite, wciąż podążało Dawną Drogą i czciło Utopionego Boga. Królestwo Doliny i Nieba wydało najstarszą i najczystszą z linii Andalów – ród Arrynów; w królestwach Królów Burzy, Reach oraz Rock władcy Pierwszych Ludzi zostali wygnani. Ziemie Dorzecza, dawniej rządzone przez Królów Rzek i Wzgórz, stały się polem ciągłych bitew, kiedy żelaźni ludzie, Pierwsi Ludzie i Andalowie walczyli zaciekle o kontrolę nad nimi. W końcu daleko na południu powstał luźny związek księstw Dorne, bezwzględnie niezależnych i wolnych od prymitywnych walk o dominację w Siedmiu Królestwach.'
+            ]
+          },
+          {
+            id: 'c-poza-siedmioma',
+            period: 'Równolegle na wschodzie',
+            title: 'Poza Siedmioma Królestwami',
+            paragraphs: [
+              'Podczas gdy Westeros targane było własnymi konfliktami, na wschodzie wzrosła nowa siła – Imperium Valyrii. Było to potężne państwo wywodzące się z ludu skromnych pasterzy, którzy zdołali poskromić smoki, których jaja znaleźli w pełnym wulkanów regionie zwanym Czternaście Ogni. Valyria pełna była magii, niebosiężnych wież, wśród których latały smoki, spoglądających przez kryształowe oczy kamiennych sfinksów oraz mieczy o legendarnej wytrzymałości i ostrości. Choć znajdowała się daleko od Westeros, historia i ostateczny los Valyrii związały ją nierozerwalnie z Siedmioma Królestwami, a echa jej upadku rozbrzmiewają do dziś.'
+            ]
+          },
+          {
+            id: 'c-podboj-ghis',
+            period: 'Przed Zagładą Valyrii',
+            title: 'Podbój Starego Ghis',
+            paragraphs: [
+              'Stare Ghis było największym imperium wschodniego kontynentu, a jego władcy byli wiecznie spragnieni podboju, aby pomnażać swoje ziemie. Z czasem Ghis zwróciło swe głodne oczy ku Valyrii. Ghiscarskie wojska pięciokrotnie wyruszały przeciwko Imperium i pięciokrotnie zostawały pokonane. W końcu to Valyria uderzyła na swych najeźdźców i Ghiscarczycy zapłacili za swą chciwość, kiedy ich państwo zostało doszczętnie zniszczone, mieszkańcy wybici, miasta i mury rozniesione w pył, a ziemia posypana solą. Jedyną pozostałością Starego Ghis są jego kolonie, będące dziś miastami Zatoki Niewolników, zamieszkałymi przez mieszankę Ghiscarczyków i ich wrogów.'
+            ]
+          },
+          {
+            id: 'c-wojna-rhoyne',
+            period: 'Przed Zagładą Valyrii',
+            title: 'Wojna przeciw Rhoyne',
+            paragraphs: [
+              'Tymczasem w Westeros Andalowie budowali swe miasta i zakładali nowe królestwa na ruinach dawnych. Gdy po drugiej stronie morza Valyria i Stare Ghis walczyły na śmierć i życie, Andalowie wzmacniali swoją władzę, wznosili świątynie ku chwale Siedmiu i przekształcali południowe królestwa zgodnie z własną kulturą. Północą nadal rządziły dawne tradycje, między Królami Zimy Pierwszych Ludzi i Andalami panował jednak niepewny pokój. Nie miało to jednak trwać długo, ponieważ ku wybrzeżom Westeros zmierzało jeszcze większe zagrożenie.',
+              'Po zniszczeniu Starego Ghis Valyria znalazła kolejnych przeciwników, takich jak Rhoynarzy, których również udało im się pokonać. Nymeria, królowa-wojowniczka Rhoynarów, poprowadziła dziesięć tysięcy statków pełnych jej poddanych ku Dorne. Tam schronienia udzielił im lord Mors Martell; Nymeria poślubiła go i w końcu przyniosła zjednoczenie tej krainie. Tak założony został ród Martellów, który do dziś rządzi Dorne ze Słonecznej Włóczni.'
+            ]
+          },
+          {
+            id: 'c-zaglada-valyrii',
+            period: 'Ok. sto lat przed Podbojem Aegona',
+            title: 'Zagłada Valyrii',
+            paragraphs: [
+              'Na wschodzie, po przeciwnej stronie Wąskiego Morza, Imperium Valyrii nie miało sobie równych. Jego miasta pełne były cudów, jego czarownicy władali potężnymi zaklęciami, jego akademie dysponowały wiedzą tysiąca krain. Valyriańskie statki przemierzały morza, podczas gdy ich smoki rządziły w przestworzach, broniąc Imperium przed jakimkolwiek atakiem nieprzyjaciół. Mimo tego upadek Valyrii zbliżał się coraz szybciej.',
+              'Nikt nie wie, co spowodowało Zagładę Valyrii, jej zniszczenie było jednak całkowite. Wiele historii opowiada o wybuchu wulkanu – być może jednego z Czternastu Ogni, gór, gdzie po raz pierwszy znaleziono smoki. Półwysep Valyriański rozpadł się na kawałki, stolica została zdewastowana, a jej ruiny zmieniły się w miejsce pełne dymu i demonów. Po tym upadku jej liczne kolonie i lenna rozproszyły się, a Imperium przestało istnieć, przekształcając się między innymi w dzisiejsze miasta Zatoki Niewolników i Wolne Miasta na wybrzeżach Wąskiego Morza. Rozległymi łąkami wschodniego kontynentu rządzić zaczęły plemiona koczowników, z których najpotężniejszym są Dothrakowie. Z dawnej potęgi Valyrii nie zostało nic. Nic, prócz ostatniego bastionu Imperium w Westeros.'
+            ]
+          }
+        ]
+      },
+      {
+        group: 'ERA SMOKÓW',
+        entries: [
+          {
+            id: 'c-era-smokow',
+            period: 'Ok. sto lat przed Zagładą Valyrii',
+            title: 'Era Smoków',
+            paragraphs: [
+              'Około stu lat przed Zagładą, Valyria zdobyła kontrolę nad niewielką wyspą u ujścia Czarnej Zatoki w Westeros. Tym najbardziej wysuniętym na zachód posterunkiem Imperium, zwanym Smoczą Skałą, władał valyriański ród szlachecki zwany Targaryenami. To tam dosięgnęła ich wieść o upadku Imperium, czyniąca z nich ostatnich valyriańskich władców na świecie.',
+              'Targaryenowie dysponowali wystarczającą siłą, aby nie obawiać się walczących o dominację nad Siedmioma Królestwami Andalów. Ambitny i przebiegły Aegon Targaryen chciał jednak czegoś więcej niż bezpieczeństwo wewnątrz Smoczej Skały. Dysponując ograniczonymi siłami, Aegon i jego siostry Visenya i Rhaenys – poślubione przez niego zgodnie z valyriańską tradycją – musieli wybrać pomiędzy powrotem w rodzinne strony a zaatakowaniem leżących na zachód Siedmiu Królestw. W końcu Aegon wybrał to drugie, ponieważ jego wojska były nieliczne, a Westeros znajdowało się o wiele bliżej niż Valyria. Prócz valyriańskiej stali i magii Aegon dysponował jeszcze jedną znaczącą przewagą, czymś, czego nie posiadał żaden inny westeroski władca – trzema ostatnimi smokami.'
+            ]
+          },
+          {
+            id: 'c-wojny-podboju',
+            period: 'Sto lat po Zagładzie Valyrii, trzy wieki przed dniem dzisiejszym',
+            title: 'Wojny Podboju',
+            paragraphs: [
+              'Sto lat po Zagładzie Valyrii, trzy wieki przed dniem dzisiejszym Targaryeńska armia wylądowała w Westeros, wiedziona przez Aegona Zdobywcę, jego siostry Visenyę i Rhaenys oraz ich smoki, noszące imiona dawnych valyriańskich bóstw. Były to Balerion Czarny Strach, o zębach długich niczym miecze, oraz jego siostry: Meraxes oraz Vhagar. Nawet najmniejsza z nich, Vhagar, była w stanie połknąć w całości konia z jeźdźcem.',
+              'Pierwszy upadł ród Hoare, władcy Żelaznych Wysp i Dorzecza, kiedy król Harren Czarny został spalony żywcem przez smoczy ogień wewnątrz jego własnej twierdzy Harrenhal. Później przyszła kolej na Króla Burzy Argilaca, który zginął z ręki bękarta, Orysa Baratheona, przyrodniego brata Aegona. Nadchodziła ostateczna konfrontacja Wojen Podboju.'
+            ]
+          },
+          {
+            id: 'c-armia-dwoch-krolow',
+            period: 'Wojny Podboju',
+            title: 'Armia Dwóch Królów',
+            paragraphs: [
+              'Pomimo zwycięstw ciągła walka osłabiła i rozproszyła Targaryeńską armię. Składała się ona z zaledwie dziesięciu tysięcy żołnierzy, z których większość stanowili niechętni poborowi z podbitych ziem. Dwaj królowie, Torrhen Stark i Loren Lannister, zebrali jednak własne, o wiele liczniejsze siły, by stawić czoła najeźdźcom. Torrhen Stark, widząc przewagę smoków Aegona, zdecydował ugiąć kolano zamiast prowadzić swych ludzi na pewną zagładę, przez co do dziś pamiętany jest jako Król, Który Ugiął Kolano. Loren Lannister poszedł w jego ślady, uznając zwierzchnictwo Aegona w zamian za władzę nad Krainami Zachodu. W ten sposób niemal całe Westeros zostało zjednoczone, choć Dornijczycy nadal pozostawali niezależni. Miecze pokonanych wrogów Aegona zostały przetopione i przekute w kształt wielkiego siedziska, które dziś znane jest jako Żelazny Tron.'
+            ]
+          },
+          {
+            id: 'c-wiara-wojujaca',
+            period: '37–48 o.P.',
+            title: 'Wiara Wojująca',
+            paragraphs: [
+              'Choć Aegon, jego siostry i ich smoki odnieśli niemal same sukcesy, Targaryeńską koronę czekały trudności. Po śmierci Aegona w 37 o.P. zbrojny zakon wyznawców Siedmiu zwany Wiarą Wojującą zwrócił się przeciwko jego następcy, Aenysowi I. Przytłoczony atakiem, Aenys przekazał zadanie zduszenia rebelii swemu bratu i dziedzicowi, Maegorowi. Bunt trwał do końca rządów Maegora, choć walczył on z taką zaciekłością, że dziś zwany jest Maegorem Okrutnym. Po śmierci Maegora w 48 o.P. tron objął Jaehaerys I, który ułaskawił Wiarę Wojującą w zamian za jej rozwiązanie i przyrzeczenie wierności Smoczym Władcom. Za swą litość i dyplomację Jaehaerys nazwany został Rozjemcą, a osiągnięty przez niego pokój trwał przez kolejne siedemdziesiąt lat.'
+            ]
+          },
+          {
+            id: 'c-taniec-smokow',
+            period: '129–131 o.P.',
+            title: 'Taniec Smoków',
+            paragraphs: [
+              'Pierwsza z trzech wielkich wojen domowych, które rozdarły imperium Targaryenów, rozpoczęła się w 129 o.P., kiedy mądry król Viserys I zostawił po śmierci tron swej córce Rhaenyrze. Dowódca Gwardii Królewskiej Viserysa, ser Criston Cole, zlekceważył mającą objąć władzę kobietę i ogłosił królem Aegona, syna Viserysa i jego drugiej żony. Wojna objęła całą krainę, kiedy możni włączali się do konfliktu, opowiadając się po jednej lub drugiej stronie. Zwycięstwo syna starego króla, Aegona II, wydawało się bliskie, kiedy jego smok zgładził Rhaenyrę. Jej stronnicy kontynuowali jednak walkę w imieniu jej syna, Aegona III. W krwawym konflikcie, który skończył się w 131 o.P. śmiercią Aegona II i objęciem władzy przez Aegona III, zginęła większość Targaryeńskich smoków.',
+              'Szok, który przeżył młody król, widząc swą matkę pożeraną przez smoka jego wuja okazał się dla niego zbyt silny; wszedł on w dorosłość w przeraźliwym strachu przed tymi stworzeniami, z których i tak tylko kilka przeżyło wojnę. Ostatnie dwa wykluły się na Smoczej Skale wkrótce po wojnie, były jednak słabe i zniekształcone. Zdechły podczas jego rządów i zyskał on przydomek Aegon Zguba Smoków. Ostatni ze smoków zostawił po sobie kilka jaj, ale nic się z nich nie wykluło; według maesterów oznaczało to zniknięcie smoków na zawsze.'
+            ]
+          },
+          {
+            id: 'c-podboj-dorne',
+            period: 'Od 157 o.P.',
+            title: 'Podbój Dorne i Dornijski Bunt',
+            paragraphs: [
+              'Dorne od dawna był źródłem frustracji Targaryenów. Po objęciu tronu w 157 o.P. młody król Daeron I wyruszył na południe i wydał Dornijczykom bitwę, w której szybko zwyciężył. Był on najstarszym synem Aegona III i mimo, iż przejmując władzę, miał zaledwie czternaście lat, okazał się bystrym i utalentowanym młodzieńcem, który odważnie prowadził swe wojska i elokwentnie spisał swe osiągnięcia w Podboju Dorne.',
+              'Mówi się, że podbój Dorne trwał zaledwie jedno lato; mówi się też, że Młody Smok stracił dziesięć tysięcy ludzi, aby zdobyć nad regionem kontrolę i kolejne pięćdziesiąt tysięcy, próbując ją utrzymać. Tak jak dawniej, Dornijczycy okazali się zbyt przebiegli i niemożliwi do podporządkowania. Zwierzchnictwo nad tym krnąbrnym ludem powierzone zostało lordowi Wysogrodu, który stracił wiele czasu na tropieniu nieuchwytnych rebeliantów, przenoszeniu się z posiadłości do posiadłości i usuwaniu lokalnych lordów z ich domów. Pewnej nocy, gdy pociągnął za szarfę mającą przywołać służącego, sznur rozsunął wiszący nad łożem baldachim i zrzucił na niego deszcz setek czerwonych skorpionów. Na wieść o śmierci zwierzchnika wybuchło powstanie, które zdołało w ciągu dwóch tygodni wyprzeć Targaryenów poza Dorne. Dornijczycy utrzymali wolność przez kolejne trzydzieści sześć lat, aż do momentu, w którym dołączyli do Siedmiu Królestw poprzez małżeństwo.',
+              'Pomimo swych zalet Daeron I nie rządził długo; zmarł w wieku osiemnastu lat, a władzę po nim objął jego brat Baelor, który przeszedł do historii jako Baelor Błogosławiony. Według legendy Baelor wydostał się bez uszczerbku z dołu pełnego dornijskich żmij, skąd uratował Aemona Smoczego Rycerza, i zawarł pokój z Dorne. Pomimo swojego przydomka (był też zwany „Ukochanym”) Baelor był surowym i niewzruszonym człowiekiem, który odmówił dotykania swojej żony i siostry Daeny, a nawet uwięził ją i jej dwie siostry w Czerwonej Twierdzy w Królewskiej Przystani, aby nie kusiły go do grzechu. Mimo uwięzienia Daenie udało się uwieść jej kuzyna Aegona i w efekcie urodzić będącego bękartem chłopca, który nazywany był później Daemonem Blackfyre.',
+              'Pomimo swej ekscentryczności Baelor wywarł istotny wpływ na Westeros. Jednym z jego największych osiągnięć była budowa Wielkiego Septu w Królewskiej Przystani, który później nazwany został Wielkim Septem Baelora. Zmarł w 171 o.P.; tron trafił w ręce jego wuja, Viserysa II, który po zaledwie roku rządów przekazał władzę kolejnemu królowi, który z nawiązką nadrabiał surowość Baelora.',
+              'Rozpustne życie króla Aegona IV, najstarszego syna Viserysa II, przysporzyło mu miano Niegodnego. Umierając w 184 o.P., ogłosił dziesiątki urodzonych przez jego liczne kochanki bękartów swymi prawowitymi synami, co doprowadziło później do niewypowiedzianego rozlewu krwi. Znani byli jako Wielcy Bękarci – a były wśród nich takie osobistości, jak Daemon Blackfyre czy Aegor „Bittersteel” Rivers – i zarówno oni sami, jak i ich potomkowie nękać mieli Siedem Królestw przez pięć pokoleń, dopóki ostatni z nich nie poległ w Wojnie Dziewięciogroszowych Królów.'
+            ]
+          },
+          {
+            id: 'c-bunt-blackfyre',
+            period: 'Od 184 o.P.',
+            title: 'Bunt Blackfyre’ów',
+            paragraphs: [
+              'W 184 o.P. najstarszy syn Aegona objął tron jako król Daeron II. Znany później jako Dobry, Daeron zaczął swoje rządy od włączenia do Siedmiu Królestw problematycznego Dorne poprzez wzięcie za żonę Myriah Martell. Wraz z żoną przyjął też wiele dornijskich zwyczajów, co spotkało się z dużym oporem, doprowadzając w końcu do pojawienia się plotek, według których Daeron nie miał być synem Aegona, lecz owocem cudzołóstwa jego królowej Naerys z legendarnym Aemonem Smoczym Rycerzem. Biorąc pod uwagę niewierność Aegona, niewielu odważyłoby się krytykować królową za szukanie pocieszenia poza małżeństwem. Oznaczałoby to jednak, że pretensje do tronu Daerona były nieważne, a tron powinien należeć do jednego z uznanych synów Aegona.',
+              'Najważniejszym z nich był Daemon, pasowany przez ojca w wieku dwunastu lat, noszący zawsze u boku swój valyriański miecz. Zwany, zależnie od mówiącego, Daemonem Blackfyre, Daemonem Samozwańcem, Królem Dzierżącym Miecz lub Daemonem Zdrajcą, młody książę ogłosił się królem w 195 o.P. i zaczął zbierać wojsko pod swym własnym sztandarem: czarnym trzygłowym smokiem na czerwonym polu, będącym odwrotnością tradycyjnych barw Targaryenów.',
+              'W walce przeciwko próbującemu odzyskać władzę czerwonemu smokowi dołączył do niego jego przyrodni brat, Aegor „Bittersteel” Rivers, oraz wielu wielkich rycerzy, takich jak Robb Reyne, Czarny Byren Flowers i ser Aubrey Ambrose. Mówi się, że dzierżąc swój miecz, Daemon był nieśmiertelny, jednak śmierć przyszła po niego tak, jak po wszystkich ludzi, kiedy syn Daerona, książę Maekar oraz lord Hayford zmusili go do bitwy na Polu Czerwonych Traw.',
+              'Na początku szczęście sprzyjało Samozwańcowi – lord Hayford został zgładzony, a Blackfyre nawiązał walkę z ser Gwaynem Corbrayem z Gwardii Królewskiej. Gdy był już na skraju zwycięstwa, do bitwy dołączyła jednak druga armia lojalistów dowodzona przez księcia Baelora, która uderzyła na tyły buntowników w manewrze zwanym „młotem i kowadłem”. Następnie Brynden Rivers zwany Krwawym Krukiem – kolejny syn Aegona, który pozostał wierny Daeronowi – rozkazał swym łucznikom, Kruczym Zębom, zasypać wojska Samozwańca strzałami. Blackfyre poległ pod jedną ze strzał samego Krwawego Kruka, a jego wojsko rzuciło się do ucieczki.',
+              'Bittersteel zebrał rozbitych żołnierzy i poprowadził szarżę przeciwko Kruczym Zębom, pozbawiając Krwawego Kruka oka, nie zdołał już jednak zmienić losów bitwy. Dornijscy włócznicy Baelora otoczyli i zabili wszystkich pozostałych rebeliantów; sam Bittersteel zdołał zbiec z mieczem Blackfyre do Wolnych Miast.'
+            ]
+          },
+          {
+            id: 'c-raymun',
+            period: '184 o.P.',
+            title: 'Raymun Czerwonobrody',
+            paragraphs: [
+              'Przez lata dzicy z Dalekiej Północy wielokrotnie próbowali przedostać się na drugą stronę Muru i Nocnej Straży. Podczas długich lat dobrobytu na południu groźby Północy wydawały się jednak coraz mniej pilne, a Nocna Straż zaczęła powoli chylić się ku upadkowi. W 184 o.P. Król za Murem Raymun Czerwonobrody wykorzystał rozluźnienie Straży i rozkazał swym ludziom potajemnie wspiąć się na Mur, co pozwoliło mu ominąć czarnych braci i poprowadzić swą hordę na południe. Pominięta, zlekceważona i upokorzona Nocna Straż nie odegrała w wynikającej z tego wojnie niemal żadnej roli; to lord Willam Stark i Harmond Umber z Ostatniego Domostwa zatrzymali i rozbili dzikich Raymuna na północ od Długiego Jeziora. Waleczny lord Willam poległ w tej walce; jego syn i następca, pełen pogardy dla Straży i jej Lorda Dowódcy – od tego dnia znanego jako Śpiący Jack – rozkazał im pogrzebać zabitych dzikich, gdy sam pogrążył się w żałobie.'
+            ]
+          },
+          {
+            id: 'c-wojna-dziewieciogroszowych',
+            period: 'Ok. 260 lat po Podboju',
+            title: 'Wojna Dziewięciogroszowych Królów',
+            paragraphs: [
+              'Siedem Królestw uwolniło się od potomków Blackfyre’a dopiero w dwieście sześćdziesiąt lat po Podboju. Maelys Blackfyre, z powodu wyrastającej mu jakoby z szyi drugiej głowy zwany Potwornym (według opowieści będącej wynikiem pożarcia przez niego w łonie matki własnego brata bliźniaka), zebrał grupę najemników, piratów, bogatych kupców i poszukiwaczy przygód zwanych Bandą Dziewięciu i próbował podbić Westeros. Początkowo Banda odniosła pewne sukcesy – zdobyła Tyrosh i zabezpieczyła pozycje na Stopniach, pozostałościach dawnego Ramienia Dorne. Targaryenowie zareagowali jednak na zagrożenie z pełną stanowczością i pod wodzą ser Barristana Selmy’ego rozbili spiskowców, jeszcze zanim zeszli oni ze Stopni. Maelys poległ pod ostrzem Selmy’ego; jeden ze spiskowców, Alequo Adarys Złotousty, zbiegł do Tyrosh, gdzie przeżył jeszcze sześć lat. Sojusz został rozwiązany, a Żelazny Tron pozostał w rękach Smoczych Władców, choć krwawy koniec rządów Targaryenów zbliżał się z każdym dniem.'
+            ]
+          }
+        ]
+      },
+      {
+        group: 'UPADEK TARGARYENÓW I TERAŹNIEJSZOŚĆ',
+        entries: [
+          {
+            id: 'c-wojna-uzurpatora',
+            period: '282–283 o.P.',
+            title: 'Wojna Uzurpatora',
+            paragraphs: [
+              'Targaryenowie od lat osłabieni byli przez kazirodczą tradycję zaślubiania braci i sióstr. W latach tych mówiło się, że połowa Targaryenów rodzi się szalona i w końcu właśnie szaleństwo doprowadziło do ich upadku.',
+              'Rządy Aerysa II, po objęciu przez niego władzy w 262 o.P., zaczęły się obiecująco. Był on synem Jaehaerysa II, miłym dla swych przyjaciół i oświeconym w swych rządach, potrafił też zadbać o skarbiec państwa – do momentu, w którym kufry Siedmiu Królestw pękały od złota. W końcu popadł jednak w szaleństwo, stał się też bezwzględnie okrutny dla swych wrogów, często paląc ich żywcem przy pomocy dzikiego ognia. Choć mieszkańcom królestwa nadal dobrze się wiodło, a Aerys postępował zgodnie z mądrymi sugestiami swej rady – szczególnie jego namiestnika, Tywina Lannistera – z wiekiem jego napady złości stawały się coraz częstsze, aż nikt nie mógł już mieć wątpliwości, że król tańczy na granicy szaleństwa.',
+              'Jego koniec nadszedł szybko, choć zapoczątkował go jego syn, Rhaegar. Książę koronny Rhaegar od dawna kochał się w pięknej Lyannie Stark, pomimo jej zaręczyn z lordem Robertem Baratheonem. W 282 o.P. Rhaegar zniknął wraz z Lyanną, co doprowadziło wielu, na czele z Robertem, do oskarżenia go o porwanie jej. Brat Lyanny, Brandon, oraz kilku innych towarzyszy: jego giermek Ethan Glover, Jeffroy Mallister, Kyle Royce oraz Elbert Arryn, bratanek oraz dziedzic lorda Orlego Gniazda, wjechali do Królewskiej Przystani, żądając jej uwolnienia, jednak szaleństwo króla Aerysa podyktowało jego odpowiedź, kiedy pojmał on młodych szlachciców i oskarżył o zdradę stanu. Wezwał później ojców swych więźniów, włącznie z lordem Rickardem Starkiem, ojcem Brandona.',
+              'Przybywając do Królewskiej Przystani wraz z ojcami innych rycerzy, lord Stark zażądał próby walki. Straciwszy już wszelkie pozory poczytalności, król Aerys wybrał na swego czempiona ogień i rozkazał upiec lorda Rickarda żywcem, na oczach jego bezradnego syna. Brandon Stark umieszczony został w duszącej machinie tortur i zmarł, nie mogąc dosięgnąć swego miecza. Pozostali więźniowie zostali straceni bez przeprowadzenia sądu. Obłąkany Król wysłał później do Orlego Gniazda list z żądaniem dostarczenia mu przez lorda Jona Arryna głów Roberta Baratheona i Eddarda Starka. Zamiast podporządkować się rozkazowi trzy rody podniosły swe sztandary i zapoczątkowały powstanie. Westeros znów pogrążyło się w wojnie, tym razem nie miała się ona jednak skończyć przed całkowitym upadkiem dynastii Smoczych Władców.',
+              'Była to szybka i krwawa wojna, której tragiczne konsekwencje były nieuniknione. Robert Baratheon odniósł pierwsze zwycięstwo w Bitwie o Summerhall, lecz kilka tygodni później Mace Tyrell spowolnił jego natarcie w Ashford. W zaciekłej walce między domami, znanej jako Bitwa Dzwonów, wojska Aerysa wyparte zostały przez trzy sprzymierzone rody z miasteczka zwanego Kamiennym Septem. Po tej bitwie Aerys zdał sobie sprawę, że Robert Baratheon nie jest zwykłym hersztem bandytów czy buntownikiem, lecz poważnym zagrożeniem dla jego królestwa. Obłąkany Król zaczął gromadzić pod Królewską Przystanią zapasy dzikiego ognia, wolał bowiem spalić miasto wraz z wszystkimi jego mieszkańcami niż oddać je Uzurpatorowi; wysłał też księcia Rhaegara, aby przywołał rosnących w siłę lordów do porządku.',
+              'Armie spotkały się w miejscu, w którym Królewski Trakt przecina rzekę Trident. Los Targaryenów został przesądzony, kiedy Robert Baratheon zabił księcia Rhaegara w pojedynku. Przepełniony gniewem spowodowanym porwaniem i zgwałceniem jego narzeczonej, Lyanny, Robert zmiażdżył wysadzany rubinami napierśnik przeciwnika jednym ciosem swego młota; lojalne królowi oddziały rozproszyły się wkrótce potem. Dziś miejsce to znane jest jako Rubinowy Bród i mówi się, że wciąż można tam znaleźć klejnoty ze zbroi poległego księcia.',
+              'W końcu, kiedy siły Aerysa zostały rozbite, a zguba z każdym dniem zbliżała się do Czerwonej Twierdzy, do Królewskiej Przystani przybyły dowodzone przez lorda Tywina wojska Lannisterów, którzy do tej pory pozostawali neutralni. Tywin Lannister, będący niegdyś bliskim przyjacielem Aerysa, służył mu jako namiestnik, dopóki nie rozłączyło ich szaleństwo króla; teraz wydawało się, że Tywin powraca, aby uratować swego przyjaciela w potrzebie. Wielki Maester Pycelle doradził królowi otwarcie bram i wpuszczenie wojska do miasta. Szybko zrozumiał jednak swój błąd, ponieważ Lannisterowie zwrócili się przeciwko niemu i złupili miasto.',
+              'Zdesperowany Aerys polecił swojemu namiestnikowi, piromancie lordowi Rossartowi, podpalić składy dzikiego ognia i zniszczyć Lannisterów wraz z całą resztą Królewskiej Przystani. Rozkazał też rycerzowi Gwardii Królewskiej, Jaimemu Lannisterowi, zabić swego ojca, Tywina. Zamiast tego Jaime zabił Rossarta, zanim zdążył on podpalić miasto, a następnie zgładził samego króla Aerysa.',
+              'Jednak dla Tywina nie był to jeszcze koniec. Wysłał on swych rycerzy Gregora Clegane’a oraz Amory’ego Lorcha, aby wymordowali resztę rodziny Aerysa i położyli kres rodowi Targaryenów raz na zawsze. Bezlitosny Gregor zabił syna Rhaegara, będącego niemowlęciem księcia Aegona, po czym zgwałcił i zamordował jego żonę, księżną Elię z Dorne. Amory odnalazł córkę Aegona, księżniczkę Rhaenys, skuloną pod łożem jej ojca; wywlókł ją i uśmiercił.',
+              'Tak upadł ród Targaryenów. Sukces Tywina nie był jednak pełen. Z pomocą wciąż lojalnego ser Willema Darry, ciężarna siostra i żona Obłąkanego Króla, Rhaella, zbiegła na Smoczą Skałę wraz z ich młodym synem Viserysem. Kilka miesięcy później urodziła się tam ostatnia Targaryenka – księżniczka Daenerys. Kiedy jej matka zmarła przy porodzie, ser Willem zabrał dwójkę dzieci do Wolnych Miast, skąd po latach dorastający Viserys starał się odzyskać na tron. Smocza Skała upadła przed flotą Stannisa Baratheona, stało się to jednak zbyt późno, aby powstrzymać ucieczkę ostatnich dwóch Targaryenów.',
+              'Wojna się skończyła, a Siedem Królestw zmieniło się na zawsze. Zwycięstwo było gorzkie, ponieważ Lyanna Stark, której domniemane porwanie zapoczątkowało wojnę, zmarła w Wieży Radości. Zasmucony i zgorzkniały Robert Baratheon objął Żelazny Tron i pojął za żonę córkę Tywina, Cersei Lannister. Pozostali rebelianci również doczekali się należnych im nagród i wydawało się, że Siedem Królestw, uwolnione na zawsze od plagi Smoczych Władców, znalazło wreszcie pokój.'
+            ]
+          },
+          {
+            id: 'c-bunt-greyjoyow',
+            period: 'Dziewięć lat przed dniem dzisiejszym',
+            title: 'Bunt Greyjoyów',
+            paragraphs: [
+              'Robert Baratheon nie był pierwszym obiecującym królem, któremu nie udało się sprostać pokładanym oczekiwaniom. Zgorzkniały po śmierci Lyanny, drążony nienawiścią do Targaryenów, uwięziony w pozbawionym miłości, politycznym małżeństwie, Robert szybko odsunął się od rządów, zamiast tego oddając się piciu, chędożeniu, polowaniom i hazardowi. Wyczuwając jego słabość, niepokorny lord Balon Greyjoy z Pyke ogłosił się Królem Żelaznych Wysp i wysłał swych braci Victariona i Eurona, aby spalili flotę Lannisterów stacjonującą w porcie Lannisportu. Triumf Balona był krótkotrwały; jego syn Rodrik zginął na murach Seagardu, a jego flota poszła na dno, zniszczona przez połączone siły Stannisa Baratheona i Paxtera Redwyne’a.',
+              'Król Robert i jego chorążowie rzucili się na Pyke, zniszczyli fortecę i zajęli miasto po zaciekłej bitwie. Balon został zmuszony do poddania się i przyjęcia zwierzchnictwa Roberta, kiedy przy życiu został mu już tylko jeden syn, Theon. Został on wysłany jako zakładnik do Winterfell, gdzie dorastał wśród dzieci lorda Eddarda Starka. Choć pokonany, Balon Greyjoy nigdy nie porzucił swego marzenia o zostaniu królem Żelaznych Wysp i wciąż szuka sposobu, aby spełnić swoje ambicje.'
+            ]
+          },
+          {
+            id: 'c-dzien-dzisiejszy',
+            period: 'TERAZ — 298 lat po Podboju Aegona',
+            title: 'Dzień dzisiejszy',
+            now: true,
+            paragraphs: [
+              'Dziś, piętnaście lat po Wojnie Uzurpatora, dziewięć lat po Buncie Greyjoyów i dwieście dziewięćdziesiąt osiem lat po Podboju Aegona, w Siedmiu Królestwach wydaje się panować pokój. Na Północy Starkowie władają rozległym terytorium, większym niż wszystkie pozostałe królestwa razem wzięte. Honorowy Eddard Stark wziął za żonę narzeczoną swego zabitego brata, Catelyn Tully, i dała mu ona trzech synów: Robba, Brana i Rickona, oraz dwie córki: Sansę oraz Aryę. Mimo niechęci Catelyn na zamku Winterfell żyje też z nimi bękart lorda Eddarda, Jon Snow.',
+              'Krainy leżące na południu funkcjonują stabilnie i dostatnio pod władzą zbuntowanych przeciw Targaryenom lordów i ich sojuszników. Gdzie indziej Balon Greyjoy wciąż knuje, jak uwolnić się od władzy króla Roberta, a Dornijczycy żyją tak, jak im się podoba, podlegając Siedmiu Królestwom jedynie z nazwy. Lord Tywin Lannister osiadł w swej siedzibie w Casterly Rock, jednak zdążył już udowodnić, że jest mistrzem zarówno polityki, jak i strategii; prawdopodobnie wkrótce znów włączy się do gry o tron.',
+              'Z zewnątrz wszystko wydaje się być w porządku. Pojawiają się jednak szepty, że nadchodzą głębokie zmiany. Król Robert nadal oddaje się rozpuście, z każdym rokiem stając się grubszym i bardziej zgorzkniałym człowiekiem. Powszechnie wiadomo, że jego żona Cersei gardzi nim i woli spędzać czas ze swym szarmanckim bratem Jaimem Lannisterem niż z mężem. Ich potomkowie, książęta Joffrey i Tommen oraz księżniczka Myrcella, bardziej podobne są do swej złotowłosej lannisterskiej matki niż bruneta Baratheona. Na Smoczej Skale Stannis Baratheon zastanawia się, dlaczego ich wspólny brat Renly wydaje się być w łaskach króla, a on sam nie.',
+              'Z odległych krain przybywają, często ubarwione, opowieści o niepokojących wydarzeniach i zapowiedziach nieszczęścia. Długie lato dobiega końca, a wraz z nim, jak mówią maesterzy, nastanie szczególnie długa i ostra zima. Na Północy krążą plotki o olbrzymach, a nawet mroczniejsze głosy, że znów nadchodzą Inni i ich zamarznięci, nieumarli słudzy. Po przeciwnej stronie Wąskiego Morza zaginiony książę Viserys podobno buduje armię nieustraszonych barbarzyńców, z którą chce przypłynąć do Westeros, by zająć Żelazny Tron siłą.',
+              'Wróżbici i kapłani wszelkich wiar wieszczą wreszcie koniec lata. Jaki wpływ na Siedem Królestw będzie miała nadchodząca zima, nie wie nikt, wiele wskazuje jednak na to, że zmęczone wojną Westeros znów spłynie krwią.',
+              'Tu urywa się kronika Cytadeli. Dalszy jej ciąg piszą już tylko wydarzenia Waszej kampanii — patrz Dziennik Sesji poniżej.'
+            ]
+          }
+        ]
+      }
+    ];
+
+    const SESSIONS = [];
+
     const HOUSES_GREAT = [
       {
         name: 'Targaryen',
@@ -4399,6 +4370,73 @@
     }
 
     
+    function renderChronicle() {
+      const el = document.getElementById('chronicle-timeline');
+      if (!el) return;
+      el.innerHTML = CHRONICLE.map((grp) => `
+        <div class="space-y-3">
+          <div class="flex items-center gap-3">
+            <span class="h-px flex-1 bg-amber-500/25"></span>
+            <span class="font-display text-xs font-bold tracking-[0.22em] text-amber-400/90">${grp.group}</span>
+            <span class="h-px flex-1 bg-amber-500/25"></span>
+          </div>
+          <div class="relative space-y-3 border-l border-amber-500/20 pl-5 sm:pl-7">
+            ${grp.entries.map((ev) => `
+              <details class="group relative rounded-lg border p-0 transition ${
+                ev.now
+                  ? 'border-amber-400/70 bg-gradient-to-r from-amber-950/70 to-stone-900/90 shadow-lg shadow-amber-900/20'
+                  : 'border-amber-500/20 bg-stone-950/65 hover:border-amber-500/40'
+              }" ${ev.now ? 'open' : ''}>
+                <span class="absolute -left-[26px] top-5 h-2.5 w-2.5 rounded-full border sm:-left-[33px] ${
+                  ev.now ? 'border-amber-300 bg-amber-400 shadow-[0_0_8px_2px_rgba(251,191,36,0.55)]' : 'border-amber-500/60 bg-stone-950'
+                }"></span>
+                <summary class="flex cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 sm:px-5 marker:content-none">
+                  <span class="min-w-0">
+                    <div class="font-display text-[11px] font-bold tracking-[0.16em] ${ev.now ? 'text-amber-300' : 'text-amber-400'}">
+                      ${ev.now ? 'TERAŹNIEJSZOŚĆ' : ev.period}
+                    </div>
+                    <div class="mt-0.5 font-display text-base font-bold ${ev.now ? 'text-amber-100' : 'text-stone-200'} sm:text-lg">
+                      ${ev.title}
+                    </div>
+                  </span>
+                  <span class="shrink-0 font-display text-xs font-bold tracking-widest text-red-400 transition-transform group-open:rotate-180">▾</span>
+                </summary>
+                <div class="space-y-3 border-t border-amber-900/25 px-4 pb-5 pt-4 sm:px-5">
+                  ${ev.paragraphs.map((p) => `<p class="font-serif text-base leading-relaxed text-stone-300">${p}</p>`).join('')}
+                </div>
+              </details>
+            `).join('')}
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function renderSessionJournal() {
+      const el = document.getElementById('session-journal');
+      if (!el) return;
+      if (!SESSIONS.length) {
+        el.innerHTML = `
+          <div class="rounded-lg border border-dashed border-amber-500/30 bg-stone-950/50 p-8 text-center">
+            <div class="font-display text-sm font-bold tracking-[0.18em] text-amber-400/80">PUSTA KARTA</div>
+            <p class="mt-2 font-serif text-base italic text-stone-400">
+              Dziennik jeszcze się nie zaczął. Pierwszy wpis pojawi się tu po Waszej pierwszej sesji przy stole.
+            </p>
+          </div>`;
+        return;
+      }
+      el.innerHTML = SESSIONS.map((s) => `
+        <article class="rounded-lg border border-amber-500/25 bg-stone-950/75 p-6 shadow-lg">
+          <div class="mb-2 flex flex-wrap items-center justify-between gap-2 font-display text-xs tracking-widest text-amber-400">
+            <span>SESJA ${s.number}${s.inWorldDate ? ` • ${s.inWorldDate}` : ''}</span>
+            <span class="text-stone-400">${s.realDate || ''}</span>
+          </div>
+          <h3 class="mb-2 font-display text-lg font-bold text-amber-100">${s.title || ''}</h3>
+          ${(s.paragraphs || []).map((p) => `<p class="font-body text-base leading-relaxed text-stone-300">${p}</p>`).join('')}
+          ${s.participants ? `<p class="mt-3 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Drużyna:</strong> ${s.participants}</p>` : ''}
+        </article>
+      `).join('');
+    }
+
     function renderHistory() {
       const listEl = document.getElementById('history-era-list');
       const readerEl = document.getElementById('history-reader');
@@ -6608,6 +6646,8 @@
       set('home-house-count', HOUSES.length);
       set('home-era-count', ERAS.length);
 
+      renderChronicle();
+      renderSessionJournal();
       renderHistory();
       populateCharacterHouseFilter();
       renderCharacters();
