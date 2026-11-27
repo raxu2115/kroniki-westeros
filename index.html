@@ -551,14 +551,6 @@
         </button>
         <button
           type="button"
-          data-tab="history"
-          onclick="switchTab('history')"
-          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
-        >
-          Historia Westeros
-        </button>
-        <button
-          type="button"
           data-tab="characters"
           onclick="switchTab('characters')"
           class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
@@ -1087,10 +1079,10 @@
                 </button>
                 <button
                   type="button"
-                  onclick="switchTab('history')"
+                  onclick="switchTab('home')"
                   class="rounded border border-amber-500/30 bg-stone-900 px-4 py-2 font-display text-xs font-bold tracking-wider text-stone-200 transition hover:border-amber-500/60 hover:text-amber-200"
                 >
-                  HISTORIA
+                  KRONIKA
                 </button>
                 <button
                   type="button"
@@ -1110,28 +1102,6 @@
             </div>
           </div>
         </div>
-      </div>
-    </section>
-
-    <!-- 3. HISTORIA WESTEROS -->
-    <section id="tab-history" class="tab-panel space-y-6">
-      <div class="flex flex-col justify-between gap-2 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
-        <div>
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">
-            ROCZNIKI CYTADELI
-          </div>
-          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">
-            HISTORIA WESTEROS
-          </h1>
-        </div>
-        <p class="font-serif text-base italic text-stone-400">
-          Wybierz epokę z listy po lewej, aby otworzyć zapis w księdze kronikarza.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 gap-6 lg:grid-cols-12">
-        <div class="space-y-2.5 lg:col-span-4" id="history-era-list"></div>
-        <div class="lg:col-span-8" id="history-reader"></div>
       </div>
     </section>
 
@@ -1506,81 +1476,6 @@
   </footer>
 
   <script>
-    const ERAS = [
-      {
-        id: 'dawn-age',
-        period: 'Przed ok. 12 000 lat temu',
-        title: 'Era Świtu i Dzieci Lasu',
-        subtitle: 'Czardrzewa, pieśni lasu i pradawni bogowie natury',
-        summary:
-          'Najdawniejszy okres dziejów Westeros, na długo przed przybyciem Pierwszych Ludzi. Kontynent porastały gęste bory i czardrzewa o białej korze z rzeźbionymi twarzami, a Dzieci Lasu czciły bezimiennych bogów drzew, rzek i kamieni.',
-        notes: [
-          'Dzieci Lasu żyły w osadach w koronach drzew, na wyspach jezior i w głębokich jaskiniach.',
-          'Nie posługiwały się metalową bronią — korzystały z obsydianu zwanego szkłem smoka oraz pieśni władających żywiołami.',
-          'Era zakończyła się wraz z nadejściem Pierwszych Ludzi przez wschodni pomost lądowy.'
-        ]
-      },
-      {
-        id: 'first-men',
-        period: 'Ok. 12 000 – 6 000 lat temu',
-        title: 'Najazd Pierwszych Ludzi i Złamane Ramię',
-        subtitle: 'Oręż z brązu, wierzchowce i roztrzaskany pomost lądowy',
-        summary:
-          'Pierwsi Ludzie przeprawili się ze wschodu na tereny dzisiejszego Dorne, przynosząc brąz, konie, runy i własne wierzenia. Po krwawych wojnach i ścięciu wielu czardrzew Dzieci Lasu zniszczyły pomost lądowy, tworząc Złamane Ramię Dorne oraz Stopnie.',
-        notes: [
-          'Zbyt późne zatopienie pomostu nie powstrzymało osadnictwa na całym kontynencie.',
-          'Z czasem zawarto Pakt na Wyspie Twarzy, który przyniósł pokój i powstrzymał wycinanie czardrzew na południu.'
-        ]
-      },
-      {
-        id: 'long-night',
-        period: 'Ok. 8 000 lat temu',
-        title: 'Długa Noc i Budowa Muru',
-        subtitle: 'Zima trwająca pokolenie i narodziny Nocnej Straży',
-        summary:
-          'Nad Westeros zapadła mroczna, lodowata Długa Noc, podczas której z mroźnej północy nadeszło zagrożenie, które zjednoczyło ludzi i Dzieci Lasu. Po odparciu ciemności wzniesiono potężny Mur z lodu, kamienia i magii, a powołano Nocną Straż.',
-        notes: [
-          'W tym okresie narodziły się liczne legendy o bohaterach i strażnikach Północy.',
-          'Mur stał się granicą między królestwami ludzi a nieznaną Północą.'
-        ]
-      },
-      {
-        id: 'andals',
-        period: 'Ok. 6 000 – 4 000 lat temu',
-        title: 'Przybycie Andalów i Wiara Siedmiu',
-        subtitle: 'Żelazo, Siedmiu Bogów i upadek wielu dawnych królestw',
-        summary:
-          'Andalowie przybyli zza Wąskiego Morza, niosąc żelazną broń i zbroje oraz Wiarę w Siedmiu. Podporządkowali sobie większość południowych i środkowych królestw, podczas gdy Północ zdołała utrzymać dawne wierzenia i niezależność.',
-        notes: [
-          'Żelazo okazało się przewagą nad starszym orężem z brązu.',
-          'Wraz z Andalami ukształtowały się rycerskie ideały i wiele rodów szlacheckich.'
-        ]
-      },
-      {
-        id: 'conquest',
-        period: '0 PL (Podboje Aegona)',
-        title: 'Podbój Aegona i Siedem Królestw',
-        subtitle: 'Smoczy ogień, Czarny Nurt i zjednoczenie pod jednym tronem',
-        summary:
-          'Aegon I Targaryen wraz ze swoimi siostrami i smokami wylądował u ujścia Czarnego Nurtu, by podporządkować sobie podzielone królestwa Westeros. Odtąd cały kontynent zwykło się określać mianem Siedmiu Królestw, choć Dorne zachowało odrębność jeszcze przez długi czas.',
-        notes: [
-          'Powstała Królewska Przystań oraz Żelazny Tron wykuty z mieczy pokonanych.',
-          'Każdy dawny władca przyjął rolę wielkiego lorda lub zachował książęcy tytuł w Dorne.'
-        ]
-      },
-      {
-        id: 'robert-rebellion',
-        period: '282 – 283 PL',
-        title: 'Rebelia Roberta i Zmiana Dynastii',
-        subtitle: 'Trójząb, upadek Szalonego Króla i nowy porządek',
-        summary:
-          'Zbrojny bunt wielkich rodów przeciwko rządom Aerysa II Targaryena zakończył wielowiekowe panowanie dynastii smoków na Żelaznym Tronie. Po bitwie nad Trójzębem i zdobyciu stolicy koronę objął Robert Baratheon.',
-        notes: [
-          'Sojusze i zdrady z czasów rebelii wciąż odbijają się echem w polityce dworów.',
-          'Dla wielu rodów była to próba honoru, lojalności i przetrwania.'
-        ]
-      }
-    ];
 
     
     const CHRONICLE = [
@@ -4325,9 +4220,8 @@
     ];
 
     
-    const VALID_TABS = ['home', 'intro', 'history', 'characters', 'houses', 'laws', 'religion', 'map', 'rules'];
+    const VALID_TABS = ['home', 'intro', 'characters', 'houses', 'laws', 'religion', 'map', 'rules'];
 
-    let selectedEraId = ERAS[0].id;
     let selectedHouseName = 'Arryn';
 
     function getInitialTab() {
@@ -4437,74 +4331,6 @@
       `).join('');
     }
 
-    function renderHistory() {
-      const listEl = document.getElementById('history-era-list');
-      const readerEl = document.getElementById('history-reader');
-      if (!listEl || !readerEl) return;
-
-      listEl.innerHTML = ERAS.map((era) => {
-        const isSelected = era.id === selectedEraId;
-        return `
-          <button
-            type="button"
-            onclick="selectEra('${era.id}')"
-            class="w-full rounded-lg border p-4 text-left transition ${
-              isSelected
-                ? 'border-amber-400 bg-gradient-to-r from-amber-950/80 to-stone-900/90 text-amber-100 shadow-lg'
-                : 'border-amber-500/20 bg-stone-950/65 text-stone-300 hover:border-amber-500/45 hover:text-amber-100'
-            }"
-          >
-            <div class="font-display text-[11px] font-bold tracking-[0.18em] text-amber-400">
-              ${era.period}
-            </div>
-            <div class="mt-1 font-display text-base font-bold">
-              ${era.title}
-            </div>
-            <div class="mt-0.5 font-serif text-sm italic text-stone-400">
-              ${era.subtitle}
-            </div>
-          </button>
-        `;
-      }).join('');
-
-      const activeEra = ERAS.find((e) => e.id === selectedEraId) || ERAS[0];
-      readerEl.innerHTML = `
-        <article class="parchment-card relative rounded-lg p-6 sm:p-8 lg:p-10">
-          <div class="pointer-events-none absolute inset-3 rounded border border-amber-900/20"></div>
-          <div class="relative z-10 space-y-5">
-            <div class="border-b border-amber-900/25 pb-4">
-              <div class="font-display text-xs font-bold tracking-[0.2em] text-red-900">
-                ${activeEra.period}
-              </div>
-              <h2 class="mt-1 font-display text-2xl font-bold text-stone-900 sm:text-3xl">
-                ${activeEra.title}
-              </h2>
-              <p class="mt-1 font-serif text-lg italic text-stone-700">
-                ${activeEra.subtitle}
-              </p>
-            </div>
-
-            <p class="dropcap text-base leading-relaxed text-stone-800 sm:text-lg">
-              ${activeEra.summary}
-            </p>
-
-            <div class="rounded border border-amber-900/25 bg-amber-50/50 p-5">
-              <h3 class="mb-2.5 font-display text-xs font-bold tracking-[0.18em] text-red-950">
-                ZAPISANE W KRONIKACH
-              </h3>
-              <ul class="list-disc space-y-2 pl-5 text-base text-stone-800">
-                ${activeEra.notes.map((n) => `<li>${n}</li>`).join('')}
-              </ul>
-            </div>
-          </div>
-        </article>
-      `;
-    }
-
-    function selectEra(eraId) {
-      selectedEraId = eraId;
-      renderHistory();
-    }
 
     
     function populateCharacterHouseFilter() {
@@ -6644,11 +6470,9 @@
       const set = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = String(v); };
       set('home-char-count', CHARACTERS.length);
       set('home-house-count', HOUSES.length);
-      set('home-era-count', ERAS.length);
 
       renderChronicle();
       renderSessionJournal();
-      renderHistory();
       populateCharacterHouseFilter();
       renderCharacters();
       renderHouseSpotlight();
