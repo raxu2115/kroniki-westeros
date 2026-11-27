@@ -165,6 +165,62 @@
     .seal-gate.is-open .wax-symbol { opacity: 0; }
     .seal-gate.is-open .letter-paper { max-height: 2000px; opacity: 1; transform: translateY(0) scale(1); }
 
+    .roster-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    @media (min-width: 640px) { .roster-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+    @media (min-width: 1024px) { .roster-grid { grid-template-columns: repeat(5, minmax(0, 1fr)); } }
+
+    .roster-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      text-align: center;
+      padding: 0.75rem 0.5rem;
+      border-radius: 0.5rem;
+      border: 1px solid rgba(217, 119, 6, 0.2);
+      background: rgba(28, 25, 23, 0.6);
+    }
+    .roster-avatar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 9999px;
+      border: 1px solid rgba(217, 119, 6, 0.5);
+      background: linear-gradient(180deg, #292524 0%, #0c0a09 100%);
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: #fcd9a8;
+    }
+    .roster-name { font-family: 'Cinzel', Georgia, serif; font-size: 0.875rem; font-weight: 700; line-height: 1.25; color: #f3ead8; }
+    .roster-player { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 0.78rem; font-style: italic; line-height: 1.25; color: #a8a29e; }
+    .roster-house {
+      margin-top: 0.1rem;
+      border-radius: 9999px;
+      border: 1px solid rgba(217, 119, 6, 0.25);
+      background: rgba(12, 10, 9, 0.7);
+      padding: 0.1rem 0.55rem;
+      font-family: 'Cinzel', Georgia, serif;
+      font-size: 0.62rem;
+      letter-spacing: 0.08em;
+      color: #d4a656;
+    }
+
+    .letters-grid {
+      display: grid;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+      gap: 1rem;
+      margin-top: 1.25rem;
+    }
+    @media (min-width: 640px) { .letters-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
     .parchment-card {
       background:
         radial-gradient(circle at top left, rgba(255, 250, 238, 0.65), transparent 55%),
@@ -1803,13 +1859,12 @@
         paragraphs: [
           'Sesja zero — zanim historia się zacznie. Drużyna jeszcze nie istnieje, postacie czekają na stworzenie.'
         ],
-        players: ['Piotr', 'Jakub', 'Krzysztof', 'Igor', 'Oskar'],
-        characters: [
-          { name: 'Test1', house: 'TestRód1' },
-          { name: 'Test2', house: 'TestRód2' },
-          { name: 'Test3', house: 'TestRód3' },
-          { name: 'Test4', house: 'TestRód4' },
-          { name: 'Test5', house: 'TestRód5' }
+        roster: [
+          { player: 'Piotr', character: 'Nieznana', house: 'Nieznany' },
+          { player: 'Jakub', character: 'Nieznana', house: 'Nieznany' },
+          { player: 'Krzysztof', character: 'Nieznana', house: 'Nieznany' },
+          { player: 'Igor', character: 'Nieznana', house: 'Nieznany' },
+          { player: 'Oskar', character: 'Nieznana', house: 'Nieznany' }
         ],
         letters: [
           {
@@ -1817,7 +1872,7 @@
             sender: 'Nieznany nadawca',
             label: 'List — Sesja 0',
             paragraphs: [
-              'Jeśli czytacie te słowa, to znaczy, że dotarłem bezpiecznie do Białego Portu, lecz obawiam się, że pogoń była bliżej, niż sądziłem. Strzeżcie się ludzi w szarych płaszczach — nie są tym, za kogo się podają.'
+              'Winter is coming.'
             ],
             signature: '— W.'
           }
@@ -4448,9 +4503,18 @@
           </div>
           <h3 class="mb-2 font-display text-lg font-bold text-amber-100">${s.title || ''}</h3>
           ${(s.paragraphs || []).map((p) => `<p class="font-body text-base leading-relaxed text-stone-300">${p}</p>`).join('')}
-          ${s.players && s.players.length ? `<p class="mt-3 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Gracze:</strong> ${s.players.join(', ')}</p>` : ''}
-          ${s.characters && s.characters.length ? `<p class="mt-1 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Grają jako:</strong> ${s.characters.map((c) => typeof c === 'string' ? c : `${c.name}${c.house ? ` (z rodu ${c.house})` : ''}`).join(', ')}</p>` : ''}
-          ${s.letters && s.letters.length ? `<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">${s.letters.map((l) => letterGateHtml(s, l)).join('')}</div>` : ''}
+          ${s.roster && s.roster.length ? `
+            <div class="roster-grid">
+              ${s.roster.map((r) => `
+                <div class="roster-card">
+                  <div class="roster-avatar">${(r.character || r.player || '?').charAt(0).toUpperCase()}</div>
+                  <div class="roster-name">${r.character || '—'}</div>
+                  <div class="roster-player">${r.player || ''}</div>
+                  ${r.house ? `<span class="roster-house">${r.house}</span>` : ''}
+                </div>
+              `).join('')}
+            </div>` : ''}
+          ${s.letters && s.letters.length ? `<div class="letters-grid">${s.letters.map((l) => letterGateHtml(s, l)).join('')}</div>` : ''}
         </article>
       `).join('');
     }
