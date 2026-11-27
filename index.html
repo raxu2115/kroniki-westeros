@@ -121,6 +121,50 @@
     .rounded { border-radius: 0.25rem; }
     .hidden { display: none !important; }
 
+    .seal-gate {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+      padding: 22px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      background: radial-gradient(ellipse at top, rgba(120, 53, 15, 0.12), transparent 60%), rgba(10, 8, 7, 0.6);
+      border: 1px solid rgba(217, 119, 6, 0.25);
+    }
+    .seal-gate:hover .wax-seal { transform: scale(1.04) rotate(-1deg); }
+    .seal-gate.is-open { cursor: default; }
+
+    .wax-seal { position: relative; width: 64px; height: 64px; transition: transform 0.25s ease; flex-shrink: 0; }
+    .wax-half {
+      position: absolute; inset: 0;
+      border-radius: 46% 54% 59% 41% / 48% 44% 56% 52%;
+      background: radial-gradient(circle at 32% 28%, #b33a3a 0%, #7a1620 42%, #4a0d14 78%, #39090f 100%);
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.55), inset 0 0 10px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.08);
+      transition: transform 0.7s cubic-bezier(0.5, -0.2, 0.6, 1.3), opacity 0.55s ease 0.05s;
+    }
+    .wax-half.left { clip-path: polygon(0 0, 100% 0, 0% 100%); }
+    .wax-half.right { clip-path: polygon(100% 0, 100% 100%, 0% 100%); }
+    .wax-symbol {
+      position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+      color: rgba(255, 214, 160, 0.92); font-size: 1.3rem; letter-spacing: 1px;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.65);
+      pointer-events: none; transition: opacity 0.3s ease;
+    }
+    .seal-label { font-size: 0.7rem; letter-spacing: 0.2em; color: #d8b98a; text-transform: uppercase; text-align: center; }
+    .seal-label .from { display: block; margin-top: 2px; font-size: 0.95rem; letter-spacing: 0.04em; color: #f1dcb8; font-weight: 700; }
+
+    .letter-paper {
+      margin-top: 4px; max-height: 0; opacity: 0; overflow: hidden; width: 100%;
+      transform: translateY(-6px) scale(0.98);
+      transition: max-height 0.7s ease, opacity 0.5s ease 0.1s, transform 0.5s ease 0.1s;
+    }
+    .seal-gate.is-open .wax-half.left { transform: translate(-20px, -14px) rotate(-22deg) scale(0.9); opacity: 0; }
+    .seal-gate.is-open .wax-half.right { transform: translate(20px, 14px) rotate(22deg) scale(0.9); opacity: 0; }
+    .seal-gate.is-open .wax-symbol { opacity: 0; }
+    .seal-gate.is-open .letter-paper { max-height: 2000px; opacity: 1; transform: translateY(0) scale(1); }
+
     .parchment-card {
       background:
         radial-gradient(circle at top left, rgba(255, 250, 238, 0.65), transparent 55%),
@@ -645,6 +689,7 @@
         <p class="font-serif text-sm italic text-stone-400">
           Zapiski z kolejnych sesji przy stole — aktualizowane po każdej przygodzie.
         </p>
+        <div id="handout-index"></div>
         <div id="session-journal" class="space-y-5"></div>
       </div>
     </section>
@@ -1749,7 +1794,30 @@
       }
     ];
 
-    const SESSIONS = [];
+    const SESSIONS = [
+      {
+        number: 0,
+        inWorldDate: null,
+        realDate: null,
+        title: 'Przed pierwszą przygodą',
+        paragraphs: [
+          'Sesja zero — zanim historia się zacznie. Drużyna jeszcze nie istnieje, postacie czekają na stworzenie.'
+        ],
+        players: ['Piotr', 'Jakub', 'Krzysztof', 'Igor', 'Oskar'],
+        characters: [],
+        letters: [
+          {
+            id: 'letter-s0-1',
+            sender: 'Nieznany nadawca',
+            label: 'List — Sesja 0',
+            paragraphs: [
+              'Jeśli czytacie te słowa, to znaczy, że dotarłem bezpiecznie do Białego Portu, lecz obawiam się, że pogoń była bliżej, niż sądziłem. Strzeżcie się ludzi w szarych płaszczach — nie są tym, za kogo się podają.'
+            ],
+            signature: '— W.'
+          }
+        ]
+      }
+    ];
 
     const HOUSES_GREAT = [
       {
@@ -4305,9 +4373,57 @@
       `).join('');
     }
 
+    function toggleLetterSeal(id) {
+      const gate = document.getElementById(id);
+      if (gate) gate.classList.toggle('is-open');
+    }
+
+    function scrollToLetter(id) {
+      const gate = document.getElementById(id);
+      if (!gate) return;
+      gate.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      gate.classList.add('is-open');
+    }
+
+    function letterGateHtml(s, l) {
+      return `
+        <div id="${l.id}" class="seal-gate" onclick="toggleLetterSeal('${l.id}')">
+          <div class="wax-seal">
+            <div class="wax-half left"></div>
+            <div class="wax-half right"></div>
+            <div class="wax-symbol">&#10022;</div>
+          </div>
+          <div class="seal-label">
+            ${l.label || `LIST — SESJA ${s.number}`}
+            <span class="from">${l.sender || 'Nieznany nadawca'}</span>
+          </div>
+          <div class="letter-paper">
+            <div class="parchment-card rounded p-5 sm:p-6">
+              ${l.heading ? `<p class="font-display text-xs tracking-widest text-red-900 mb-2">${l.heading}</p>` : ''}
+              ${(l.paragraphs || []).map((p, i) => `<p class="${i === 0 ? 'dropcap ' : 'mt-3 '}text-base leading-relaxed">${p}</p>`).join('')}
+              ${l.signature ? `<p class="mt-3 text-right italic text-base">${l.signature}</p>` : ''}
+            </div>
+          </div>
+        </div>`;
+    }
+
     function renderSessionJournal() {
       const el = document.getElementById('session-journal');
+      const idxEl = document.getElementById('handout-index');
       if (!el) return;
+
+      const allLetters = SESSIONS.flatMap((s) => (s.letters || []).map((l) => ({ s, l })));
+      if (idxEl) {
+        idxEl.innerHTML = !allLetters.length ? '' : `
+          <div class="flex flex-wrap items-center gap-2 pt-1">
+            <span class="font-display text-xs font-bold tracking-widest text-amber-400/80">&#128220; HANDOUTY:</span>
+            ${allLetters.map(({ s, l }) => `
+              <button type="button" onclick="scrollToLetter('${l.id}')" class="rounded-full border border-amber-500/35 bg-stone-950/70 px-3 py-1 font-display text-xs text-amber-200 transition hover:border-amber-400 hover:bg-stone-900">
+                ${l.label || `Sesja ${s.number}`}
+              </button>`).join('')}
+          </div>`;
+      }
+
       if (!SESSIONS.length) {
         el.innerHTML = `
           <div class="rounded-lg border border-dashed border-amber-500/30 bg-stone-950/50 p-8 text-center">
@@ -4326,7 +4442,9 @@
           </div>
           <h3 class="mb-2 font-display text-lg font-bold text-amber-100">${s.title || ''}</h3>
           ${(s.paragraphs || []).map((p) => `<p class="font-body text-base leading-relaxed text-stone-300">${p}</p>`).join('')}
-          ${s.participants ? `<p class="mt-3 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Drużyna:</strong> ${s.participants}</p>` : ''}
+          ${s.players && s.players.length ? `<p class="mt-3 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Gracze:</strong> ${s.players.join(', ')}</p>` : ''}
+          ${s.characters && s.characters.length ? `<p class="mt-1 text-sm text-stone-400"><strong class="font-display text-xs uppercase tracking-wider text-amber-300">Grają jako:</strong> ${s.characters.join(', ')}</p>` : ''}
+          ${s.letters && s.letters.length ? `<div class="mt-5 grid grid-cols-1 gap-4 sm:grid-cols-2">${s.letters.map((l) => letterGateHtml(s, l)).join('')}</div>` : ''}
         </article>
       `).join('');
     }
