@@ -671,15 +671,7 @@
           onclick="switchTab('laws')"
           class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
         >
-          Zwyczaje i Prawa
-        </button>
-        <button
-          type="button"
-          data-tab="religion"
-          onclick="switchTab('religion')"
-          class="nav-btn rounded border border-transparent px-3 py-1.5 font-display text-xs font-semibold tracking-wider text-stone-300 transition hover:border-amber-500/35 hover:text-amber-200 sm:text-sm"
-        >
-          Religia
+          Życie Siedmiu Królestw
         </button>
         <button
           type="button"
@@ -1335,30 +1327,32 @@
       <div id="houses-grid" class="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-3"></div>
     </section>
 
-    <!-- 5a. ZWYCZAJE I PRAWA -->
-    <section id="tab-laws" class="tab-panel space-y-6">
-      <div class="flex flex-col justify-between gap-3 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
-        <div>
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">PRAWO I OBYCZAJ SIEDMIU KRÓLESTW</div>
-          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">ZWYCZAJE I PRAWA</h1>
-        </div>
-        <input type="text" oninput="filterDetails(this,'laws-list')" placeholder="Szukaj w tej zakładce..."
-          class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
+    <!-- 5a. ŻYCIE SIEDMIU KRÓLESTW (zwyczaje, prawo i religia) -->
+    <section id="tab-laws" class="tab-panel space-y-10">
+      <div class="border-b border-amber-500/25 pb-4">
+        <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">OBYCZAJ, PRAWO I WIARA SIEDMIU KRÓLESTW</div>
+        <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">ŻYCIE SIEDMIU KRÓLESTW</h1>
       </div>
-      <div id="laws-list"></div>
-    </section>
 
-    <!-- 5b. RELIGIA -->
-    <section id="tab-religion" class="tab-panel space-y-6">
-      <div class="flex flex-col justify-between gap-3 border-b border-amber-500/25 pb-4 sm:flex-row sm:items-end">
-        <div>
-          <div class="font-display text-xs font-bold tracking-[0.2em] text-amber-400">WIARA, BOGOWIE I PRZESĄDY</div>
-          <h1 class="font-display text-2xl font-bold tracking-wide text-amber-100 sm:text-3xl">WIARA I RELIGIA</h1>
+      <div class="space-y-6">
+        <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <h2 class="font-display text-xl font-bold tracking-wide text-amber-100">Zwyczaje i Prawa</h2>
+          <input type="text" oninput="filterDetails(this,'laws-list')" placeholder="Szukaj w tej sekcji..."
+            class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
         </div>
-        <input type="text" oninput="filterDetails(this,'religion-list')" placeholder="Szukaj w tej zakładce..."
-          class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
+        <div id="laws-list"></div>
       </div>
-      <div id="religion-list"></div>
+
+      <div class="ornate-divider"><span class="font-display text-sm">❖</span></div>
+
+      <div class="space-y-6">
+        <div class="flex flex-col justify-between gap-3 sm:flex-row sm:items-end">
+          <h2 class="font-display text-xl font-bold tracking-wide text-amber-100">Wiara i Religia</h2>
+          <input type="text" oninput="filterDetails(this,'religion-list')" placeholder="Szukaj w tej sekcji..."
+            class="w-full rounded border border-amber-500/35 bg-stone-950/90 px-3.5 py-2 font-body text-base text-amber-100 placeholder-stone-500 focus:border-amber-400 focus:outline-none sm:w-64" />
+        </div>
+        <div id="religion-list"></div>
+      </div>
     </section>
 
     <!-- 6. MAPA WESTEROS -->
@@ -4349,7 +4343,7 @@
     ];
 
     
-    const VALID_TABS = ['home', 'intro', 'characters', 'houses', 'laws', 'religion', 'map', 'rules'];
+    const VALID_TABS = ['home', 'intro', 'characters', 'houses', 'laws', 'map', 'rules'];
 
     let selectedHouseName = 'Arryn';
 
